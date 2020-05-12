@@ -114,7 +114,7 @@ public class activity_menu extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(context, activity_selectGameMode.class);
+                        Intent intent = new Intent(context, activity_afterMenu.class);
                         startActivity(intent);
                     }
                 });

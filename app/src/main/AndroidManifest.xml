@@ -23,7 +23,7 @@
             android:name="MusicService"
             android:enabled="true" />
 
-        <activity android:name=".activity_selectGameMode" />
+        <activity android:name=".activity_afterMenu" />
         <activity android:name=".activity_settings" />
         <activity android:name=".activity_menu" />
         <activity android:name=".MainActivity">
