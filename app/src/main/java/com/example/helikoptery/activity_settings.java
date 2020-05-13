@@ -67,6 +67,8 @@ public class activity_settings extends AppCompatActivity {
                     music = MediaPlayer.create(context, R.raw.music);
                     music.start();
                     saveData();
+
+
                 }
                 else {
                     music.stop();

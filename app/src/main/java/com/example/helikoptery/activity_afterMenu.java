@@ -89,14 +89,16 @@ public class activity_afterMenu extends AppCompatActivity {
 
     public void NextQuest(View view) {
         final Random random = new Random();
+        String q="Nowe Zadanie!";
         ArrayList<String> aListQuest = new ArrayList<String>();
         aListQuest.add("Znaleziono ślady nieznanej postaci, podążać za nimi i sprawdzić co to ?");
-        aListQuest.add("W pobliskiej jaskni udomowiła się panetera, zagraża naszym ludziom." +
+        aListQuest.add("W pobliskiej jaskni udomowiła się pantera, zagraża naszym ludziom." +
                 " Zabic ją ?");
         ///tutaj możesz wstawic jakies swoje questy
         aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potężna burza, zabezpieczyć nasze plony ?");
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(aListQuest.get(random.nextInt(aListQuest.size())));
+        alertDialogBuilder.setTitle(q);
+        alertDialogBuilder.setMessage(aListQuest.get(random.nextInt(aListQuest.size())));
         //alertDialogBuilder.setIcon(R.drawable.question);
         // alertDialogBuilder.setMessage("Na pewno ?");
         //alertDialogBuilder.setCancelable(false);
