@@ -37,25 +37,39 @@ public class activity_afterMenu extends AppCompatActivity {
 
     final int DELAYED_TIME = 140;
     Context context = this;
-    private int gold=100000;
-    private int army=1000;
+    private int gold = 100000;
+    private int army = 1000;
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_after_menu);
-        textViewGold=findViewById(R.id.textViewGold);
+        textViewGold = findViewById(R.id.textViewGold);
 
+        button=findViewById(R.id.buttonCityUP);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveToCityUpgrade();
+            }
+        });
+
+    }
+    private void moveToCityUpgrade()
+    {
+        Intent intent = new Intent(this,activity_city_upgrade.class);
+        startActivity(intent);
     }
 
 
-    public void onClick(View view)
-    {
-        TextView showCountTextView=
+
+    public void onClick(View view) {
+        TextView showCountTextView =
                 (TextView) findViewById(R.id.textViewArmy);
 
         //get the value of the text view
@@ -63,16 +77,16 @@ public class activity_afterMenu extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer army = Integer.parseInt(countString);
-        army=army+100;
+        army = army + 100;
 
         //display the new value int the text view
-        showCountTextView.setText(army.toString());;
+        showCountTextView.setText(army.toString());
+        ;
         // na koncu nie zapomnij dodac do activity main TEXT android:onClick="toastMe"
     }
 
-    public void onClickSql(View view)
-    {
-        TextView showCountTextView=
+    public void onClickSql(View view) {
+        TextView showCountTextView =
                 (TextView) findViewById(R.id.textViewGold);
 
         //get the value of the text view
@@ -80,34 +94,43 @@ public class activity_afterMenu extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer gold = Integer.parseInt(countString);
-        gold=gold-10000;
+        gold = gold - 10000;
 
         //display the new value int the text view
-        showCountTextView.setText(gold.toString());;
+        showCountTextView.setText(gold.toString());
+        ;
         // na koncu nie zapomnij dodac do activity main TEXT android:onClick="toastMe"
     }
 
     public void NextQuest(View view) {
         final Random random = new Random();
-        String q="Nowe Zadanie!";
-        ArrayList<String> aListQuest = new ArrayList<String>();
+        String q = "Nowe Zadanie!";
+        String qq = "WALKA ZE SMOKIEM";
+        final ArrayList<String> aListQuest = new ArrayList<String>();
+
         aListQuest.add("Znaleziono ślady nieznanej postaci, podążać za nimi i sprawdzić co to ?");
         aListQuest.add("W pobliskiej jaskni udomowiła się pantera, zagraża naszym ludziom." +
                 " Zabic ją ?");
-        ///tutaj możesz wstawic jakies swoje questy
         aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potężna burza, zabezpieczyć nasze plony ?");
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(q);
-        alertDialogBuilder.setMessage(aListQuest.get(random.nextInt(aListQuest.size())));
+        final String a = aListQuest.get(random.nextInt(aListQuest.size()));
+        alertDialogBuilder.setMessage(a);
+
         //alertDialogBuilder.setIcon(R.drawable.question);
         // alertDialogBuilder.setMessage("Na pewno ?");
         //alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+            int b = random.nextInt(10);
+
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                int a = random.nextInt(10);
-                if (a % 2 == 0) {
+
+
+                if (b % 2 == 0) {
                     TextView showCountTextView =
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
@@ -115,6 +138,8 @@ public class activity_afterMenu extends AppCompatActivity {
                     gold = gold + 200000;
                     showCountTextView.setText(gold.toString());
                     Toast.makeText(activity_afterMenu.this, "Znaleziono pradawny artefakt !!!", Toast.LENGTH_LONG).show();
+
+
                 } else {
                     TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
                     TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
@@ -139,8 +164,80 @@ public class activity_afterMenu extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+
     }
 
+    //////
+    public void BossQuest(View view) {
+        final Random random = new Random();
+        String qq = "WALKA ZE SMOKIEM";
+        final ArrayList<String> BossQuest = new ArrayList<String>();
+        BossQuest.add("Chcesz podjąć walke ze smokiem ?");
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle(qq);
+        alertDialogBuilder.setMessage(BossQuest.get(0));
 
+        TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+        String countString = showCountTextView.getText().toString();
+        Integer gold = Integer.parseInt(countString);
 
+        showCountTextView.setText(gold.toString());
+
+        if (gold >= 1000000) {
+            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer gold = Integer.parseInt(countString);
+                    gold = gold + 200000;
+                    showCountTextView.setText(gold.toString());
+                    Toast.makeText(activity_afterMenu.this, "Pokonałeś smoka !!!", Toast.LENGTH_LONG).show();
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        } else {
+
+            final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
+            alertDialogBuilder2.setTitle("Uwaga");
+            alertDialogBuilder2.setMessage("Nie spełniasz wymagań");
+
+            if (gold < 1000000)
+                alertDialogBuilder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                    }
+                });
+            AlertDialog alertDialog2 = alertDialogBuilder2.create();
+            alertDialog2.show();
+        }
+
+    }
+
+    /*public void CityUpgrade(View view) {
+        Intent intent = new Intent(this, activity_city_upgrade.class);
+        startActivity(intent);
+
+    }*/
 }
+
+
+
+
+
+
+
+
+
