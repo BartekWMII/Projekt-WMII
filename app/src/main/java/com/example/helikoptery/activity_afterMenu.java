@@ -39,6 +39,8 @@ public class activity_afterMenu extends AppCompatActivity {
     Context context = this;
     private int gold = 100000;
     private int army = 1000;
+    private int stal =50;
+    private int miasto=1;
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
