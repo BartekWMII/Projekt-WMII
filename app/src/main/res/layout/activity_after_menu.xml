@@ -50,7 +50,7 @@
                 android:layout_width="201dp"
                 android:layout_height="51dp"
                 android:onClick="onClick"
-                android:text="Zwiad w lesie"
+                android:text="Egzekucja"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"

@@ -37,14 +37,21 @@ public class activity_afterMenu extends AppCompatActivity {
 
     final int DELAYED_TIME = 140;
     Context context = this;
-    private int gold = 100000;
-    private int army = 1000;
+    public static int gold = 1000000;
+    public static int  army = 1000;
+    public static int gold2=0;
+    public static int army2=0;
+    private  int goldC=0;
+    private  int armyC=0;
     private int stal =50;
     private int miasto=1;
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
     private Button button;
+    int counter=0;
+    int bezpiecznik,licznik;
+    int armia,kasa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +67,57 @@ public class activity_afterMenu extends AppCompatActivity {
                 moveToCityUpgrade();
             }
         });
+        gold2=getIntent().getIntExtra("Gold666",gold);///gold przeniesiony z aftermenu activity
+        army2=getIntent().getIntExtra("Armia666",army);
+
+        bezpiecznik=getIntent().getIntExtra("Kod",licznik);
+        if(bezpiecznik==1)
+        {
+
+            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+            String countString2 = showCountTextView2.getText().toString();
+            String countString = showCountTextView.getText().toString();
+            Integer goldd = Integer.parseInt(countString);
+            Integer armyy = Integer.parseInt(countString2);
+
+            goldd = gold+gold2 ;
+            armyy = army+army2 ;
+            gold=0;
+            army=0;
+            gold=goldd;
+            army=armyy;
+            showCountTextView.setText(goldd.toString());
+            showCountTextView2.setText(armyy.toString());
+            Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
+        }
+
+       // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
+
 
     }
-    private void moveToCityUpgrade()
+    public void moveToCityUpgrade()
     {
+
+        TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+        TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+        String countString2 = showCountTextView2.getText().toString();
+        String countString = showCountTextView.getText().toString();
+        Integer goldd = Integer.parseInt(countString);
+        Integer armyy = Integer.parseInt(countString2);
+
+        goldd = gold ;
+        armyy = army ;
+        //gold=0;
+       // army=0;
+        Toast.makeText(activity_afterMenu.this,"Dzialaaaa"+gold+army , Toast.LENGTH_LONG).show();
+
+        //showCountTextView.setText(goldd.toString());
+       // showCountTextView2.setText(armyy.toString());
+
         Intent intent = new Intent(this,activity_city_upgrade.class);
+        intent.putExtra("Gold",gold);
+        intent.putExtra("Armia",army);
         startActivity(intent);
     }
 
@@ -79,7 +132,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer army = Integer.parseInt(countString);
-        army = army + 100;
+        army = army - 100;
 
         //display the new value int the text view
         showCountTextView.setText(army.toString());
@@ -96,7 +149,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer gold = Integer.parseInt(countString);
-        gold = gold - 10000;
+        gold = gold - 100000;
 
         //display the new value int the text view
         showCountTextView.setText(gold.toString());
@@ -174,18 +227,35 @@ public class activity_afterMenu extends AppCompatActivity {
         final Random random = new Random();
         String qq = "WALKA ZE SMOKIEM";
         final ArrayList<String> BossQuest = new ArrayList<String>();
-        BossQuest.add("Chcesz podjąć walke ze smokiem ?");
+        BossQuest.add("Chcesz podjąć walke z Czerwonym smokiem ?");
+        BossQuest.add("Chcesz podjąć walke z Zielonym smokiem ?");
+        BossQuest.add("Chccesz podjąć ostateczną walkę z Białym Smokiem Albinosem ?");
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(qq);
-        alertDialogBuilder.setMessage(BossQuest.get(0));
+        if(counter==0)
+        {
+            alertDialogBuilder.setMessage(BossQuest.get(0));
+        }
+
+        if(counter==1)
+        {
+            alertDialogBuilder.setMessage(BossQuest.get(1));
+        }
+
+        if(counter==2)
+        {
+            alertDialogBuilder.setMessage(BossQuest.get(2));
+        }
 
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         String countString = showCountTextView.getText().toString();
         Integer gold = Integer.parseInt(countString);
-
         showCountTextView.setText(gold.toString());
 
-        if (gold >= 1000000) {
+        if (gold >= 1000000 && counter==0)
+        {
+
             alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                 @Override
@@ -197,7 +267,20 @@ public class activity_afterMenu extends AppCompatActivity {
                     Integer gold = Integer.parseInt(countString);
                     gold = gold + 200000;
                     showCountTextView.setText(gold.toString());
-                    Toast.makeText(activity_afterMenu.this, "Pokonałeś smoka !!!", Toast.LENGTH_LONG).show();
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonałeś Czerwonego Smoka !");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                           // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                   // Toast.makeText(activity_afterMenu.this, "Pokonałeś Czerwonego Smoka !!!", Toast.LENGTH_LONG).show();
+                    counter++;
                 }
 
             });
@@ -209,13 +292,89 @@ public class activity_afterMenu extends AppCompatActivity {
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
-        } else {
+        }
+        else if(gold >=2000000 && counter==1)
+        {
+            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-            final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer gold = Integer.parseInt(countString);
+                    gold = gold + 200000;
+                    showCountTextView.setText(gold.toString());
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonałeś Zielonego Smoka !");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+                    counter++;
+                    //Toast.makeText(activity_afterMenu.this, "Pokonałeś Zielonego Smoka !!!", Toast.LENGTH_LONG).show();
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+        else if(gold >=3000000 && counter==2)
+        {
+            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer gold = Integer.parseInt(countString);
+                    gold = gold + 200000;
+                    showCountTextView.setText(gold.toString());
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonałeś Białego Smoka !");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                   // Toast.makeText(activity_afterMenu.this, "Pokonałeś Bialego Smoka !!!", Toast.LENGTH_LONG).show();
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+        else
+            {
+
             alertDialogBuilder2.setTitle("Uwaga");
-            alertDialogBuilder2.setMessage("Nie spełniasz wymagań");
+            alertDialogBuilder2.setMessage("Nie spełniasz wymagań do walki ze smokiem");
 
-            if (gold < 1000000)
                 alertDialogBuilder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -227,12 +386,6 @@ public class activity_afterMenu extends AppCompatActivity {
         }
 
     }
-
-    /*public void CityUpgrade(View view) {
-        Intent intent = new Intent(this, activity_city_upgrade.class);
-        startActivity(intent);
-
-    }*/
 }
 
 
