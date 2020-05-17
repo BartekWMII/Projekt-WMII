@@ -22,7 +22,6 @@ public class secret extends AppCompatActivity {
     public static int gold;
     public static int army;
     public static int licznik=0;
-   // Intent intent = new Intent(this,activity_afterMenu.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +29,7 @@ public class secret extends AppCompatActivity {
         setContentView(R.layout.activity_secret);
         button = (Button)findViewById(R.id.GodButton);
         mText = (TextView) findViewById(R.id.textViewGold);
-
-        gold=getIntent().getIntExtra("Gold2",gold);///gold przeniesiony z aftermenu activity
-        army=getIntent().getIntExtra("Armia2",army);
-
-       // Intent intent = new Intent(this,activity_afterMenu.class);
-
+        licznik=0;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,41 +37,20 @@ public class secret extends AppCompatActivity {
 
                 if(pattern.equals(mEdit.getText().toString()))
                 {
-
-
-                    gold=gold+1000000;
-                    army=army+1000;
+                    gold=1000000;
+                    army=1000;
                     licznik++;
-                    Toast.makeText(secret.this,"Wezwano Boga" , Toast.LENGTH_LONG).show();
-
-                    //get the value of the text view
-
-
-                    //convert value to a number and ++
-
-
-
-                    //display the new value int the text view
-
-
-
-                    //display the new value int the text view
-                   // showCountTextView.setText(gold.toString());
+                    Toast.makeText(secret.this,"Wezwano Boga...." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(secret.this,"Bóg obdarzył cię złotem oraz armią" , Toast.LENGTH_LONG).show();
                 }
-
-
 
             }
 
         });
 
-
-
-
     }
     public void onBackPressed()
     {
-
         new AlertDialog.Builder(this)
                 .setTitle("Na pewno chcesz wyjść ?")
                 .setMessage("Czy to twoja definitywyna odpowiedź ?")
@@ -90,17 +63,13 @@ public class secret extends AppCompatActivity {
                         intent.putExtra("Gold666",gold);
                         intent.putExtra("Armia666",army);
                         intent.putExtra("Kod",licznik);
-                        Toast.makeText(secret.this,"Dziala SECKRET"+gold+"oraz"+army , Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         secret.super.onBackPressed();
-
-
-
                     }
 
                 }).create().show();
     }
 
 
-    }
+}
 

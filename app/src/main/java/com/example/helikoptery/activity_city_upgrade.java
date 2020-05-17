@@ -28,7 +28,6 @@ public class activity_city_upgrade extends AppCompatActivity {
                 moveToSecret();
             }
         });
-
         gold6=getIntent().getIntExtra("Gold",gold);///gold przeniesiony z aftermenu activity
         army6=getIntent().getIntExtra("Armia",army);///armia przeniesiona z aftermenu activity
 
@@ -37,7 +36,6 @@ public class activity_city_upgrade extends AppCompatActivity {
         Integer gold = Integer.parseInt(countString);
         gold = 0+gold6 ;
         showCountTextView.setText(gold.toString());
-
     }
 
     private void moveToSecret()
@@ -47,9 +45,8 @@ public class activity_city_upgrade extends AppCompatActivity {
         intent.putExtra("Armia2",army6);
         startActivity(intent);
     }
-
     public void miastoClick(View view) {
         miasto=miasto+1;
-        
+
     }
 }
