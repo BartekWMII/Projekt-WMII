@@ -45,8 +45,10 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int  army = 1000;
     public static int gold2=0;
     public static int army2=0;
-    private int stal =50;
-    private int miasto=1;
+    public static int stal =50;
+    public static int stalimp=0;
+    public static int miasto=0;
+    public static int miastoimp=0;
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
@@ -68,8 +70,11 @@ public class activity_afterMenu extends AppCompatActivity {
             }
         });
 
+
         gold2=getIntent().getIntExtra("Gold666",gold);///gold przeniesiony z aftermenu activity
         army2=getIntent().getIntExtra("Armia666",army);
+        stalimp=getIntent().getIntExtra("StalZMiasta",stal);
+        miastoimp=getIntent().getIntExtra("Miastowe",miasto);
         bezpiecznik=getIntent().getIntExtra("Kod",licznik);
 
         if(bezpiecznik==1)
@@ -96,21 +101,36 @@ public class activity_afterMenu extends AppCompatActivity {
         Intent intent = new Intent(this,activity_city_upgrade.class);
         intent.putExtra("Gold",gold);
         intent.putExtra("Armia",army);
+        intent.putExtra("Stal",stal);
         startActivity(intent);
+        ///Przy wejściu do miasta aplikacja mi się crashuje
     }
 
     public void onClick(View view) {
         TextView showCountTextView =
                 (TextView) findViewById(R.id.textViewArmy);
+        TextView showCountTextView2 =
+                (TextView) findViewById(R.id.textViewGold);
 
         //get the value of the text view
         String countString = showCountTextView.getText().toString();
+        String countString2 = showCountTextView2.getText().toString();
         //convert value to a number and ++
         Integer armyy = Integer.parseInt(countString);
-        armyy = armyy - 100;
-        army=armyy;
-        //display the new value int the text view
-        showCountTextView.setText(armyy.toString());
+        Integer goldd=Integer.parseInt(countString2);
+        if (armyy>0) {
+            armyy = armyy - 100;
+            goldd = goldd + 10;
+            army = armyy;
+            gold = goldd;
+            //display the new value int the text view
+            showCountTextView.setText(armyy.toString());
+            showCountTextView2.setText(goldd.toString());
+        }
+        else
+        {
+            Toast.makeText(context, "Nie masz wojowników!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClickSql(View view) {
@@ -167,7 +187,15 @@ public class activity_afterMenu extends AppCompatActivity {
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
                     Integer goldd = Integer.parseInt(countString);
-                    goldd = goldd + 200000;
+                    goldd = goldd + 200000 + (2000)*miasto;
+
+                    if (b%5==0)
+                    {
+                        Integer stall = stal;
+                        stall=stall+2;
+                        stal=stall;
+                    }
+
                     gold=goldd;
                     showCountTextView.setText(goldd.toString());
                     Toast.makeText(activity_afterMenu.this, "Znaleziono pradawny artefakt !!!", Toast.LENGTH_LONG).show();
@@ -180,7 +208,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     String countString = showCountTextView.getText().toString();
                     Integer goldd = Integer.parseInt(countString);
                     Integer armyy = Integer.parseInt(countString2);
-                    goldd = goldd - 50000;
+                    goldd = goldd - 50000 + (500)*miasto;///To miasto jutro podmienie na rozróżnianie miasta a-skarbca i miasta b-Garnizonu/koszar
                     armyy = armyy - 100;
                     gold=goldd;
                     army=armyy;

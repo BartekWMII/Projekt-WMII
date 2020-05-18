@@ -1,6 +1,8 @@
 package com.example.helikoptery;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +13,17 @@ import android.widget.Toast;
 
 public class activity_city_upgrade extends AppCompatActivity {
 
-    public int miasto=1;
+    public static int miasto;
+    public static int miastoimp;
+    public static int stal;
+    public static int stalimp;
     private Button button;
     public static int gold,gold6;
     public static int army6,army;
+
+    private Context context;
+    Dialog dialog = new Dialog(context);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,8 @@ public class activity_city_upgrade extends AppCompatActivity {
                 moveToSecret();
             }
         });
+        stalimp=getIntent().getIntExtra("Stal",stal);
+        miastoimp=getIntent().getIntExtra("Miasto",miasto);
         gold6=getIntent().getIntExtra("Gold",gold);///gold przeniesiony z aftermenu activity
         army6=getIntent().getIntExtra("Armia",army);///armia przeniesiona z aftermenu activity
 
@@ -36,6 +47,8 @@ public class activity_city_upgrade extends AppCompatActivity {
         Integer gold = Integer.parseInt(countString);
         gold = 0+gold6 ;
         showCountTextView.setText(gold.toString());
+        stal=0+stalimp;
+        miasto=0+miastoimp;
     }
 
     private void moveToSecret()
@@ -46,7 +59,14 @@ public class activity_city_upgrade extends AppCompatActivity {
         startActivity(intent);
     }
     public void miastoClick(View view) {
-        miasto=miasto+1;
-
+        int sprM=miastoimp;
+        if ((sprM+1)*10>stalimp)
+        {
+            Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            stal=stal-(10*miasto);
+            miasto=miasto+1;
+        }
     }
 }
