@@ -6,8 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.AnimatorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -131,8 +136,16 @@ public class activity_afterMenu extends AppCompatActivity {
         aListQuest.add("W pobliskiej jaskni udomowiła się pantera, zagraża naszym ludziom." +
                 " Zabic ją ?");
         aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potężna burza, zabezpieczyć nasze plony ?");
+        aListQuest.add("Z pobliskiej wioski zniknęła ludność, rozpocząć poszukiwania ?");
+        aListQuest.add("W pobliżu pewna grupa rozbójników rabuje mieszkańców, zaatakować ich ?");
+        aListQuest.add("W jednej z naszej wiosek panuje wirus, znaleźć jego źródło ?");
+        aListQuest.add("Nasza dostawa żywności oraz uzbrojenia nie dotarła do punktu"+
+                "docelowego. Wysłać zwiad ?");
+        aListQuest.add("Zwiad donosi że w okolicy grasuje ogromny niedźwiedź."+
+                "Wysłać zwiad na polowanie ?");
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+       // final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
         alertDialogBuilder.setTitle(q);
         final String a = aListQuest.get(random.nextInt(aListQuest.size()));
         alertDialogBuilder.setMessage(a);
@@ -185,6 +198,7 @@ public class activity_afterMenu extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_orange_dark);
 
     }
 
