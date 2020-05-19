@@ -45,20 +45,24 @@ public class activity_afterMenu extends AppCompatActivity {
     final int DELAYED_TIME = 140;
     Context context = this;
     public static int gold = 1000000;
-    public static int  army = 1000;
-    public static int gold2=0;
-    public static int army2=0;
-    public static int stal =50;
+    public static int army = 1000;
+    public static int goldSekret=0;
+    public static int armySekret=0;
+    public static int stal =0;
     public static int stalimp=0;
-    public static int miasto=0;
-    public static int miastoimp=0;
-    public static int licznikQ=1;
+    public static int miastoa=0;
+    public static int miastoimpa=0;
+    public static int miastob=0;
+    public static int miastoimpb=0;
+    public static int miastoc=0;
+    public static int miastoimpc=0;
+    public static int licznikPodatki=1;
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
     private Button button;
-    int counter=0;
-    public static int bezpiecznik,licznik;
+    int counterDragon=0;
+    public static int bezpiecznik,licznik,kontrolka,counterQ,goldCity,armyCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,12 +80,15 @@ public class activity_afterMenu extends AppCompatActivity {
 
 
         bezpiecznik=getIntent().getIntExtra("Kod",licznik);
-
+        kontrolka=getIntent().getIntExtra("kontrola", counterQ);
 
         if(bezpiecznik==1)
         {
-            gold2=getIntent().getIntExtra("Gold666",gold);
-            army2=getIntent().getIntExtra("Armia666",army);
+            goldSekret=getIntent().getIntExtra("Gold666",gold);
+            armySekret=getIntent().getIntExtra("Armia666",army);
+            miastoimpa=getIntent().getIntExtra("skarb",miastoa);
+            miastoimpb=getIntent().getIntExtra("kosz",miastob);
+            miastoimpc=getIntent().getIntExtra("kop",miastoc);
 
             TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
@@ -89,8 +96,11 @@ public class activity_afterMenu extends AppCompatActivity {
             String countString = showCountTextView.getText().toString();
             Integer goldd = Integer.parseInt(countString);
             Integer armyy = Integer.parseInt(countString2);
-            gold=gold+gold2;
-            army=army+army2;
+            gold=gold+goldSekret;
+            army=army+armySekret;
+            miastoa=miastoa+miastoimpa;
+            miastob=miastob+miastoimpb;
+            miastoc=miastoc+miastoimpc;
             goldd = gold;
             armyy = army;
             showCountTextView.setText(goldd.toString());
@@ -98,6 +108,26 @@ public class activity_afterMenu extends AppCompatActivity {
             //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
             bezpiecznik=0;
         }
+        
+        
+        /*  if(kontrolka==2)
+        {
+            gold=getIntent().getIntExtra("goldSekret",goldCity);
+            army=getIntent().getIntExtra("Armia2",armyCity);
+
+            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+            String countString2 = showCountTextView2.getText().toString();
+            String countString = showCountTextView.getText().toString();
+            Integer goldd = Integer.parseInt(countString);
+            Integer armyy = Integer.parseInt(countString2);
+            goldd = gold;
+            armyy = army;
+            showCountTextView.setText(goldd.toString());
+            showCountTextView2.setText(armyy.toString());
+            //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
+            kontrolka=1;
+        }*/
 
         // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
     }
@@ -116,9 +146,11 @@ public class activity_afterMenu extends AppCompatActivity {
         Intent intent = new Intent(this,activity_city_upgrade.class);
         intent.putExtra("Gold",gold);
         intent.putExtra("Armia",army);
-       // intent.putExtra("Stal",stal);
+        intent.putExtra("Stal",stal);
+        intent.putExtra("skarb",miastoa);
+        intent.putExtra("kosz",miastob);
+        intent.putExtra("kop",miastoc);
         startActivity(intent);
-        ///Przy wejściu do miasta aplikacja mi się crashuje
     }
 
     public void onClick(View view) {
@@ -134,10 +166,10 @@ public class activity_afterMenu extends AppCompatActivity {
         Integer armyy = Integer.parseInt(countString);
         Integer goldd=Integer.parseInt(countString2);
         if (armyy>0) {
-            armyy = armyy - 100;/// DO POPRAWY , ARMYY NIE SLUZY DO OBLICZEŃ !!!!!!!!!!!!!!!!! TO ZMIENNA DO PRZEKAZYWANIA WARTOSCI TEXTVIEW UZYJ ARMY ZWYKLE
-            goldd = goldd + 10;
-            army = armyy;
-            gold = goldd;
+            army = army - 100;
+            gold = gold + 10;
+            armyy=army;
+            goldd = gold;
             //display the new value int the text view
             showCountTextView.setText(armyy.toString());
             showCountTextView2.setText(goldd.toString());
@@ -155,7 +187,7 @@ public class activity_afterMenu extends AppCompatActivity {
         String countString = showCountTextView.getText().toString();
         //convert value to a number and ++
         Integer goldd = Integer.parseInt(countString);
-        goldd = goldd - 100000;
+        goldd = goldd - 100000 + (100*miastoa);
         gold=goldd;
         //display the new value int the text view
         showCountTextView.setText(goldd.toString());
@@ -195,22 +227,22 @@ public class activity_afterMenu extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                licznikQ++;
+                licznikPodatki++;
                 if (b % 2 == 0) {
                     TextView showCountTextView =
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
                     Integer goldd = Integer.parseInt(countString);
-                    goldd = goldd + 200000 + (2000)*miasto;
+                    gold = gold + 200000 + (20)*miastoa;
 
                     if (b%5==0)
                     {
                         Integer stall = stal;
-                        stall=stall+2;
-                        stal=stall;
+                        stal=stal+2+(10*miastoc);
+                        stall=stal;
                     }
 
-                    gold=goldd;
+                    goldd=gold;
                     showCountTextView.setText(goldd.toString());
                     Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_LONG).show();
 
@@ -222,10 +254,10 @@ public class activity_afterMenu extends AppCompatActivity {
                     String countString = showCountTextView.getText().toString();
                     Integer goldd = Integer.parseInt(countString);
                     Integer armyy = Integer.parseInt(countString2);
-                    goldd = goldd - 50000 + (500)*miasto;///To miasto jutro podmienie na rozróżnianie miasta a-skarbca i miasta b-Garnizonu/koszar
-                    armyy = armyy - 100;
-                    gold=goldd;
-                    army=armyy;
+                    gold = gold - 50000 + (5)*miastoa;
+                    army = army - 100 +(1)*miastob;
+                    goldd=gold;
+                    armyy=army;
                     showCountTextView.setText(goldd.toString());
                     showCountTextView2.setText(armyy.toString());
                     Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
@@ -240,7 +272,7 @@ public class activity_afterMenu extends AppCompatActivity {
             }
         });
 
-        if(licznikQ >7)
+        if(licznikPodatki >7)
         {
             TextView showCountTextView =
                     (TextView) findViewById(R.id.textViewGold);
@@ -248,12 +280,12 @@ public class activity_afterMenu extends AppCompatActivity {
             String countString = showCountTextView.getText().toString();
             //convert value to a number and ++
             Integer goldd = Integer.parseInt(countString);
-            goldd = goldd - 100000;
+            goldd = goldd - 100000 +(1000*miastoa);
             gold=goldd;
             //display the new value int the text view
             showCountTextView.setText(goldd.toString());
              Toast.makeText(activity_afterMenu.this, "Zapłacono podatki !!!", Toast.LENGTH_SHORT).show();
-             licznikQ=0;
+             licznikPodatki=0;
 
         }
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -271,7 +303,7 @@ public class activity_afterMenu extends AppCompatActivity {
         textView1.setTypeface(face);
 
 
-        alertDialog.getWindow().setLayout(820,470);
+        alertDialog.getWindow().setLayout(820,470);///przed dodaniem na telefon zmienic na 600/400
 
     }
 
@@ -286,17 +318,17 @@ public class activity_afterMenu extends AppCompatActivity {
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(qq);
-        if(counter==0)
+        if(counterDragon==0)
         {
             alertDialogBuilder.setMessage(BossQuest.get(0));
         }
 
-        if(counter==1)
+        if(counterDragon==1)
         {
             alertDialogBuilder.setMessage(BossQuest.get(1));
         }
 
-        if(counter==2)
+        if(counterDragon==2)
         {
             alertDialogBuilder.setMessage(BossQuest.get(2));
         }
@@ -306,7 +338,7 @@ public class activity_afterMenu extends AppCompatActivity {
         Integer goldd = Integer.parseInt(countString);
         showCountTextView.setText(goldd.toString());
 
-        if (gold >= 1000000 && counter==0)
+        if (gold >= 1000000 && counterDragon==0)
         {
             alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -332,8 +364,18 @@ public class activity_afterMenu extends AppCompatActivity {
                     AlertDialog alertDialog2 = alertDialogBuilder2.create();
                     alertDialog2.show();
 
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face= ResourcesCompat.getFont(activity_afterMenu.this,R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600,400);
+
                     // Toast.makeText(activity_afterMenu.this, "Pokonałeś Czerwonego Smoka !!!", Toast.LENGTH_LONG).show();
-                    counter++;
+                    counterDragon++;
                 }
 
             });
@@ -345,8 +387,20 @@ public class activity_afterMenu extends AppCompatActivity {
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+            textView.setTextSize(17);
+            TextView textView2 = (TextView) alertDialog.findViewById(android.R.id.button1);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            textView2.setTypeface(face);
+            alertDialog.getWindow().setLayout(600,400);
         }
-        else if(gold >=2000000 && counter==1)
+        else if(gold >=2000000 && counterDragon==1)
         {
             alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -371,7 +425,17 @@ public class activity_afterMenu extends AppCompatActivity {
                     });
                     AlertDialog alertDialog2 = alertDialogBuilder2.create();
                     alertDialog2.show();
-                    counter++;
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face= ResourcesCompat.getFont(activity_afterMenu.this,R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600,400);
+                    counterDragon++;
                     //Toast.makeText(activity_afterMenu.this, "Pokonałeś Zielonego Smoka !!!", Toast.LENGTH_LONG).show();
                 }
 
@@ -384,8 +448,18 @@ public class activity_afterMenu extends AppCompatActivity {
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600,400);
         }
-        else if(gold >=3000000 && counter==2)
+        else if(gold >=3000000 && counterDragon==2)
         {
             alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -410,6 +484,16 @@ public class activity_afterMenu extends AppCompatActivity {
                     });
                     AlertDialog alertDialog2 = alertDialogBuilder2.create();
                     alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face= ResourcesCompat.getFont(activity_afterMenu.this,R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600,400);
                 }
 
             });
@@ -421,6 +505,16 @@ public class activity_afterMenu extends AppCompatActivity {
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600,400);
         }
         else
         {
@@ -436,10 +530,19 @@ public class activity_afterMenu extends AppCompatActivity {
             });
             AlertDialog alertDialog2 = alertDialogBuilder2.create();
             alertDialog2.show();
+
+            alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+            Typeface face= ResourcesCompat.getFont(activity_afterMenu.this,R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog2.getWindow().setLayout(600,400);
         }
     }
 }
-
 
 
 

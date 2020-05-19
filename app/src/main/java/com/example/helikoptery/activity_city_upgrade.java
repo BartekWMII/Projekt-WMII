@@ -15,13 +15,17 @@ import android.widget.Toast;
 
 public class activity_city_upgrade extends AppCompatActivity {
 
-    public static int miasto;
-    public static int miastoimp;
-    public static int stal;
+    public static int miastoa;
+    public static int miastoimpa;
+    public static int miastob;
+    public static int miastoimpb;
+    public static int miastoc;
+    public static int miastoimpc;
+    public static int stal=50;
     public static int stalimp;
     private Button button,button2,button3;
-    public static int gold,gold6;
-    public static int army6,army;
+    public static int goldKing,goldCity;
+    public static int armyCity,armyKing;
     public static int kontrol=0;
     public static int licznikQ=0;
 
@@ -56,11 +60,18 @@ public class activity_city_upgrade extends AppCompatActivity {
                 moveToSettings();
             }
         });
-        stalimp=getIntent().getIntExtra("Stal",stal);
-        miastoimp=getIntent().getIntExtra("Miasto",miasto);
-        gold6=getIntent().getIntExtra("Gold",gold);///gold przeniesiony z aftermenu activity
-        army6=getIntent().getIntExtra("Armia",army);///armia przeniesiona z aftermenu activity
 
+        TextView showCountTextView = (TextView) findViewById(R.id.textViewSkarb);
+        String countString = showCountTextView.getText().toString();
+        Integer miastoSa = Integer.parseInt(countString);
+        stalimp=getIntent().getIntExtra("Stal",stal);
+        miastoimpa=getIntent().getIntExtra("skarb",miastoa);
+        miastoimpb=getIntent().getIntExtra("kosz",miastob);
+        miastoimpc=getIntent().getIntExtra("kop",miastoc);
+        goldCity=getIntent().getIntExtra("goldKing",goldKing);///gold przeniesiony z aftermenu activity
+        armyCity=getIntent().getIntExtra("Armia",armyKing);///armia przeniesiona z aftermenu activity
+        miastoSa=miastoa;
+        showCountTextView.setText(miastoSa.toString());
 
     }
 
@@ -68,8 +79,8 @@ public class activity_city_upgrade extends AppCompatActivity {
     private void moveToSecret()
     {
         Intent intent = new Intent(this,secret.class);
-        intent.putExtra("Gold2",gold6);
-        intent.putExtra("Armia2",army6);
+        intent.putExtra("Gold2",goldCity);
+        intent.putExtra("Armia2",armyCity);
         startActivity(intent);
     }
 
@@ -91,22 +102,62 @@ public class activity_city_upgrade extends AppCompatActivity {
     {
      //   licznikQ++;
         Intent intent = new Intent(this,activity_afterMenu.class);
-      //  intent.putExtra("Gold2",gold6);
-      //  intent.putExtra("Armia2",army6);
-      //  intent.putExtra
+        intent.putExtra("skarb",miastoa);
+        intent.putExtra("kosz",miastob);
+      //  intent.putExtra("kop",miastoc);
         startActivity(intent);
     }
 
     public void miastoClick(View view) {
 
-        int sprM=miastoimp;
-        if ((sprM+1)*10>stalimp)
+        TextView showCountTextView =
+                (TextView) findViewById(R.id.textViewSkarb);
+
+        miastoa=miastoa+miastoimpa;
+        stal=stal+stalimp;
+        int sprM=miastoa;
+        if ((sprM+1)*10>stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
         else{
-            stal=stal-(10*miasto);
-            miasto=miasto+1;
+            stal=stal-(10*miastoa)-5;
+            miastoa=miastoa+1;
+            String miastostringa=Integer.toString(miastoa);
+            showCountTextView.setText(miastostringa);
+        }
+    }
+
+    public void GarnUp(View view) {
+
+
+        miastob=miastob+miastoimpb;
+        stal=stal+stalimp;
+        int sprM=miastob;
+        if ((sprM+1)*10>stal)
+        {
+            Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            stal=stal-(10*miastob)-5;
+            miastob=miastob+1;
+            String miastostringb=Integer.toString(miastob);
+
+        }
+    }
+
+    public void KopUp(View view) {
+        miastoc=miastoc+miastoimpc;
+        stal=stal+stalimp;
+        int sprM=miastoc;
+        if ((sprM+1)*10>stal)
+        {
+            Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            stal=stal-(10*miastoc)-5;
+            miastoc=miastoc+1;
+            String miastostringc=Integer.toString(miastoc);
         }
     }
 }
