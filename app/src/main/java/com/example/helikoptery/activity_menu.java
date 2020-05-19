@@ -87,7 +87,7 @@ public class activity_menu extends AppCompatActivity {
 
 
 
-    public void goToSelectMode(View view) {
+    public void goToPlay(View view) {
         final Button button = findViewById(R.id.playButton);
         button.setBackgroundResource(R.drawable.buttonclick);
         button.setTextColor(Color.WHITE);

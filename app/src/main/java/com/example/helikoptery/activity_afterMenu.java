@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.PowerManager;
 import android.support.annotation.AnimatorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,12 +52,13 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int stalimp=0;
     public static int miasto=0;
     public static int miastoimp=0;
+    public static int licznikQ=1;
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
     private Button button;
     int counter=0;
-    int bezpiecznik,licznik;
+    public static int bezpiecznik,licznik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +75,13 @@ public class activity_afterMenu extends AppCompatActivity {
         });
 
 
-        gold2=getIntent().getIntExtra("Gold666",gold);///gold przeniesiony z aftermenu activity
-        army2=getIntent().getIntExtra("Armia666",army);
-        stalimp=getIntent().getIntExtra("StalZMiasta",stal);
-        miastoimp=getIntent().getIntExtra("Miastowe",miasto);
         bezpiecznik=getIntent().getIntExtra("Kod",licznik);
 
         if(bezpiecznik==1)
         {
+            gold2=getIntent().getIntExtra("Gold666",gold);
+            army2=getIntent().getIntExtra("Armia666",army);
+
             TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
             String countString2 = showCountTextView2.getText().toString();
@@ -94,14 +97,25 @@ public class activity_afterMenu extends AppCompatActivity {
             //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
             bezpiecznik=0;
         }
+
         // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
     }
+
+    public void onBackPressed()
+    {
+        //Intent intent = new Intent(getApplicationContext(),activity_menu.class);
+       // startActivity(intent);
+        //activity_afterMenu.super.onBackPressed();
+        //super.onBackPressed();
+    }
+
+
     public void moveToCityUpgrade()
     {
         Intent intent = new Intent(this,activity_city_upgrade.class);
         intent.putExtra("Gold",gold);
         intent.putExtra("Armia",army);
-        intent.putExtra("Stal",stal);
+       // intent.putExtra("Stal",stal);
         startActivity(intent);
         ///Przy wejściu do miasta aplikacja mi się crashuje
     }
@@ -119,7 +133,7 @@ public class activity_afterMenu extends AppCompatActivity {
         Integer armyy = Integer.parseInt(countString);
         Integer goldd=Integer.parseInt(countString2);
         if (armyy>0) {
-            armyy = armyy - 100;
+            armyy = armyy - 100;/// DO POPRAWY , ARMYY NIE SLUZY DO OBLICZEŃ !!!!!!!!!!!!!!!!! TO ZMIENNA DO PRZEKAZYWANIA WARTOSCI TEXTVIEW UZYJ ARMY ZWYKLE
             goldd = goldd + 10;
             army = armyy;
             gold = goldd;
@@ -165,10 +179,9 @@ public class activity_afterMenu extends AppCompatActivity {
                 "Wysłać zwiad na polowanie ?");
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-       // final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
-        alertDialogBuilder.setTitle(q);
         final String a = aListQuest.get(random.nextInt(aListQuest.size()));
         alertDialogBuilder.setMessage(a);
+        alertDialogBuilder.setTitle(q);
 
         //alertDialogBuilder.setIcon(R.drawable.question);
         // alertDialogBuilder.setMessage("Na pewno ?");
@@ -181,7 +194,7 @@ public class activity_afterMenu extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-
+                licznikQ++;
                 if (b % 2 == 0) {
                     TextView showCountTextView =
                             (TextView) findViewById(R.id.textViewGold);
@@ -198,7 +211,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
                     gold=goldd;
                     showCountTextView.setText(goldd.toString());
-                    Toast.makeText(activity_afterMenu.this, "Znaleziono pradawny artefakt !!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_LONG).show();
 
 
                 } else {
@@ -221,12 +234,43 @@ public class activity_afterMenu extends AppCompatActivity {
         alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-                Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                //Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+
             }
         });
+
+        if(licznikQ >7)
+        {
+            TextView showCountTextView =
+                    (TextView) findViewById(R.id.textViewGold);
+            //get the value of the text view
+            String countString = showCountTextView.getText().toString();
+            //convert value to a number and ++
+            Integer goldd = Integer.parseInt(countString);
+            goldd = goldd - 100000;
+            gold=goldd;
+            //display the new value int the text view
+            showCountTextView.setText(goldd.toString());
+             Toast.makeText(activity_afterMenu.this, "Zapłacono podatki !!!", Toast.LENGTH_SHORT).show();
+             licznikQ=0;
+
+        }
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_orange_dark);
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+        Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+        textView.setTextSize(17);
+        textView1.setTextSize(25);
+
+        // TextView textView1 = (TextView) alertDialogBuilder.findViewById(android.R.id.title);
+        //  Typeface face1= ResourcesCompat.getFont(this,R.font.magic);
+        textView.setTypeface(face);
+        textView1.setTypeface(face);
+
+
+        alertDialog.getWindow().setLayout(820,470);
 
     }
 

@@ -20,6 +20,13 @@
                 android:id="@+id/button2"
                 android:layout_width="188dp"
                 android:layout_height="58dp"
+                android:textColor="#EAE6E6"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FF0000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/magic"
+                android:background="@drawable/pattern1"
                 android:onClick="miastoClick"
                 android:text="Ulepsz Miasto!"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -34,6 +41,13 @@
                 android:layout_width="102dp"
                 android:layout_height="59dp"
                 android:text="Tajemna Komnata"
+                android:textColor="#EAE6E6"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FF0000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/magic"
+                android:background="@drawable/pattern1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.948"
@@ -41,18 +55,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.023" />
 
-            <TextView
-                android:id="@+id/textViewGoldCity"
-                android:layout_width="93dp"
-                android:layout_height="36dp"
-                android:text="1000000"
-                android:textColor="@android:color/background_dark"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.088"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.086" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 </RelativeLayout>

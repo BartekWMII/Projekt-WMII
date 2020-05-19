@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setProgress(0);
 
 
-        final long period = 100;
+        final long period = 200;
         timer = new Timer();
         timer.schedule(new TimerTask() {
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if (i < 100) {
                     progressBar.setProgress(i);
-                    i+=5;
+                    i+=2;
                 } else {
                     timer.cancel();
                     Intent intent = new Intent(MainActivity.this, activity_menu.class);

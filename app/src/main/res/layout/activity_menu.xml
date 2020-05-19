@@ -19,18 +19,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <Button
             android:id="@+id/playButton"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:text="@string/play"
             android:layout_marginTop="30dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/magic"
+            android:onClick="goToPlay"
+            android:text="@string/play"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:typeface="serif"
-            android:background="@drawable/button"
-            android:onClick="goToSelectMode"/>
+            android:typeface="serif" />
 
         <LinearLayout
             android:layout_width="300dp"
@@ -44,12 +44,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/button2"
+                android:fontFamily="@font/magic"
+                android:onClick="settingsOnClick"
+                android:text="@string/settings"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:typeface="serif"
-                android:text="@string/settings"
-                android:background="@drawable/button2"
-                android:onClick="settingsOnClick"/>
+                android:typeface="serif" />
 
         </LinearLayout>
 

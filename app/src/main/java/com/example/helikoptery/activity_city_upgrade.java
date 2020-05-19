@@ -3,7 +3,9 @@ package com.example.helikoptery;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,12 +19,14 @@ public class activity_city_upgrade extends AppCompatActivity {
     public static int miastoimp;
     public static int stal;
     public static int stalimp;
+
     private Button button;
     public static int gold,gold6;
     public static int army6,army;
+    public static int kontrol=0;
 
-    private Context context;
-    Dialog dialog = new Dialog(context);
+    Context context = this;
+
 
 
     @Override
@@ -42,13 +46,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         gold6=getIntent().getIntExtra("Gold",gold);///gold przeniesiony z aftermenu activity
         army6=getIntent().getIntExtra("Armia",army);///armia przeniesiona z aftermenu activity
 
-        TextView showCountTextView = (TextView) findViewById(R.id.textViewGoldCity);
-        String countString = showCountTextView.getText().toString();
-        Integer gold = Integer.parseInt(countString);
-        gold = 0+gold6 ;
-        showCountTextView.setText(gold.toString());
-        stal=0+stalimp;
-        miasto=0+miastoimp;
+
     }
 
     private void moveToSecret()
@@ -58,7 +56,10 @@ public class activity_city_upgrade extends AppCompatActivity {
         intent.putExtra("Armia2",army6);
         startActivity(intent);
     }
+
+
     public void miastoClick(View view) {
+
         int sprM=miastoimp;
         if ((sprM+1)*10>stalimp)
         {
