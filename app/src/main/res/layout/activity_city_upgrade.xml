@@ -18,8 +18,8 @@
 
             <Button
                 android:id="@+id/KingBack"
-                android:layout_width="188dp"
-                android:layout_height="58dp"
+                android:layout_width="149dp"
+                android:layout_height="44dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:text="Wroc do krola!"
@@ -30,19 +30,18 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.569"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.916" />
+                app:layout_constraintVertical_bias="0.976" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="188dp"
-                android:layout_height="58dp"
+                android:layout_width="127dp"
+                android:layout_height="60dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:onClick="miastoClick"
-                android:text="Ulepsz Miasto!"
+                android:text="Ulepsz Skarbiec!"
                 android:textColor="#EAE6E6"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FF0000"
@@ -50,23 +49,23 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.569"
+                app:layout_constraintHorizontal_bias="0.056"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.794" />
+                app:layout_constraintVertical_bias="0.852" />
 
             <Button
                 android:id="@+id/SecretButton"
                 android:layout_width="102dp"
                 android:layout_height="59dp"
+                android:background="@drawable/pattern1"
+                android:fontFamily="@font/magic"
                 android:text="Tajemna Komnata"
                 android:textColor="#EAE6E6"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FF0000"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/magic"
-                android:background="@drawable/pattern1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.948"
@@ -81,6 +80,58 @@
                 android:background="@android:drawable/ic_menu_manage"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="24dp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="108dp"
+                android:layout_height="63dp"
+                android:background="@drawable/pattern1"
+                android:fontFamily="@font/magic"
+                android:onClick="GarnUp"
+                android:text="Ulepsz Garnizon!"
+                android:textColor="#EAE6E6"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FF0000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/KingBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/button2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.935" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="101dp"
+                android:layout_height="63dp"
+                android:background="@drawable/pattern1"
+                android:fontFamily="@font/magic"
+                android:onClick="KopUp"
+                android:text="Ulepsz Kopalnie!"
+                android:textColor="#EAE6E6"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FF0000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.411"
+                app:layout_constraintStart_toEndOf="@+id/button3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.85" />
+
+            <TextView
+                android:id="@+id/textViewSkarb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                app:layout_constraintBottom_toTopOf="@+id/button2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.193"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SettingsButton"
+                app:layout_constraintVertical_bias="0.857" />
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
