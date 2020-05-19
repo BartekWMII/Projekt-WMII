@@ -56,7 +56,9 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastoimpb=0;
     public static int miastoc=0;
     public static int miastoimpc=0;
+
     public static int licznikPodatki=1;
+
     private TextView textViewGold;
     private TextView textViewArmy;
     private AlertDialog.Builder dialogBuilder;
@@ -84,8 +86,10 @@ public class activity_afterMenu extends AppCompatActivity {
 
         if(bezpiecznik==1)
         {
+
             goldSekret=getIntent().getIntExtra("Gold666",gold);
             armySekret=getIntent().getIntExtra("Armia666",army);
+
             miastoimpa=getIntent().getIntExtra("skarb",miastoa);
             miastoimpb=getIntent().getIntExtra("kosz",miastob);
             miastoimpc=getIntent().getIntExtra("kop",miastoc);
@@ -96,8 +100,10 @@ public class activity_afterMenu extends AppCompatActivity {
             String countString = showCountTextView.getText().toString();
             Integer goldd = Integer.parseInt(countString);
             Integer armyy = Integer.parseInt(countString2);
+
             gold=gold+goldSekret;
             army=army+armySekret;
+
             miastoa=miastoa+miastoimpa;
             miastob=miastob+miastoimpb;
             miastoc=miastoc+miastoimpc;
@@ -349,7 +355,7 @@ public class activity_afterMenu extends AppCompatActivity {
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
                     Integer goldd = Integer.parseInt(countString);
-                    goldd= goldd + 200000;
+                    goldd= goldd + 200000 + (2000*miastoa);
                     gold=goldd;
                     showCountTextView.setText(goldd.toString());
 
@@ -411,7 +417,7 @@ public class activity_afterMenu extends AppCompatActivity {
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
                     Integer goldd= Integer.parseInt(countString);
-                    goldd = goldd + 200000;
+                    goldd = goldd + 200000 +(2000*miastoa);
                     gold=goldd;
                     showCountTextView.setText(goldd.toString());
 
@@ -470,7 +476,7 @@ public class activity_afterMenu extends AppCompatActivity {
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
                     Integer goldd = Integer.parseInt(countString);
-                    goldd = goldd + 200000;
+                    goldd = goldd + 200000 + 2000*miastoa;
                     gold=goldd;
                     showCountTextView.setText(goldd.toString());
 

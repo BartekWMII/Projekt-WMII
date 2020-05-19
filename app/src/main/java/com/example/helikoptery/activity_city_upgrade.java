@@ -68,10 +68,11 @@ public class activity_city_upgrade extends AppCompatActivity {
         miastoimpa=getIntent().getIntExtra("skarb",miastoa);
         miastoimpb=getIntent().getIntExtra("kosz",miastob);
         miastoimpc=getIntent().getIntExtra("kop",miastoc);
-        goldCity=getIntent().getIntExtra("goldKing",goldKing);///gold przeniesiony z aftermenu activity
-        armyCity=getIntent().getIntExtra("Armia",armyKing);///armia przeniesiona z aftermenu activity
+        gold6=getIntent().getIntExtra("Gold",gold);///gold przeniesiony z aftermenu activity
+        army6=getIntent().getIntExtra("Armia",army);///armia przeniesiona z aftermenu activity
         miastoSa=miastoa;
         showCountTextView.setText(miastoSa.toString());
+
 
     }
 
