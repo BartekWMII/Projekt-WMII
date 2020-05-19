@@ -19,11 +19,11 @@ public class activity_city_upgrade extends AppCompatActivity {
     public static int miastoimp;
     public static int stal;
     public static int stalimp;
-
-    private Button button;
+    private Button button,button2,button3;
     public static int gold,gold6;
     public static int army6,army;
     public static int kontrol=0;
+    public static int licznikQ=0;
 
     Context context = this;
 
@@ -41,6 +41,21 @@ public class activity_city_upgrade extends AppCompatActivity {
                 moveToSecret();
             }
         });
+        button2=findViewById(R.id.KingBack);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveToKing();
+            }
+        });
+
+        button3=findViewById(R.id.SettingsButton);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveToSettings();
+            }
+        });
         stalimp=getIntent().getIntExtra("Stal",stal);
         miastoimp=getIntent().getIntExtra("Miasto",miasto);
         gold6=getIntent().getIntExtra("Gold",gold);///gold przeniesiony z aftermenu activity
@@ -48,6 +63,7 @@ public class activity_city_upgrade extends AppCompatActivity {
 
 
     }
+
 
     private void moveToSecret()
     {
@@ -57,6 +73,29 @@ public class activity_city_upgrade extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void moveToSettings()
+    {
+        Intent intent = new Intent(this,activity_settings.class);
+        startActivity(intent);
+    }
+
+    public void onBackPressed()
+    {
+        //Intent intent = new Intent(getApplicationContext(),activity_menu.class);
+        // startActivity(intent);
+        //activity_afterMenu.super.onBackPressed();
+        //super.onBackPressed();
+    }
+
+    private void moveToKing()
+    {
+     //   licznikQ++;
+        Intent intent = new Intent(this,activity_afterMenu.class);
+      //  intent.putExtra("Gold2",gold6);
+      //  intent.putExtra("Armia2",army6);
+      //  intent.putExtra
+        startActivity(intent);
+    }
 
     public void miastoClick(View view) {
 

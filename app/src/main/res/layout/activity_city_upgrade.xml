@@ -17,24 +17,43 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/KingBack"
                 android:layout_width="188dp"
                 android:layout_height="58dp"
+                android:background="@drawable/pattern1"
+                android:fontFamily="@font/magic"
+                android:text="Wroc do krola!"
                 android:textColor="#EAE6E6"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FF0000"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/magic"
-                android:background="@drawable/pattern1"
-                android:onClick="miastoClick"
-                android:text="Ulepsz Miasto!"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.125"
+                app:layout_constraintHorizontal_bias="0.569"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.778" />
+                app:layout_constraintVertical_bias="0.916" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="188dp"
+                android:layout_height="58dp"
+                android:background="@drawable/pattern1"
+                android:fontFamily="@font/magic"
+                android:onClick="miastoClick"
+                android:text="Ulepsz Miasto!"
+                android:textColor="#EAE6E6"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FF0000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.569"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.794" />
 
             <Button
                 android:id="@+id/SecretButton"
@@ -54,6 +73,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.023" />
+
+            <Button
+                android:id="@+id/SettingsButton"
+                android:layout_width="62dp"
+                android:layout_height="51dp"
+                android:background="@android:drawable/ic_menu_manage"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="24dp" />
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>

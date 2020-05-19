@@ -53,25 +53,31 @@ public class secret extends AppCompatActivity {
     }
     public void onBackPressed()
     {
-        new AlertDialog.Builder(this)
-                .setTitle("Na pewno chcesz wyjść ?")
-                .setMessage("Czy to twoja definitywyna odpowiedź ?")
-                .setNegativeButton(android.R.string.no,null)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+        if(licznik==1) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Na pewno chcesz wyjść ?")
+                    .setMessage("Czy to twoja definitywyna odpowiedź ?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(getApplicationContext(),activity_afterMenu.class);
-                        intent.putExtra("Gold666",gold);
-                        intent.putExtra("Armia666",army);
-                        intent.putExtra("Kod",licznik);
-                        startActivity(intent);
-                        secret.super.onBackPressed();
-                    }
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(getApplicationContext(), activity_afterMenu.class);
+                            intent.putExtra("Gold666", gold);
+                            intent.putExtra("Armia666", army);
+                            intent.putExtra("Kod", licznik);
+                            startActivity(intent);
+                            secret.super.onBackPressed();
+                        }
 
-                })
-                .create()
-                .show();
+                    })
+                    .create()
+                    .show();
+        }
+        else
+        {
+            secret.super.onBackPressed();
+        }
 
     }
 

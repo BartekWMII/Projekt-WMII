@@ -77,6 +77,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
         bezpiecznik=getIntent().getIntExtra("Kod",licznik);
 
+
         if(bezpiecznik==1)
         {
             gold2=getIntent().getIntExtra("Gold666",gold);
