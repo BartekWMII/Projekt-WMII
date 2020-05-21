@@ -46,8 +46,8 @@ public class activity_afterMenu extends AppCompatActivity {
 
     final int DELAYED_TIME = 140;
     Context context = this;
-    public static int gold =110000 ;
-    public static int army = 150;
+    public static int gold =2000000 ;
+    public static int army = 5000;
     public static int goldSekret=0;
     public static int armySekret=0;
     public static int stal =0;
@@ -59,6 +59,8 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastoc=0;
     public static int miastoimpc=0;
     public static  Boolean czyPause=false;
+    public static int kwiat=0;
+    public static int drzewo=0;
     public static String txt,gld;
     boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
     boolean SprStal=false, SprStalImp=false;
@@ -84,28 +86,36 @@ public class activity_afterMenu extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("daneG", textViewGold.getText().toString());
         editor.putString("dane", textViewArmy.getText().toString());
-        czyPause=true;
+        editor.putInt("kwiat2", kwiat);
+        kwiat++;
         editor.commit();
     }
 
-   /* @Override
-    protected void onResume () {
-        super.onResume();
 
+    @Override
+    protected void onResume () {
+
+        super.onResume();
+        if(kwiat>0)
+        {
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
         gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-        Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt, Toast.LENGTH_LONG).show();
-
+            drzewo=sharedPref.getInt("kwiat2",1 );
+        Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+        kwiat=drzewo;
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
         showCountTextView.setText(gld);
         showCountTextView2.setText(txt);
         army = Integer.parseInt(txt);
         gold = Integer.parseInt(gld);
+        kwiat++;
 
-    }*/
+    }
+    }
+
 
 
     @Override
