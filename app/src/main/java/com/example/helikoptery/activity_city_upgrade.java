@@ -28,6 +28,8 @@ public class activity_city_upgrade extends AppCompatActivity {
     public static int armyCity,armyKing;
     public static int kontrol=0;
     public static int licznikQ=0;
+    boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
+    boolean SprStal=false, SprStalImp=false;
 
     Context context = this;
 
@@ -62,8 +64,14 @@ public class activity_city_upgrade extends AppCompatActivity {
         });
 
         TextView showCountTextView = (TextView) findViewById(R.id.textViewSkarb);
+        TextView showCountTextViewKosz=(TextView) findViewById(R.id.textViewKoszar);
+        TextView showCountTextViewKop=(TextView) findViewById(R.id.textViewKop);
         String countString = showCountTextView.getText().toString();
+        String countStringb = showCountTextView.getText().toString();
+        String countStringc = showCountTextView.getText().toString();
         Integer miastoSa = Integer.parseInt(countString);
+        Integer miastoSb = Integer.parseInt(countStringb);
+        Integer miastoSc = Integer.parseInt(countStringc);
         stalimp=getIntent().getIntExtra("Stal",stal);
         miastoimpa=getIntent().getIntExtra("skarb",miastoa);
         miastoimpb=getIntent().getIntExtra("kosz",miastob);
@@ -71,8 +79,11 @@ public class activity_city_upgrade extends AppCompatActivity {
         goldCity=getIntent().getIntExtra("Gold",goldKing);///gold przeniesiony z aftermenu activity
         armyCity=getIntent().getIntExtra("Armia",armyKing);///armia przeniesiona z aftermenu activity
         miastoSa=miastoa;
+        miastoSb=miastob;
+        miastoSc=miastoc;
         showCountTextView.setText(miastoSa.toString());
-
+        showCountTextViewKosz.setText(miastoSb.toString());
+        showCountTextViewKop.setText(miastoSc.toString());
 
     }
 
@@ -99,13 +110,22 @@ public class activity_city_upgrade extends AppCompatActivity {
         //super.onBackPressed();
     }
 
+
     private void moveToKing()
     {
      //   licznikQ++;
         Intent intent = new Intent(this,activity_afterMenu.class);
         intent.putExtra("skarb",miastoa);
         intent.putExtra("kosz",miastob);
-      //  intent.putExtra("kop",miastoc);
+        intent.putExtra("armia",armyCity);
+        intent.putExtra("gold",goldCity);
+        intent.putExtra("CityAZ", SprCityA);
+        intent.putExtra("CityBZ", SprCityB);
+        intent.putExtra("CityCZ",SprCityC);
+        intent.putExtra("kop",miastoc);
+        intent.putExtra("ArmyZ",SprArmy);
+        intent.putExtra("GoldZ",SprGold);
+        intent.putExtra("StalZ",SprStal);
         startActivity(intent);
     }
 
@@ -115,7 +135,10 @@ public class activity_city_upgrade extends AppCompatActivity {
                 (TextView) findViewById(R.id.textViewSkarb);
 
         miastoa=miastoa+miastoimpa;
-        stal=stal+stalimp;
+        if (SprStalImp!=SprStal)
+        {
+            stal = stal + stalimp;
+        }
         int sprM=miastoa;
         if ((sprM+1)*10>stal)
         {
@@ -126,14 +149,20 @@ public class activity_city_upgrade extends AppCompatActivity {
             miastoa=miastoa+1;
             String miastostringa=Integer.toString(miastoa);
             showCountTextView.setText(miastostringa);
+            SprCityA=true;
         }
     }
 
     public void GarnUp(View view) {
 
+        TextView showCountTextView =
+                (TextView) findViewById(R.id.textViewKoszar);
 
         miastob=miastob+miastoimpb;
-        stal=stal+stalimp;
+        if (SprStalImp!=SprStal)
+        {
+            stal = stal + stalimp;
+        }
         int sprM=miastob;
         if ((sprM+1)*10>stal)
         {
@@ -142,14 +171,23 @@ public class activity_city_upgrade extends AppCompatActivity {
         else{
             stal=stal-(10*miastob)-5;
             miastob=miastob+1;
+            SprCityB=true;
             String miastostringb=Integer.toString(miastob);
+            showCountTextView.setText(miastostringb);
 
         }
     }
 
     public void KopUp(View view) {
+
+        TextView showCountTextView =
+                (TextView) findViewById(R.id.textViewKop);
+
         miastoc=miastoc+miastoimpc;
-        stal=stal+stalimp;
+        if (SprStalImp!=SprStal)
+        {
+            stal = stal + stalimp;
+        }
         int sprM=miastoc;
         if ((sprM+1)*10>stal)
         {
@@ -158,7 +196,9 @@ public class activity_city_upgrade extends AppCompatActivity {
         else{
             stal=stal-(10*miastoc)-5;
             miastoc=miastoc+1;
+            SprCityB=true;
             String miastostringc=Integer.toString(miastoc);
+            showCountTextView.setText(miastostringc);
         }
     }
 }

@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.Rect;
@@ -57,6 +58,12 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastoimpb=0;
     public static int miastoc=0;
     public static int miastoimpc=0;
+    public static String txt,gld;
+    boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
+    boolean SprStal=false, SprStalImp=false;
+    ///Spr -> stała zmienna dla AfterMenu, która ma się zmieniać TYLKO WTEDY GDY Spr*-*Imp ma inną wartość. W zamyśle. Spr!=SprImp dodajemy importowane wartości do obecnie istniejących
+    ///a następnie zmieniamy wartości dla Spr na SprImp. SprImp zostaje w swoim stanie, zmienia się w momencie zmiany któregoś z intów.
+    ///Każdy int ma 2 dedykowane wartości Boolowskie
 
     public static int licznikPodatki=1;
 
@@ -68,11 +75,45 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int bezpiecznik,licznik,kontrolka,counterQ,goldCity,armyCity;
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("daneG", textViewGold.getText().toString());
+        editor.putString("dane", textViewArmy.getText().toString());
+
+        editor.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
+        gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
+        Toast.makeText(activity_afterMenu.this,"Dziala "+gld+" "+txt , Toast.LENGTH_LONG).show();
+
+       TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+        TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+        showCountTextView.setText(gld);
+        showCountTextView2.setText(txt);
+        army = Integer.parseInt(txt);
+        gold=Integer.parseInt(gld);
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_after_menu);
         textViewGold = findViewById(R.id.textViewGold);
+        textViewArmy = findViewById(R.id.textViewArmy);
+
+
+
         button=findViewById(R.id.buttonCityUP);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +126,9 @@ public class activity_afterMenu extends AppCompatActivity {
         bezpiecznik=getIntent().getIntExtra("Kod",licznik);
         kontrolka=getIntent().getIntExtra("kontrola", counterQ);
 
-        if(bezpiecznik==1)
+
+
+        /*if(bezpiecznik==1)
         {
 
             goldSekret=getIntent().getIntExtra("Gold666",gold);
@@ -97,7 +140,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
             TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-            String countString2 = showCountTextView2.getText().toString();
+            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
             String countString = showCountTextView.getText().toString();
             Integer goldd = Integer.parseInt(countString);
             Integer armyy = Integer.parseInt(countString2);
@@ -114,9 +157,56 @@ public class activity_afterMenu extends AppCompatActivity {
             showCountTextView2.setText(armyy.toString());
             //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
             bezpiecznik=0;
+        }*/
+
+        SprArmyImp=getIntent().getBooleanExtra("ArmiaZ", SprArmy);
+        SprGoldImp=getIntent().getBooleanExtra("GoldZ", SprGold);
+        SprCityAImp=getIntent().getBooleanExtra("CityAZ", SprCityA);
+        SprCityBImp=getIntent().getBooleanExtra("CityBZ", SprCityB);
+        SprCityCImp=getIntent().getBooleanExtra("CityCZ", SprCityC);
+        SprStalImp=getIntent().getBooleanExtra("StalZ", SprStal);
+
+        if (SprGold==SprGoldImp)
+        {
+            goldSekret=getIntent().getIntExtra("gold666",army);
+            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewGold);
+            String countString2 = showCountTextView2.getText().toString();
+            Integer armyy = Integer.parseInt(countString2);
         }
-        
-        
+
+        if(SprArmy==SprArmyImp)
+        {
+            armySekret=getIntent().getIntExtra("Armia666",army);
+            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+            String countString2 = showCountTextView2.getText().toString();
+            Integer goldd = Integer.parseInt(countString2);
+
+        }
+
+        if(SprCityA!=SprCityAImp)
+        {
+            miastoimpa=getIntent().getIntExtra("skarb",miastoa);
+            miastoa=miastoimpa;
+        }
+
+        if(SprCityB!=SprCityBImp)
+        {
+            miastoimpb=getIntent().getIntExtra("kosz",miastob);
+            miastob=miastoimpb;
+        }
+
+        if(SprCityC!=SprCityCImp)
+        {
+            miastoimpc=getIntent().getIntExtra("kop",miastoc);
+            miastoc=miastoimpc;
+        }
+
+        if(SprStal!=SprStalImp)
+        {
+            stalimp=getIntent().getIntExtra("Stal",stal);
+            stal=stalimp;
+        }
+
         /*  if(kontrolka==2)
         {
             gold=getIntent().getIntExtra("goldSekret",goldCity);
@@ -217,6 +307,8 @@ public class activity_afterMenu extends AppCompatActivity {
                 "docelowego. Wysłać zwiad ?");
         aListQuest.add("Zwiad donosi że w okolicy grasuje ogromny niedźwiedź."+
                 "Wysłać zwiad na polowanie ?");
+        aListQuest.add("Na królewski rynek wdarło się stado dzików! Zabić je?");
+        aListQuest.add("Kryzys w królestwie! Rabusie okradają miejscowych!"+ "Wysłać patrol na rynek?");
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final String a = aListQuest.get(random.nextInt(aListQuest.size()));

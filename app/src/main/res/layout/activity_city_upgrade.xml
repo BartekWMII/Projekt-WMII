@@ -83,8 +83,8 @@
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="108dp"
-                android:layout_height="63dp"
+                android:layout_width="105dp"
+                android:layout_height="60dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:onClick="GarnUp"
@@ -96,10 +96,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/KingBack"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintHorizontal_bias="0.061"
                 app:layout_constraintStart_toEndOf="@+id/button2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.935" />
+                app:layout_constraintVertical_bias="0.936" />
 
             <Button
                 android:id="@+id/button4"
@@ -116,10 +116,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.411"
+                app:layout_constraintHorizontal_bias="0.423"
                 app:layout_constraintStart_toEndOf="@+id/button3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.85" />
+                app:layout_constraintVertical_bias="0.851" />
 
             <TextView
                 android:id="@+id/textViewSkarb"
@@ -132,6 +132,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SettingsButton"
                 app:layout_constraintVertical_bias="0.857" />
+
+            <TextView
+                android:id="@+id/textViewKoszar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                app:layout_constraintBottom_toTopOf="@+id/button3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.362"
+                app:layout_constraintStart_toEndOf="@+id/textViewSkarb"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.878" />
+
+            <TextView
+                android:id="@+id/textViewKop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                app:layout_constraintBottom_toTopOf="@+id/button4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.603"
+                app:layout_constraintStart_toEndOf="@+id/textViewKoszar"
+                app:layout_constraintTop_toBottomOf="@+id/SecretButton"
+                app:layout_constraintVertical_bias="0.863" />
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>

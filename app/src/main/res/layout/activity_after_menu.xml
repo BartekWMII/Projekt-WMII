@@ -89,12 +89,12 @@
 
             <Button
                 android:id="@+id/Button"
-                android:layout_width="201dp"
-                android:layout_height="51dp"
+                android:layout_width="214dp"
+                android:layout_height="50dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:onClick="onClick"
-                android:text="Egzekucja"
+                android:text="REKRUTUJ ZBROJNYCH"
                 android:textColor="#EAE6E6"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FF0000"
