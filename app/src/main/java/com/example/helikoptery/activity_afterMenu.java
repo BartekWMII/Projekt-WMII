@@ -88,6 +88,7 @@ public class activity_afterMenu extends AppCompatActivity {
         editor.putString("dane", textViewArmy.getText().toString());
         editor.putInt("kwiat2", kwiat);
         kwiat++;
+       Toast.makeText(activity_afterMenu.this, "DzialaP " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         editor.commit();
     }
 
