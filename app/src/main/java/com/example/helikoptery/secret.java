@@ -54,11 +54,12 @@ public class secret extends AppCompatActivity {
     public void onBackPressed()
     {
         if(licznik==1) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Na pewno chcesz wyjść ?")
-                    .setMessage("Czy to twoja definitywyna odpowiedź ?")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+           // new AlertDialog.Builder(this)
+            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Czy to twoja definitywna odpowiedź");
+            alertDialogBuilder.setTitle("Czy na pewno chcesz wyjść");
+            alertDialogBuilder.setNegativeButton("No", null);
+                    alertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -70,9 +71,21 @@ public class secret extends AppCompatActivity {
                             secret.super.onBackPressed();
                         }
 
-                    })
-                    .create()
-                    .show();
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+
+            alertDialog.getWindow().setLayout(750,400);///przed dodaniem na telefon zmienic na 600/400
+
         }
         else
         {

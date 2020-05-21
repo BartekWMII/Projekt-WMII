@@ -46,8 +46,8 @@ public class activity_afterMenu extends AppCompatActivity {
 
     final int DELAYED_TIME = 140;
     Context context = this;
-    public static int gold = 2000000;
-    public static int army = 5000;
+    public static int gold =110000 ;
+    public static int army = 150;
     public static int goldSekret=0;
     public static int armySekret=0;
     public static int stal =0;
@@ -58,6 +58,7 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastoimpb=0;
     public static int miastoc=0;
     public static int miastoimpc=0;
+    public static  Boolean czyPause=false;
     public static String txt,gld;
     boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
     boolean SprStal=false, SprStalImp=false;
@@ -74,7 +75,8 @@ public class activity_afterMenu extends AppCompatActivity {
     int counterDragon=0;
     public static int bezpiecznik,licznik,kontrolka,counterQ,goldCity,armyCity;
 
-    @Override
+
+   @Override
     protected void onPause() {
         super.onPause();
 
@@ -82,27 +84,29 @@ public class activity_afterMenu extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("daneG", textViewGold.getText().toString());
         editor.putString("dane", textViewArmy.getText().toString());
-
+        czyPause=true;
         editor.commit();
     }
 
-    @Override
-    protected void onResume() {
+   /* @Override
+    protected void onResume () {
         super.onResume();
+
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
         gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-        Toast.makeText(activity_afterMenu.this,"Dziala "+gld+" "+txt , Toast.LENGTH_LONG).show();
+        Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt, Toast.LENGTH_LONG).show();
 
-       TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+        TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
         showCountTextView.setText(gld);
         showCountTextView2.setText(txt);
         army = Integer.parseInt(txt);
-        gold=Integer.parseInt(gld);
+        gold = Integer.parseInt(gld);
 
-    }
+    }*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,10 +115,10 @@ public class activity_afterMenu extends AppCompatActivity {
         setContentView(R.layout.activity_after_menu);
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
+        czyPause = false;
 
 
-
-        button=findViewById(R.id.buttonCityUP);
+        button = findViewById(R.id.buttonCityUP);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,8 +127,8 @@ public class activity_afterMenu extends AppCompatActivity {
         });
 
 
-        bezpiecznik=getIntent().getIntExtra("Kod",licznik);
-        kontrolka=getIntent().getIntExtra("kontrola", counterQ);
+        bezpiecznik = getIntent().getIntExtra("Kod", licznik);
+        kontrolka = getIntent().getIntExtra("kontrola", counterQ);
 
 
 
@@ -159,52 +163,47 @@ public class activity_afterMenu extends AppCompatActivity {
             bezpiecznik=0;
         }*/
 
-        SprArmyImp=getIntent().getBooleanExtra("ArmiaZ", SprArmy);
-        SprGoldImp=getIntent().getBooleanExtra("GoldZ", SprGold);
-        SprCityAImp=getIntent().getBooleanExtra("CityAZ", SprCityA);
-        SprCityBImp=getIntent().getBooleanExtra("CityBZ", SprCityB);
-        SprCityCImp=getIntent().getBooleanExtra("CityCZ", SprCityC);
-        SprStalImp=getIntent().getBooleanExtra("StalZ", SprStal);
 
-        if (SprGold==SprGoldImp)
-        {
-            goldSekret=getIntent().getIntExtra("gold666",army);
+        SprArmyImp = getIntent().getBooleanExtra("ArmiaZ", SprArmy);
+        SprGoldImp = getIntent().getBooleanExtra("GoldZ", SprGold);
+        SprCityAImp = getIntent().getBooleanExtra("CityAZ", SprCityA);
+        SprCityBImp = getIntent().getBooleanExtra("CityBZ", SprCityB);
+        SprCityCImp = getIntent().getBooleanExtra("CityCZ", SprCityC);
+        SprStalImp = getIntent().getBooleanExtra("StalZ", SprStal);
+
+        if (SprGold == SprGoldImp) {
+            goldSekret = getIntent().getIntExtra("gold666", army);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewGold);
             String countString2 = showCountTextView2.getText().toString();
             Integer armyy = Integer.parseInt(countString2);
         }
 
-        if(SprArmy==SprArmyImp)
-        {
-            armySekret=getIntent().getIntExtra("Armia666",army);
+        if (SprArmy == SprArmyImp) {
+            armySekret = getIntent().getIntExtra("Armia666", army);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
             String countString2 = showCountTextView2.getText().toString();
             Integer goldd = Integer.parseInt(countString2);
 
         }
 
-        if(SprCityA!=SprCityAImp)
-        {
-            miastoimpa=getIntent().getIntExtra("skarb",miastoa);
-            miastoa=miastoimpa;
+        if (SprCityA != SprCityAImp) {
+            miastoimpa = getIntent().getIntExtra("skarb", miastoa);
+            miastoa = miastoimpa;
         }
 
-        if(SprCityB!=SprCityBImp)
-        {
-            miastoimpb=getIntent().getIntExtra("kosz",miastob);
-            miastob=miastoimpb;
+        if (SprCityB != SprCityBImp) {
+            miastoimpb = getIntent().getIntExtra("kosz", miastob);
+            miastob = miastoimpb;
         }
 
-        if(SprCityC!=SprCityCImp)
-        {
-            miastoimpc=getIntent().getIntExtra("kop",miastoc);
-            miastoc=miastoimpc;
+        if (SprCityC != SprCityCImp) {
+            miastoimpc = getIntent().getIntExtra("kop", miastoc);
+            miastoc = miastoimpc;
         }
 
-        if(SprStal!=SprStalImp)
-        {
-            stalimp=getIntent().getIntExtra("Stal",stal);
-            stal=stalimp;
+        if (SprStal != SprStalImp) {
+            stalimp = getIntent().getIntExtra("Stal", stal);
+            stal = stalimp;
         }
 
         /*  if(kontrolka==2)
@@ -227,6 +226,7 @@ public class activity_afterMenu extends AppCompatActivity {
         }*/
 
         // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
+
     }
 
     public void onBackPressed()
@@ -236,6 +236,7 @@ public class activity_afterMenu extends AppCompatActivity {
         //activity_afterMenu.super.onBackPressed();
         //super.onBackPressed();
     }
+
 
 
     public void moveToCityUpgrade()
@@ -273,11 +274,11 @@ public class activity_afterMenu extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(context, "Nie masz wojowników!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClickSql(View view) {
+  /*  public void onClickSql(View view) {
         TextView showCountTextView =
                 (TextView) findViewById(R.id.textViewGold);
         //get the value of the text view
@@ -288,7 +289,7 @@ public class activity_afterMenu extends AppCompatActivity {
         gold=goldd;
         //display the new value int the text view
         showCountTextView.setText(goldd.toString());
-    }
+    }*/ ///nie uzywane do niczego, pozniej chyba mozna tu usunac
 
     public void NextQuest(View view) {
         final Random random = new Random();
@@ -296,19 +297,19 @@ public class activity_afterMenu extends AppCompatActivity {
         String qq = "WALKA ZE SMOKIEM";
         final ArrayList<String> aListQuest = new ArrayList<String>();
 
-        aListQuest.add("Znaleziono ślady nieznanej postaci, podążać za nimi i sprawdzić co to ?");
-        aListQuest.add("W pobliskiej jaskni udomowiła się pantera, zagraża naszym ludziom." +
-                " Zabic ją ?");
-        aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potężna burza, zabezpieczyć nasze plony ?");
-        aListQuest.add("Z pobliskiej wioski zniknęła ludność, rozpocząć poszukiwania ?");
-        aListQuest.add("W pobliżu pewna grupa rozbójników rabuje mieszkańców, zaatakować ich ?");
-        aListQuest.add("W jednej z naszej wiosek panuje wirus, znaleźć jego źródło ?");
-        aListQuest.add("Nasza dostawa żywności oraz uzbrojenia nie dotarła do punktu"+
-                "docelowego. Wysłać zwiad ?");
-        aListQuest.add("Zwiad donosi że w okolicy grasuje ogromny niedźwiedź."+
-                "Wysłać zwiad na polowanie ?");
-        aListQuest.add("Na królewski rynek wdarło się stado dzików! Zabić je?");
-        aListQuest.add("Kryzys w królestwie! Rabusie okradają miejscowych!"+ "Wysłać patrol na rynek?");
+        aListQuest.add("Znaleziono slady nieznanej postaci, podazać za nimi i sprawdzic co to ?");
+        aListQuest.add("W pobliskiej jaskni udomowila się pantera, zagraza naszym ludziom." +
+                " Zabic jz ?");
+        aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potezna burza, zabezpieczyz nasze plony ?");
+        aListQuest.add("Z pobliskiej wioski zniknela ludnosc, rozpoczac poszukiwania ?");
+        aListQuest.add("W pobliżu pewna grupa rozbojników rabuje mieszkancow, zaatakowac ich ?");
+        aListQuest.add("W jednej z naszej wiosek panuje wirus, znalezc jego źrddlo ?");
+        aListQuest.add("Nasza dostawa zywnosci oraz uzbrojenia nie dotarla do punktu"+
+                "docelowego. Wyslac zwiad ?");
+        aListQuest.add("Zwiad donosi że w okolicy grasuje ogromny niedzwiedz."+
+                "Wyslać zwiad na polowanie ?");
+        aListQuest.add("Na krolewski rynek wdarlo się stado dzikow! Zabic je?");
+        aListQuest.add("Kryzys w krolestwie! Rabusie okradaja miejscowych!"+ "Wyslac patrol na rynek?");
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final String a = aListQuest.get(random.nextInt(aListQuest.size()));
@@ -319,7 +320,7 @@ public class activity_afterMenu extends AppCompatActivity {
         // alertDialogBuilder.setMessage("Na pewno ?");
         //alertDialogBuilder.setCancelable(false);
 
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
             int b = random.nextInt(100);
 
@@ -327,7 +328,7 @@ public class activity_afterMenu extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 licznikPodatki++;
-                if (b >50) {
+                if (b >40) {
                     TextView showCountTextView =
                             (TextView) findViewById(R.id.textViewGold);
                     String countString = showCountTextView.getText().toString();
@@ -359,11 +360,11 @@ public class activity_afterMenu extends AppCompatActivity {
                     armyy=army;
                     showCountTextView.setText(goldd.toString());
                     showCountTextView2.setText(armyy.toString());
-                    Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
                 }
             }
         });
-        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 //Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
@@ -383,7 +384,7 @@ public class activity_afterMenu extends AppCompatActivity {
             gold=goldd;
             //display the new value int the text view
             showCountTextView.setText(goldd.toString());
-             Toast.makeText(activity_afterMenu.this, "Zapłacono podatki !!!", Toast.LENGTH_SHORT).show();
+             Toast.makeText(activity_afterMenu.this, "Zaplacono podatki !!!", Toast.LENGTH_SHORT).show();
              licznikPodatki=0;
 
         }
@@ -415,7 +416,7 @@ public class activity_afterMenu extends AppCompatActivity {
         BossQuest.add("Chcesz podjac walke z Zielonym Smokiem ?");
         BossQuest.add("Chcesz podjac walke z Rubinowym Smokiem ?");
         BossQuest.add("Chcesz podjac walke z Platynowym Smokiem ?");
-        BossQuest.add("Chccesz podjac ostateczną walkę z Białym Smokiem Albinosem ?");
+        BossQuest.add("Chccesz podjac ostateczną walkę z Bialym Smokiem Albinosem ?");
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(qq);
@@ -457,7 +458,7 @@ public class activity_afterMenu extends AppCompatActivity {
         {
             if(los >25) {
 
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -472,7 +473,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
                         alertDialogBuilder2.setTitle("Zadanie Wykonane");
                         alertDialogBuilder2.setMessage("Pokonałeś Czerwonego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
                                 // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
@@ -496,7 +497,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     }
 
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                     }
@@ -520,17 +521,21 @@ public class activity_afterMenu extends AppCompatActivity {
             else
             {
 
-                //convert value to a number and ++
-                goldd = goldd - 100000 +(1000*miastoa);
-                gold=goldd;
-                //display the new value int the text view
+                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                String countString2 = showCountTextView2.getText().toString();
+                Integer armyy = Integer.parseInt(countString2);
+                gold = gold - 100000;
+                army = army - 1000;
+                goldd=gold;
+                armyy=army;
                 showCountTextView.setText(goldd.toString());
+                showCountTextView2.setText(armyy.toString());
                 Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
             }
         }
         else if (gold >= 5000000 && army >= 6500 && counterDragon==1) {
             if (los > 35) {
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -545,7 +550,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
                         alertDialogBuilder2.setTitle("Zadanie Wykonane");
                         alertDialogBuilder2.setMessage("Pokonałeś Zielonego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
                                 // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
@@ -568,7 +573,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     }
 
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                     }
@@ -589,18 +594,22 @@ public class activity_afterMenu extends AppCompatActivity {
             }
             else
             {
-                //convert value to a number and ++
-                goldd = goldd - 100000 +(1000*miastoa);
-                gold=goldd;
-                //display the new value int the text view
+                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                String countString2 = showCountTextView2.getText().toString();
+                Integer armyy = Integer.parseInt(countString2);
+                gold = gold - 200000;
+                army = army - 1500;
+                goldd=gold;
+                armyy=army;
                 showCountTextView.setText(goldd.toString());
+                showCountTextView2.setText(armyy.toString());
                 Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
             }
         }
         else if (gold >= 8000000 && army >= 7500 && counterDragon==2)
         {
             if(los > 45) {
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -637,7 +646,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     }
 
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                     }
@@ -658,18 +667,22 @@ public class activity_afterMenu extends AppCompatActivity {
             }
             else
             {
-                //convert value to a number and ++
-                goldd = goldd - 100000 +(1000*miastoa);
-                gold=goldd;
-                //display the new value int the text view
+                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                String countString2 = showCountTextView2.getText().toString();
+                Integer armyy = Integer.parseInt(countString2);
+                gold = gold - 300000;
+                army = army - 2000;
+                goldd=gold;
+                armyy=army;
                 showCountTextView.setText(goldd.toString());
+                showCountTextView2.setText(armyy.toString());
                 Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
             }
         }/////////////////////////////////////////////////////////////////////////////////////////////////////////
         else if (gold >= 12000000 && army >= 8500 && counterDragon==3)
         {
             if(los > 55) {
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -706,7 +719,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     }
 
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                     }
@@ -727,19 +740,23 @@ public class activity_afterMenu extends AppCompatActivity {
             }
             else
             {
-                //convert value to a number and ++
-                goldd = goldd - 100000 +(1000*miastoa);
-                gold=goldd;
-                //display the new value int the text view
+                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                String countString2 = showCountTextView2.getText().toString();
+                Integer armyy = Integer.parseInt(countString2);
+                gold = gold - 400000;
+                army = army - 2500;
+                goldd=gold;
+                armyy=army;
                 showCountTextView.setText(goldd.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
+                showCountTextView2.setText(armyy.toString());
+                Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
             }
         }///////////////////////////////////////////////////////////////
         else if (gold >= 20000000 && army >= 10000 && counterDragon==4)
         {
             if(los > 70) {
 
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -752,12 +769,23 @@ public class activity_afterMenu extends AppCompatActivity {
                         gold = goldd;
                         showCountTextView.setText(goldd.toString());
 
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Bialego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        alertDialogBuilder2.setTitle("Koniec gry");
+                        alertDialogBuilder2.setMessage("Pokonales ostatniego Bialego smoka. " +
+                                "Wszyscy mieszkancy zaznaja teraz spokoju. Chcesz kontynuowac " +
+                                "przygode" +
+                                "czy  zakonczyc ?");
+                        alertDialogBuilder2.setNeutralButton("Nie Koncz", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
 
+                            }
+                        });
+                        alertDialogBuilder2.setNegativeButton("Zakoncz", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                    System.exit(0);
+                                    czyPause=false;
                             }
                         });
                         AlertDialog alertDialog2 = alertDialogBuilder2.create();
@@ -776,11 +804,16 @@ public class activity_afterMenu extends AppCompatActivity {
                     }
 
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                     }
                 });
+                /*alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                    }
+                });*/
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
@@ -795,26 +828,22 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTypeface(face);
                 alertDialog.getWindow().setLayout(600, 400);
             }
-            else
-            {
-                //convert value to a number and ++
-                goldd = goldd - 100000 +(1000*miastoa);
-                gold=goldd;
-                //display the new value int the text view
-                showCountTextView.setText(goldd.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
+
+        }
+        else if(counterDragon >4)
+        {
+            Toast.makeText(activity_afterMenu.this, "Pokonales juz wszystkie smoki !!!", Toast.LENGTH_LONG).show();
         }
         else
         {
 
             alertDialogBuilder2.setTitle("Uwaga");
-            alertDialogBuilder2.setMessage("Nie spełniasz wymagań do walki ze smokiem");
+            alertDialogBuilder2.setMessage("Nie spelniasz wymagan do walki ze smokiem");
 
-            alertDialogBuilder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
-                    Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
                 }
             });
             AlertDialog alertDialog2 = alertDialogBuilder2.create();
@@ -830,13 +859,7 @@ public class activity_afterMenu extends AppCompatActivity {
             textView1.setTypeface(face);
             alertDialog2.getWindow().setLayout(600,400);
         }
+
+
     }
 }
-
-
-
-
-
-
-
-
