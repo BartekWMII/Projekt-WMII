@@ -95,17 +95,18 @@ public class activity_afterMenu extends AppCompatActivity {
 
     @Override
     protected void onResume () {
-
         super.onResume();
-        if(kwiat>0)
-        {
+       // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+       if(kwiat>1)
+        {
+            super.onResume();
+            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+            drzewo=sharedPref.getInt("kwiat2",1 );
         txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
         gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-            drzewo=sharedPref.getInt("kwiat2",1 );
+             kwiat=drzewo;
         Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
-        kwiat=drzewo;
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
         showCountTextView.setText(gld);
@@ -119,15 +120,18 @@ public class activity_afterMenu extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        kwiat++;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_after_menu);
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
         czyPause = false;
 
+        Toast.makeText(activity_afterMenu.this, "Createee", Toast.LENGTH_LONG).show();
 
         button = findViewById(R.id.buttonCityUP);
         button.setOnClickListener(new View.OnClickListener() {
