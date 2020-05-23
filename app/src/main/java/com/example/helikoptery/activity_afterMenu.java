@@ -38,6 +38,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
@@ -50,7 +53,7 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int army = 5000;
     public static int goldSekret=0;
     public static int armySekret=0;
-    public static int stal =0;
+    public static int stal =50;
     public static int stalimp=0;
     public static int miastoa=0;
     public static int miastoimpa=0;
@@ -115,6 +118,43 @@ public class activity_afterMenu extends AppCompatActivity {
         gold = Integer.parseInt(gld);
         kwiat++;
 
+            bezpiecznik = getIntent().getIntExtra("Kod", licznik);
+            kontrolka = getIntent().getIntExtra("kontrola", counterQ);
+
+
+
+            if(bezpiecznik==1)
+            {
+
+                goldSekret=getIntent().getIntExtra("Gold666",gold);
+                armySekret=getIntent().getIntExtra("Armia666",army);
+
+                miastoimpa=getIntent().getIntExtra("skarb",miastoa);
+                miastoimpb=getIntent().getIntExtra("kosz",miastob);
+                miastoimpc=getIntent().getIntExtra("kop",miastoc);
+
+                TextView showCountTextViewGol = (TextView) findViewById(R.id.textViewGold);
+                TextView showCountTextViewArm = (TextView) findViewById(R.id.textViewArmy);
+                //TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                String countString = showCountTextView.getText().toString();
+                String countString2 = showCountTextView2.getText().toString();
+                Integer goldd = Integer.parseInt(countString);
+                Integer armyy = Integer.parseInt(countString2);
+
+                gold=gold+goldSekret;
+                army=army+armySekret;
+
+                miastoa=miastoa+miastoimpa;
+                miastob=miastob+miastoimpb;
+                miastoc=miastoc+miastoimpc;
+                goldd = gold;
+                armyy = army;
+                showCountTextViewGol.setText(goldd.toString());
+                showCountTextViewArm.setText(armyy.toString());
+                //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
+                bezpiecznik=0;
+            }
+
     }
     }
 
@@ -159,8 +199,9 @@ public class activity_afterMenu extends AppCompatActivity {
 
             TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+            //TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
             String countString = showCountTextView.getText().toString();
+            String countString2 = showCountTextView2.getText().toString();
             Integer goldd = Integer.parseInt(countString);
             Integer armyy = Integer.parseInt(countString2);
 
@@ -218,10 +259,15 @@ public class activity_afterMenu extends AppCompatActivity {
 
         if (SprStal != SprStalImp) {
             stalimp = getIntent().getIntExtra("Stal", stal);
+            TextView ShowStal=(TextView) findViewById(R.id.textViewIleStal);
+            String StalWys= ShowStal.getText().toString();
+            Integer stall=Integer.parseInt(StalWys);
             stal = stalimp;
+            stall=stal;
+            ShowStal.setText(stall.toString());
         }
 
-        /*  if(kontrolka==2)
+        if(kontrolka==2)
         {
             gold=getIntent().getIntExtra("goldSekret",goldCity);
             army=getIntent().getIntExtra("Armia2",armyCity);
@@ -238,7 +284,7 @@ public class activity_afterMenu extends AppCompatActivity {
             showCountTextView2.setText(armyy.toString());
             //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
             kontrolka=1;
-        }*/
+        }
 
         // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
 
@@ -355,6 +401,7 @@ public class activity_afterMenu extends AppCompatActivity {
                         Integer stall = stal;
                         stal=stal+2+(10*miastoc);
                         stall=stal;
+                        Toast.makeText(activity_afterMenu.this, "Znaleziono trochę stali!!", Toast.LENGTH_SHORT).show();
                     }
 
                     goldd=gold;
