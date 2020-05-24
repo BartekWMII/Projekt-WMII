@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.helikoptery">
+    package="com.example.swords">
 
     <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/icondragon"
+        android:label="Dragons and Swords"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AlertDialogTheme.Center">
-        <activity android:name=".secret"></activity>
-        <activity android:name=".activity_city_upgrade" />
+        <activity android:name="com.example.swords.secret"></activity>
+        <activity android:name="com.example.swords.activity_city_upgrade" />
 
         <service
-            android:name=".MusicService"
+            android:name="com.example.swords.MusicService"
             android:enabled="true" />
 
-        <activity android:name=".activity_afterMenu" />
-        <activity android:name=".activity_settings" />
-        <activity android:name=".activity_menu" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.swords.activity_afterMenu" />
+        <activity android:name="com.example.swords.activity_settings" />
+        <activity android:name="com.example.swords.activity_menu" />
+        <activity android:name="com.example.swords.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

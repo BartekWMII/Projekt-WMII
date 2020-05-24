@@ -1,11 +1,10 @@
-package com.example.helikoptery;
+package com.example.swords;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class activity_city_upgrade extends AppCompatActivity {
 
@@ -126,13 +123,13 @@ public class activity_city_upgrade extends AppCompatActivity {
             }
         });
 
-        button3=findViewById(R.id.SettingsButton);
-        button3.setOnClickListener(new View.OnClickListener() {
+        button3=findViewById(R.id.settingsButton);
+       /* button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 moveToSettings();
             }
-        });
+        });*/
 
         TextView showCountTextView = (TextView) findViewById(R.id.textViewSkarb);
         TextView showCountTextViewKosz=(TextView) findViewById(R.id.textViewKoszar);
@@ -182,7 +179,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void moveToSettings()
+    public void moveToSettings(View view)
     {
         Intent intent = new Intent(this,activity_settings.class);
         startActivity(intent);
@@ -305,4 +302,39 @@ public class activity_city_upgrade extends AppCompatActivity {
             showCountTextView2.setText(Bim);
         }
     }
+
+    public void HelpDesk(View view)
+    {
+
+        // new AlertDialog.Builder(this)
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Pomoc");
+        alertDialogBuilder.setMessage("Na start otrzymujemy 2 000 000 zlota oraz 5000 zolnierzy\n\n" +
+                "Za zakonczenie zadania sukcesem otrzymujemy 250 000 zlota\n\n" +
+                "Za przegraną tracimy 150 000 zlota oraz 150 zolnierzy\n\n" +
+                "Zolnierzy mozemy werbowac po 100 osób za 100 000 zlota\n\n" +
+                "Smoki:\n\n" +
+                "Aby walczyc z Czerwonym Smokiem potrzebujemy 3 000 000 zlota oraz 5500 zolnierzy, za wygrana otrzymujemy 500 000 zlota, a za przegrana tracimy 1000 zolnierzy\n\n" +
+                "Aby walczyc z Zielonym Smokiem potrzebujemy 5 000 000 zlota oraz 6500 zolnierzy, za wygrana otrzymujemy 1 000 000 zlota, a za przegrana tracimy 1500 zolnierzy\n\n" +
+                "Aby walczyz z Rubinowym Smokiem potrzebujemy 8 000 000 zlota oraz 7500 zolnierzy, za wygrana otrzymujemy 2 000 000 zlota, a za przegrana tracimy 2000 zolnierzy\n\n" +
+                "Aby walczyc z Platynowym Smokiem potrzebujemy 12 500 000 zlota oraz 8500 zolnierzy, za wygrana otrzymujemy 2 500 000 zlota, a za przegrana tracimy 2500 zolnierzy\n\n" +
+                "Aby walczyc z Bialym Smokiem potrzebujmemy 20 000 000 zlota oraz 10 000 zolnierzy, za wygrana otrzymujemy 10 000 000 zlota, oraz kod do tajemniczej komnaty, a za przegraną tracimy 5000 zolnierzy");
+        // alertDialogBuilder.setPositiveButton("OK", null);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+        Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+        textView.setTextSize(17);
+        textView1.setTextSize(25);
+        textView.setTypeface(face);
+        textView1.setTypeface(face);
+
+        alertDialog.getWindow().setLayout(600,850);///przed dodaniem na telefon zmienic na 600/400
+
+    }
+
 }

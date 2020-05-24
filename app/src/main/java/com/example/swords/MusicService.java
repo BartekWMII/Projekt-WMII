@@ -1,4 +1,4 @@
-package com.example.helikoptery;
+package com.example.swords;
 
 import android.app.Service;
 import android.content.Intent;

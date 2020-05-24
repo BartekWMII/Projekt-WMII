@@ -1,4 +1,4 @@
-package com.example.helikoptery;
+package com.example.swords;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -21,7 +21,6 @@ public class activity_settings extends AppCompatActivity {
 
     Switch sSound;
     Switch sMusic;
-    Switch sVibration;
     MediaPlayer music;
     Context context = this;
 
@@ -32,7 +31,6 @@ public class activity_settings extends AppCompatActivity {
 
     public static final String SSOUND = "sSound";
     public static final String SMUSIC = "sMusic";
-    public static final String SVIBRATION= "sVibration";
 
     HomeWatcher mHomeWatcher;
 
@@ -43,7 +41,7 @@ public class activity_settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         sSound = findViewById(R.id.soundSwitch);
         sMusic = findViewById(R.id.musicSwitch);
-        sVibration = findViewById(R.id.vibrationSwitch);
+
 
 
         music = MediaPlayer.create(this, R.raw.music);
@@ -92,18 +90,7 @@ public class activity_settings extends AppCompatActivity {
             }
 
         });
-        sVibration.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    saveData();
-                }
-                else {
-                    saveData();
-                }
-            }
 
-        });
 
 
         mHomeWatcher = new HomeWatcher(this);
@@ -184,7 +171,7 @@ public class activity_settings extends AppCompatActivity {
 
         editor.putBoolean(SSOUND, sSound.isChecked());
         editor.putBoolean(SMUSIC, sMusic.isChecked());
-        editor.putBoolean(SVIBRATION, sVibration.isChecked());
+
 
         editor.apply();
 
@@ -195,13 +182,13 @@ public class activity_settings extends AppCompatActivity {
 
         sSound.setChecked(switchOnOf);
         sMusic.setChecked(switchOnOff);
-        sVibration.setChecked(switchOnOfff);
+
     }
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         switchOnOf = sharedPreferences.getBoolean(SSOUND, false);
         switchOnOff = sharedPreferences.getBoolean(SMUSIC, false);
-        switchOnOfff = sharedPreferences.getBoolean(SVIBRATION, false);
+
 
 
     }

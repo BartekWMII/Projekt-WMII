@@ -74,10 +74,11 @@
                 app:layout_constraintVertical_bias="0.053" />
 
             <Button
-                android:id="@+id/SettingsButton"
-                android:layout_width="62dp"
-                android:layout_height="51dp"
+                android:id="@+id/settingsButton"
+                android:layout_width="59dp"
+                android:layout_height="57dp"
                 android:background="@android:drawable/ic_menu_manage"
+                android:onClick="moveToSettings"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
@@ -134,7 +135,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.193"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/SettingsButton"
+                app:layout_constraintTop_toBottomOf="@+id/settingsButton"
                 app:layout_constraintVertical_bias="0.857" />
 
             <TextView
@@ -177,6 +178,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.007" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:background="@android:drawable/ic_menu_help"
+                android:onClick="HelpDesk"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.246"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.054" />
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>

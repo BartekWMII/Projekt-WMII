@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutSettings1"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="388dp"
+        android:layout_height="179dp"
         android:layout_marginStart="15dp"
 
         android:layout_marginEnd="15dp"
@@ -25,8 +25,8 @@
 
         <Switch
             android:id="@+id/soundSwitch"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:checked="false"
@@ -39,25 +39,13 @@
 
         <Switch
             android:id="@+id/musicSwitch"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="43dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:checked="true"
             android:fontFamily="@font/magic"
             android:text="@string/sMusic"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
-
-        <Switch
-            android:id="@+id/vibrationSwitch"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/magic"
-            android:text="@string/vibration"
             android:textSize="25sp"
             android:textStyle="bold"
             android:typeface="serif" />

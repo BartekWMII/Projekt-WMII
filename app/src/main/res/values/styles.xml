@@ -3,9 +3,13 @@
     <!-- Base application theme. -->
     <style name="AlertDialogTheme.Center" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#9F6A14</item>
+        <item name="fontFamily">@font/magic</item>
+        <item name="android:textStyle">bold</item>
+
+
     </style>
 
 

@@ -1,47 +1,21 @@
-package com.example.helikoptery;
+package com.example.swords;
 
 
-import android.app.Dialog;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.ColorMatrix;
-import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.PowerManager;
-import android.support.annotation.AnimatorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -114,8 +88,13 @@ public class activity_afterMenu extends AppCompatActivity {
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
         showCountTextView.setText(gld);
         showCountTextView2.setText(txt);
-        army = Integer.parseInt(txt);
-        gold = Integer.parseInt(gld);
+        try{
+            army = Integer.parseInt(txt);
+            gold = Integer.parseInt(gld);
+        } catch (Exception e) {
+           // e.printStackTrace();
+        }
+
         kwiat++;
 
             bezpiecznik = getIntent().getIntExtra("Kod", licznik);
@@ -159,8 +138,6 @@ public class activity_afterMenu extends AppCompatActivity {
     }
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,12 +151,12 @@ public class activity_afterMenu extends AppCompatActivity {
         Toast.makeText(activity_afterMenu.this, "Createee", Toast.LENGTH_LONG).show();
 
         button = findViewById(R.id.buttonCityUP);
-        button.setOnClickListener(new View.OnClickListener() {
+      /*  button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 moveToCityUpgrade();
             }
-        });
+        });*/
 
 
         bezpiecznik = getIntent().getIntExtra("Kod", licznik);
@@ -300,7 +277,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
 
 
-    public void moveToCityUpgrade()
+    public void moveToCityUpgrade(View view)
     {
         Intent intent = new Intent(this,activity_city_upgrade.class);
         intent.putExtra("Gold",gold);
@@ -339,18 +316,18 @@ public class activity_afterMenu extends AppCompatActivity {
         }
     }
 
-  /*  public void onClickSql(View view) {
+    public void onClickWork(View view) {
         TextView showCountTextView =
                 (TextView) findViewById(R.id.textViewGold);
         //get the value of the text view
         String countString = showCountTextView.getText().toString();
         //convert value to a number and ++
         Integer goldd = Integer.parseInt(countString);
-        goldd = goldd - 100000 + (100*miastoa);
+        goldd = goldd +5000;
         gold=goldd;
         //display the new value int the text view
         showCountTextView.setText(goldd.toString());
-    }*/ ///nie uzywane do niczego, pozniej chyba mozna tu usunac
+    } ///nie uzywane do niczego, pozniej chyba mozna tu usunac
 
     public void NextQuest(View view) {
         final Random random = new Random();
@@ -465,7 +442,7 @@ public class activity_afterMenu extends AppCompatActivity {
         textView1.setTypeface(face);
 
 
-        alertDialog.getWindow().setLayout(820,470);///przed dodaniem na telefon zmienic na 600/400
+        alertDialog.getWindow().setLayout(600,350);///przed dodaniem na telefon zmienic na 600/400
 
     }
 
@@ -552,7 +529,7 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTextSize(25);
                         textView.setTypeface(face);
                         textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 400);
+                        alertDialog2.getWindow().setLayout(600, 350);
 
                         // Toast.makeText(activity_afterMenu.this, "Pokonałeś Czerwonego Smoka !!!", Toast.LENGTH_LONG).show();
                         counterDragon++;
@@ -578,7 +555,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
                 textView2.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 400);
+                alertDialog.getWindow().setLayout(600, 350);
             }
             else
             {
@@ -629,7 +606,7 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTextSize(25);
                         textView.setTypeface(face);
                         textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 400);
+                        alertDialog2.getWindow().setLayout(600, 350);
                         counterDragon++;
                         //Toast.makeText(activity_afterMenu.this, "Pokonałeś Zielonego Smoka !!!", Toast.LENGTH_LONG).show();
                     }
@@ -652,7 +629,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTextSize(25);
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 400);
+                alertDialog.getWindow().setLayout(600, 350);
             }
             else
             {
@@ -703,7 +680,7 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTextSize(25);
                         textView.setTypeface(face);
                         textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 400);
+                        alertDialog2.getWindow().setLayout(600, 350);
                         counterDragon++;
                     }
 
@@ -725,7 +702,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTextSize(25);
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 400);
+                alertDialog.getWindow().setLayout(600, 350);
             }
             else
             {
@@ -776,7 +753,7 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTextSize(25);
                         textView.setTypeface(face);
                         textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 400);
+                        alertDialog2.getWindow().setLayout(600, 350);
                         counterDragon++;
                     }
 
@@ -798,7 +775,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTextSize(25);
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 400);
+                alertDialog.getWindow().setLayout(600, 350);
             }
             else
             {
@@ -861,7 +838,7 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTextSize(25);
                         textView.setTypeface(face);
                         textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 400);
+                        alertDialog2.getWindow().setLayout(600, 350);
                         counterDragon++;
                     }
 
@@ -888,7 +865,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTextSize(25);
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 400);
+                alertDialog.getWindow().setLayout(600, 4000);
             }
 
         }
@@ -919,7 +896,7 @@ public class activity_afterMenu extends AppCompatActivity {
             textView1.setTextSize(25);
             textView.setTypeface(face);
             textView1.setTypeface(face);
-            alertDialog2.getWindow().setLayout(600,400);
+            alertDialog2.getWindow().setLayout(600,300);
         }
 
 
