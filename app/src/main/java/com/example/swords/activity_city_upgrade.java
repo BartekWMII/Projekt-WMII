@@ -13,17 +13,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class activity_city_upgrade extends AppCompatActivity {
 
     private TextView textViewSkarb;
     private TextView textViewKosz;
     private TextView textViewKop;
+    private TextView textViewIleStal;
+    private TextView textViewAwans;
     public static int miastoa;
     public static int miastoimpa;
     public static int miastob;
     public static int miastoimpb;
     public static int miastoc;
     public static int miastoimpc;
+    public static int miastod;
+    public static int miastoimpd;
     public static int stal=50;
     public static int stalimp;
     private Button button,button2,button3;
@@ -36,7 +42,7 @@ public class activity_city_upgrade extends AppCompatActivity {
     boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
     boolean SprStal=false, SprStalImp=false;
     public static int bezpiecznik,licznik,kontrolka,counterQ,CityA,CityB,CityC;
-    public static String UpCityA, UpCityB, UpCityC;
+    public static String UpCityA, UpCityB, UpCityC, UpCityStal;
 
     Context context = this;
 
@@ -49,6 +55,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         editor.putString("daneA", textViewSkarb.getText().toString());
         editor.putString("daneB", textViewKosz.getText().toString());
         editor.putString("daneC", textViewKop.getText().toString());
+        editor.putString("daneS",textViewIleStal.getText().toString());
         editor.putInt("kwiat3", KwiatMiasta);
         KwiatMiasta++;
         Toast.makeText(activity_city_upgrade.this, "DzialaP " + UpCityA + " " + UpCityB+" "+" "+ UpCityC+" "+KwiatMiasta, Toast.LENGTH_LONG).show();
@@ -69,21 +76,49 @@ public class activity_city_upgrade extends AppCompatActivity {
             UpCityA = sharedPref.getString("daneA", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             UpCityB = sharedPref.getString("daneB", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             UpCityC = sharedPref.getString("daneC", "");
+            UpCityStal = sharedPref.getString("daneS", "");
+           // stalimp=getintent.getInt("Stal",stal);
             KwiatMiasta = DrzewoMiasta;
-            Toast.makeText(activity_city_upgrade.this, "Dziala " + UpCityA + " " + UpCityB + " " + " " + UpCityC + " " + DrzewoMiasta, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity_city_upgrade.this, "Dziala " + UpCityA + " " + UpCityB + " " + " " + UpCityC + "Stal: " + UpCityStal + " "+DrzewoMiasta, Toast.LENGTH_LONG).show();
             TextView showCountTextView = (TextView) findViewById(R.id.textViewSkarb);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewKoszar);
             TextView showCountTextView3 = (TextView) findViewById(R.id.textViewKop);
             showCountTextView.setText(String.valueOf(miastoa));
             showCountTextView2.setText(String.valueOf(miastob));
             showCountTextView3.setText(String.valueOf(miastoc));
+           // Integer stalinium= Integer.parseInt(UpCityStal);
+
+          /*  if(stalimp==stalinium)
+            {
+            TextView showCountTextView4 = (TextView) findViewById(R.id.textViewIleStal);
+            showCountTextView4.setText(String.valueOf(UpCityStal));
+            }
+            else
+            {
+                TextView showCountTextView4 = (TextView) findViewById(R.id.textViewIleStal);
+                stal=stalinium;
+                showCountTextView4.setText(stalinium.toString());
+            }*/
+
             try{
                 miastoa = Integer.parseInt(UpCityA);
                 miastob = Integer.parseInt(UpCityB);
                 miastoc = Integer.parseInt(UpCityC);
+
             } catch (NumberFormatException e) {
                // e.printStackTrace();
             }
+
+          /*  try{
+                if (stalimp==stalinium)
+                    stal=Integer.parseInt(UpCityStal);
+                else
+                    stal=stalimp;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }*/
+
+            Toast.makeText(context, "Tyle stali: "+UpCityStal, Toast.LENGTH_SHORT).show();
 
             KwiatMiasta++;
         }
@@ -98,9 +133,11 @@ public class activity_city_upgrade extends AppCompatActivity {
         setContentView(R.layout.activity_city_upgrade);
 
         KwiatMiasta++;
-        //textViewSkarb = findViewById(R.id.textViewSkarb);
-       //textViewKosz = findViewById(R.id.textViewKoszar);
-        //textViewKop= findViewById(R.id.textViewKop);
+        textViewSkarb = findViewById(R.id.textViewSkarb);
+        textViewKosz = findViewById(R.id.textViewKoszar);
+        textViewKop= findViewById(R.id.textViewKop);
+        textViewIleStal = findViewById(R.id.textViewIleStal);
+        textViewAwans = findViewById(R.id.textViewAwans);
 
         setContentView(R.layout.activity_city_upgrade);
         bezpiecznik = getIntent().getIntExtra("Kod", licznik);
@@ -206,6 +243,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         intent.putExtra("CityBZ", SprCityB);
         intent.putExtra("CityCZ",SprCityC);
         intent.putExtra("kop",miastoc);
+        intent.putExtra("awan",miastod);
         intent.putExtra("ArmyZ",SprArmy);
         intent.putExtra("GoldZ",SprGold);
         intent.putExtra("StalZ",SprStal);
@@ -337,4 +375,32 @@ public class activity_city_upgrade extends AppCompatActivity {
 
     }
 
+    public void OnCliAwan(View view) {
+        TextView showCountTextView =
+                (TextView) findViewById(R.id.textViewAwans);
+        TextView showCountTextView2 =
+                (TextView) findViewById(R.id.textViewIleStal);
+
+        miastod=miastod;
+        if (SprStalImp!=SprStal)
+        {
+            stal = stal + stalimp;
+            String Bim=Integer.toString(stal);
+            showCountTextView2.setText(Bim);
+        }
+        int sprM=miastod;
+        if ((sprM+1)*10>stal)
+        {
+            Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            stal=stal-(10*miastod)-5;
+            miastod++;
+            SprCityB=true;
+            String miastostringc=Integer.toString(miastod);
+            showCountTextView.setText(miastostringc);
+            String Bim=Integer.toString(stal);
+            showCountTextView2.setText(Bim);
+        }
+    }
 }

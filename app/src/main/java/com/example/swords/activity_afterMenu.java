@@ -35,6 +35,8 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastoimpb=0;
     public static int miastoc=0;
     public static int miastoimpc=0;
+    public static int miastod=0;
+    public static int miastoimpd=0;
     public static  Boolean czyPause=false;
     public static int kwiat=0;
     public static int drzewo=0;
@@ -111,6 +113,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 miastoimpa=getIntent().getIntExtra("skarb",miastoa);
                 miastoimpb=getIntent().getIntExtra("kosz",miastob);
                 miastoimpc=getIntent().getIntExtra("kop",miastoc);
+                miastoimpd=getIntent().getIntExtra("awan",miastod);
 
                 TextView showCountTextViewGol = (TextView) findViewById(R.id.textViewGold);
                 TextView showCountTextViewArm = (TextView) findViewById(R.id.textViewArmy);
@@ -123,9 +126,10 @@ public class activity_afterMenu extends AppCompatActivity {
                 gold=gold+goldSekret;
                 army=army+armySekret;
 
-                miastoa=miastoa+miastoimpa;
-                miastob=miastob+miastoimpb;
-                miastoc=miastoc+miastoimpc;
+                miastoa=miastoimpa;
+                miastob=miastoimpb;
+                miastoc=miastoimpc;
+                miastod=miastoimpd;
                 goldd = gold;
                 armyy = army;
                 showCountTextViewGol.setText(goldd.toString());
@@ -203,6 +207,8 @@ public class activity_afterMenu extends AppCompatActivity {
         SprCityBImp = getIntent().getBooleanExtra("CityBZ", SprCityB);
         SprCityCImp = getIntent().getBooleanExtra("CityCZ", SprCityC);
         SprStalImp = getIntent().getBooleanExtra("StalZ", SprStal);
+        miastoimpd=getIntent().getIntExtra("awan",miastod);
+        miastod=miastoimpd;
 
         if (SprGold == SprGoldImp) {
             goldSekret = getIntent().getIntExtra("gold666", army);
@@ -323,7 +329,7 @@ public class activity_afterMenu extends AppCompatActivity {
         String countString = showCountTextView.getText().toString();
         //convert value to a number and ++
         Integer goldd = Integer.parseInt(countString);
-        goldd = goldd +5000;
+        goldd = goldd +5000 + 50*miastod;
         gold=goldd;
         //display the new value int the text view
         showCountTextView.setText(goldd.toString());
@@ -383,7 +389,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
                     goldd=gold;
                     showCountTextView.setText(goldd.toString());
-                    Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_SHORT).show();
 
 
                 } else {
@@ -399,7 +405,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     armyy=army;
                     showCountTextView.setText(goldd.toString());
                     showCountTextView2.setText(armyy.toString());
-                    Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
