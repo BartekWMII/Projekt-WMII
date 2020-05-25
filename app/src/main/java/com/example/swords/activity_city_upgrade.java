@@ -71,7 +71,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         super.onResume();
         // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
 
-        if(KwiatMiasta>1)
+        if(KwiatMiasta>0)
         {
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);

@@ -38,6 +38,7 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastod=0;
     public static int miastoimpd=0;
     public static  Boolean czyPause=false;
+    public static String stl;
     public static int kwiat=0;
     public static int drzewo=0;
     public static String txt,gld;
@@ -66,7 +67,7 @@ public class activity_afterMenu extends AppCompatActivity {
         editor.putString("daneG", textViewGold.getText().toString());
         editor.putString("dane", textViewArmy.getText().toString());
         editor.putInt("kwiat2", kwiat);
-        editor.putInt("daneS", stal);
+        editor.putInt("daneStal", stal);
         kwiat++;
      //  Toast.makeText(activity_afterMenu.this, "DzialaP " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         editor.commit();
@@ -85,13 +86,20 @@ public class activity_afterMenu extends AppCompatActivity {
             drzewo=sharedPref.getInt("kwiat2",1 );
         txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
         gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-             kwiat=drzewo;
-        Toast.makeText(activity_afterMenu.this, "Dziala zapis " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+            stalimp=getIntent().getIntExtra("Stal",stal);
+            kwiat=drzewo;
+      //  Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
         showCountTextView.setText(gld);
         showCountTextView2.setText(txt);
         try{
+            if(stalimp!=Integer.parseInt(stl)) {
+                stal = stalimp;
+            }
+            else{
+                stal=Integer.parseInt(stl);
+            }
             army = Integer.parseInt(txt);
             gold = Integer.parseInt(gld);
         } catch (Exception e) {
@@ -102,7 +110,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
             bezpiecznik = getIntent().getIntExtra("Kod", licznik);
             kontrolka = getIntent().getIntExtra("kontrola", counterQ);
-            stalimp=getIntent().getIntExtra("Stal",stal);
+
            // zabojca= getIntent().getIntExtra("zabojca",kills);
 
 
@@ -425,7 +433,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     Integer goldd = Integer.parseInt(countString);
                     gold = gold + 250000 + (20)*miastoa;
 
-                    if (b%2==0)
+                    if (b%5==0)
                     {
                         Integer stall = stal;
                         stal=stal+2+(10*miastoc);
