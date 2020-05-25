@@ -9,11 +9,32 @@
 
 
     <Button
-        android:id="@+id/strongButton"
-        android:layout_width="199dp"
-        android:layout_height="45dp"
+        android:id="@+id/ListButton"
+        android:layout_width="165dp"
+        android:layout_height="40dp"
         android:background="@drawable/pattern1"
         android:fontFamily="@font/magic"
+        android:onClick="HelpDesk"
+        android:text="LISTA ZLECEN"
+        android:textColor="#EAE6E6"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FF0000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/strongButton"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:background="@drawable/pattern1"
+        android:fontFamily="@font/magic"
+        android:onClick="Quest"
         android:text="Zlecenia"
         android:textColor="#EAE6E6"
         android:textColorHighlight="#FFFFFF"
@@ -22,10 +43,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/textViewHP"
@@ -61,10 +82,10 @@
         android:src="@drawable/asasyn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.008" />
 
     <Button
         android:id="@+id/IqButton"

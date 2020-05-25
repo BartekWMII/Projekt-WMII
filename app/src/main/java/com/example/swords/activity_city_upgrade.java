@@ -180,6 +180,7 @@ public class activity_city_upgrade extends AppCompatActivity {
 
         button=findViewById(R.id.SecretButton);
         button2=findViewById(R.id.KingBack);
+        button3=findViewById(R.id.settingsButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,7 +188,6 @@ public class activity_city_upgrade extends AppCompatActivity {
                 moveToSecret();
             }
         });
-
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,7 +195,7 @@ public class activity_city_upgrade extends AppCompatActivity {
             }
         });
 
-        button3=findViewById(R.id.settingsButton);
+
        /* button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

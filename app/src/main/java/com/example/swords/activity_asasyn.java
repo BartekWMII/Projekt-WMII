@@ -31,6 +31,7 @@ public class activity_asasyn extends AppCompatActivity {
     private int drzewoRab;
     public static int kills=0;
     public static int goldB=0;
+    public static int counterM=0;
     public static String wytrz, sil, intel;
     public static int gold=0;
     private TextView textViewStrong;
@@ -57,11 +58,11 @@ public class activity_asasyn extends AppCompatActivity {
     protected void onResume () {
         super.onResume();
         // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
-       // kills=0;
+        // kills=0;
         //gold=0;
         if(kwiatRab>1)
         {
-         //   Toast.makeText(this, "Chyba dzialaRRR", Toast.LENGTH_LONG).show();
+            //   Toast.makeText(this, "Chyba dzialaRRR", Toast.LENGTH_LONG).show();
 
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -87,12 +88,10 @@ public class activity_asasyn extends AppCompatActivity {
             kwiatRab++;
 
             //bezpiecznik = getIntent().getIntExtra("Kod", licznik);
-           // kontrolka = getIntent().getIntExtra("kontrola", counterQ);
-
+            // kontrolka = getIntent().getIntExtra("kontrola", counterQ);
 
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,16 +114,77 @@ public class activity_asasyn extends AppCompatActivity {
             intent.putExtra("zabojca", kills);
             startActivity(intent);
             activity_asasyn.super.onBackPressed();
-             Toast.makeText(this, "Wynosze- kile: "+kills + "Zloto: "+gold, Toast.LENGTH_LONG).show();
-           //  kills=0;
+            Toast.makeText(this, "Wynosze- kile: "+kills + "Zloto: "+gold, Toast.LENGTH_LONG).show();
+            //  kills=0;
 
         }
         else
-           {
+        {
             activity_asasyn.super.onBackPressed();
-               Toast.makeText(this, "Normalne wyjscie "+gold, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Normalne wyjscie "+gold, Toast.LENGTH_LONG).show();
 
-           }
+        }
+    }
+
+    public void HelpDesk(View view)
+    {
+
+        // new AlertDialog.Builder(this)
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Lista Zlecen");
+        alertDialogBuilder.setMessage("Kazde ulepszenie zabojcy ksoztuje \n500 000 zlota\n\n"+
+                "Zlecenia wykonuja w kolejnosci ponizej \n\n"+
+                "Za kazde wykonanie zlecenia otrzymasz nagrode w postaci duzej liczby zlota\n\n"+
+                "Statystyki dopasowujemy do opisu postaci np Gargulec jest niebywale inteligentny "+
+                "oraz wytrzymaly, to znak dla nas ze musimy ulepszyc wytrzymalosc oraz sile\n\n"+
+                "Za jedno ulepszenie statystyki zabojcy przyjmujemy piec wcisniec ulepszenia, czyli "+
+                "Jedno ulepszenie sily to tak naprawde 5 ulepszen\n\n"+
+                "Wydawaj zloto uwaznie, zabojca dziala tylko w nocy, dlatego nie widzisz liczby zlota\n\n\n"+
+                "1 Twoim zleceniem jest zabicie Kejrana. " +
+                "Jest to pradawne drzewo, ktore pod wplywem zlych urokow zostalo zmienione " +
+                "w drzewiasta osmiornice. Jest niebywale silny i wytrzymaly\n\n" +
+                "2 Twoim zleceniem jest zabicie Wielkiego Lodowego Giganta " +
+                "Pochodzi on z krainy Freljordu gdzie panuje wieczna zima " +
+                "Jest bardzo wytrzymalym przeciwnikiem, uciekanie przed nim to zaden wstyd\n\n" +
+                "3 Twoim zleceniem jest zabicie Baby Cmentarnej " +
+                "Niebywale grozny stwor, jest to niespokojna dusza ktora nie moze wrocic w zaswiaty " +
+                "Jest inteligentna wytrzymala i jak na swoj wiek silna\n\n" +
+                "4 Twoim zleceniem jest zabicie Mglaka " +
+                "Szybki wytrzymaly i rowniez silny stwor z bagien w poblizu lasu\n\n" +
+                "5 Twoim zleceniem jest zabicie Gryfa " +
+                "Jest on inteligentny oraz niebywale silny. Posiada wielkie szpony " +
+                "i ogromne szkydla, ktorych podmuch jest w stanie zdmuchnac przeciwnika z pola walki\n\n" +
+                "6 Twoim zleceniem jest zabicie Zywiolaka Ognia " +
+                "Pochodzi on z pradawnej krainy Darkharr gdzie wladze sprawuje Brand." +
+                "Zywiolak jest inteligentny i bardzo wytrzymaly czasami bywa tez silny\n\n" +
+                "7 Twoim zleceniem jest zabicie Biesa " +
+                "Jest to pies z wygladem jelenia niebywale silny i wytrzymaly " +
+                "Jest stworem rozumnym, potrafi porozumiewac sie mowa ludzka\n\n " +
+                "8 Twoim zleceniem jest zabicie Widlogona " +
+                "Nazwano go tak setki lat temu mimo tego ze jego ogon przypomina bardziej miecz " +
+                "niz widly... dziwne " +
+                "Jest inteligentny i wytrzymaly a jego ogon silny\n\n" +
+                "9 Twoim zleceniem jest zabicie Gagulca " +
+                "To nie ten z Katdery Notre-Dame " +
+                "Niezwykle wytrzymaly i twardy\n\n" +
+                "10 Twoim zleceniem jest zabicie Harpii " +
+                "Ani to silne, wytrzymale... a napewno nie jest inteligentne\n\n" );
+        // alertDialogBuilder.setPositiveButton("OK", null);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+        Typeface face= ResourcesCompat.getFont(this,R.font.magic);
+        textView.setTextSize(17);
+        textView1.setTextSize(25);
+        textView.setTypeface(face);
+        textView1.setTypeface(face);
+
+        alertDialog.getWindow().setLayout(600,850);///przed dodaniem na telefon zmienic na 600/400
+
     }
 
 
@@ -138,10 +198,10 @@ public class activity_asasyn extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer stronger = Integer.parseInt(countString);
-      //  Integer goldd=Integer.parseInt(countString);
+        //  Integer goldd=Integer.parseInt(countString);
         if (stronger>0) {
             sila=sila+10;
-            gold = gold - 100000;
+            gold = gold - 500000;
             stronger=sila;
             kills++;
             //display the new value int the text view
@@ -162,20 +222,20 @@ public class activity_asasyn extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer inteligencja2 = Integer.parseInt(countString);
-       // Integer goldd=Integer.parseInt(countString2);
+        // Integer goldd=Integer.parseInt(countString2);
         if (inteligencja2>0) {
             inteligencja = inteligencja + 10;
-            gold = gold - 100000;
+            gold = gold - 500000;
             inteligencja2=inteligencja;
             kills++;
-           // goldd = gold;
+            // goldd = gold;
             //display the new value int the text view
             showCountTextView.setText(inteligencja2.toString());
 
         }
         else
         {
-           // Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -189,454 +249,733 @@ public class activity_asasyn extends AppCompatActivity {
 
         //convert value to a number and ++
         Integer HP2 = Integer.parseInt(countString);
-       // Integer goldd=Integer.parseInt(countString2);
+        // Integer goldd=Integer.parseInt(countString2);
         if (HP2>0) {
             wytrzymalosc = wytrzymalosc + 10;
-            gold = gold - 100000;
+            gold = gold - 500000;
             HP2 = wytrzymalosc;
             kills++;
             //display the new value int the text view
             showCountTextView.setText(HP2.toString());
-          //  showCountTextView2.setText(goldd.toString());
+            //  showCountTextView2.setText(goldd.toString());
         }
         else
         {
-           // Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-   /* public void BossQuest(View view) {
-        final Random random = new Random();
-        String qq = "WALKA ZE SMOKIEM";
+    public void Quest(View view) {
+        String qq = "ZLECENIE";
         final ArrayList<String> BossQuest = new ArrayList<String>();
-        BossQuest.add("Chcesz podjac walke z Czerwonym Smokiem ?");
-        BossQuest.add("Chcesz podjac walke z Zielonym Smokiem ?");
-        BossQuest.add("Chcesz podjac walke z Rubinowym Smokiem ?");
-        BossQuest.add("Chcesz podjac walke z Platynowym Smokiem ?");
-        BossQuest.add("Chccesz podjac ostateczną walkę z Bialym Smokiem Albinosem ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Kejrana." +
+                "Jest to pradawne drzewo, ktore pod wplywem zlych urokow zostalo zmienione" +
+                "w drzewiasta osmiornice. Jest niebywale silny i wytrzymaly" +
+                "Chcesz sie podjac walki z Kejranem?");
+        BossQuest.add("Twoim zleceniem jest zabicie Wielkiego Lodowego Giganta" +
+                "Pochodzi on z krainy Freljordu gdzie panuje wieczna zima" +
+                "Jest bardzo wytrzymalym przeciwnikiem, uciekanie przed nim to zaden wstyd" +
+                "Chcesz sie podjac walki z Lodowym Gigantem ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Baby Cmentarnej" +
+                "Niebywale grozny stwor, jest to niespokojna dusza ktora nie moze wrocic w zaswiaty" +
+                "Jest inteligentna wytrzymala i jak na swoj wiek silna" +
+                "Chcesz sie podjac walki z Baba cmentarna?");
+        BossQuest.add("Twoim zleceniem jest zabicie Mglaka" +
+                "Szybki wytrzymaly i rowniez silny stwor z bagien w poblizu lasu" +
+                "Chcesz sie podjac walki z Mglakiem?");
+        BossQuest.add("Twoim zleceniem jest zabicie Gryfa" +
+                "Jest on inteligentny oraz niebywale silny. Posiada wielkie szpony" +
+                "i ogromne szkydla, ktorych podmuch jest w stanie zdmuchnac przeciwnika z pola walki" +
+                "CHcesz sie podjac walki z Gryfem ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Zywiolaka Ognia" +
+                "Pochodzi on z pradawnej krainy Darkharr gdzie wladze sprawuje Brand." +
+                "Zywiolak jest inteligentny i bardzo wytrzymaly czasami bywa tez silny" +
+                "Chcesz sie podjac walki z Zwyiolakiem OGnia ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Biesa" +
+                "Jest to pies z wygladem jelenia niebywale silny i wytrzymaly" +
+                "Jest stworem rozumnym, potrafi porozumiewac sie mowa ludzka" +
+                "Chcesz sie podjac walki z Biesem ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Widlogona" +
+                "Nazwano go tak setki lat temu mimo tego ze jego ogon przypomina bardziej miecz " +
+                "niz widly... dziwne" +
+                "Jest inteligentny i wytrzymaly a jego ogon silny" +
+                "Chcesz sie podjac walki z Mieczo.. znaczy Widlogonem ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Gagulca" +
+                "To nie ten z Katdery Notre-Dame" +
+                "Niezwykle wytrzymaly i twardy" +
+                "Chcesz sie podjac walki z Gargulcem ?");
+        BossQuest.add("Twoim zleceniem jest zabicie Harpii" +
+                "Ani to silne, wytrzymale... a napewno nie jest inteligentne" +
+                "Chcesz sie podjac walki z Harpia ?");
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(qq);
-        int los= random.nextInt(100);
 
 
-
-        if(counterDragon==0)
+        if(counterM==0)
         {
             alertDialogBuilder.setMessage(BossQuest.get(0));
         }
 
-        if(counterDragon==1)
+        if(counterM==1)
         {
             alertDialogBuilder.setMessage(BossQuest.get(1));
         }
 
-        if(counterDragon==2)
+        if(counterM==2)
         {
             alertDialogBuilder.setMessage(BossQuest.get(2));
         }
 
-        if(counterDragon==3)
+        if(counterM==3)
         {
             alertDialogBuilder.setMessage(BossQuest.get(3));
         }
 
-        if(counterDragon==4)
+        if(counterM==4)
         {
             alertDialogBuilder.setMessage(BossQuest.get(4));
         }
-
-        TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
-        String countString = showCountTextView.getText().toString();
-        Integer goldd = Integer.parseInt(countString);
-        showCountTextView.setText(goldd.toString());
-
-        if (gold >= 3000000 && army >= 5500 && counterDragon==0)
+        if(counterM==5)
         {
-            if(los >25) {
-
-                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 500000 + (2000 * miastoa);
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
-
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Czerwonego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-                                // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
-
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-
-                        // Toast.makeText(activity_afterMenu.this, "Pokonałeś Czerwonego Smoka !!!", Toast.LENGTH_LONG).show();
-                        counterDragon++;
-                    }
-
-                });
-                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
-
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-
-                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
-                textView.setTextSize(17);
-                TextView textView2 = (TextView) alertDialog.findViewById(android.R.id.button1);
-                textView1.setTextSize(25);
-                textView.setTypeface(face);
-                textView1.setTypeface(face);
-                textView2.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 100000;
-                army = army - 1000;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
+            alertDialogBuilder.setMessage(BossQuest.get(5));
         }
-        else if (gold >= 5000000 && army >= 6500 && counterDragon==1) {
-            if (los > 35) {
-                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 1000000 + (2000 * miastoa);
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
-
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Zielonego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-                                // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
-
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
-                        //Toast.makeText(activity_afterMenu.this, "Pokonałeś Zielonego Smoka !!!", Toast.LENGTH_LONG).show();
-                    }
-
-                });
-                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
-
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-
-                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
-                textView.setTextSize(17);
-                textView1.setTextSize(25);
-                textView.setTypeface(face);
-                textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 200000;
-                army = army - 1500;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (gold >= 8000000 && army >= 7500 && counterDragon==2)
+        if(counterM==6)
         {
-            if(los > 45) {
-                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setMessage(BossQuest.get(6));
+        }
+        if(counterM==7)
+        {
+            alertDialogBuilder.setMessage(BossQuest.get(7));
+        }
+        if(counterM==8)
+        {
+            alertDialogBuilder.setMessage(BossQuest.get(8));
+        }
+        if(counterM==9)
+        {
+            alertDialogBuilder.setMessage(BossQuest.get(9));
+        }
 
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                        TextView showCountTextView =
+
+        if ( wytrzymalosc >= 150 && sila>=150 && counterM==0)
+        {
+            kills++;
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                        /*TextView showCountTextView =
                                 (TextView) findViewById(R.id.textViewGold);
                         String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 2000000 + 2000 * miastoa;
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                        Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 7000000;
+                       /* goldd = gold;
+                        showCountTextView.setText(goldd.toString());*/
 
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Rubinowego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Kejrana!");
 
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
+                    alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
 
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
-                    }
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
 
-                });
-                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
+                    // Toast.makeText(activity_afterMenu.this, "Pokonałeś Czerwonego Smoka !!!", Toast.LENGTH_LONG).show();
+                    counterM++;
+                }
 
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
 
-                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
-                textView.setTextSize(17);
-                textView1.setTextSize(25);
-                textView.setTypeface(face);
-                textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 300000;
-                army = army - 2000;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+            textView.setTextSize(17);
+            TextView textView2 = (TextView) alertDialog.findViewById(android.R.id.button1);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            textView2.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
+        }
+        else if (wytrzymalosc >= 200 && counterM==1)
+        {
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                        /*TextView showCountTextView =
+                                (TextView) findViewById(R.id.textViewGold);
+                        String countString = showCountTextView.getText().toString();
+                        Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 3000000;
+                       /*goldd = gold;
+                        showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Lodowego Giganta !");
+                    alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                    //Toast.makeText(activity_afterMenu.this, "Pokonałeś Zielonego Smoka !!!", Toast.LENGTH_LONG).show();
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
+        }
+        else if (wytrzymalosc >= 250 && inteligencja >= 150 && sila >= 200 &&counterM==2)
+        {
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                       /* TextView showCountTextView =
+                                (TextView) findViewById(R.id.textViewGold);
+                        String countString = showCountTextView.getText().toString();
+                        Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 10000000;
+                       /* goldd = gold;
+                        showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Babe Cmentarna!");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
         }/////////////////////////////////////////////////////////////////////////////////////////////////////////
-        else if (gold >= 12000000 && army >= 8500 && counterDragon==3)
+        else if (wytrzymalosc >= 300 && sila >= 250 && counterM==3)
         {
-            if(los > 55) {
-                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
-                        TextView showCountTextView =
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                       /* TextView showCountTextView =
                                 (TextView) findViewById(R.id.textViewGold);
                         String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 2500000 + 2000 * miastoa;
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                        Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 7000000;
+                      /*  goldd = gold;
+                        showCountTextView.setText(goldd.toString());*/
 
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Platynowego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Mglaka!");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
 
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
 
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
-                    }
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
 
-                });
-                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
 
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
 
-                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
-                textView.setTextSize(17);
-                textView1.setTextSize(25);
-                textView.setTypeface(face);
-                textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 400000;
-                army = army - 2500;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
-            }
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
         }///////////////////////////////////////////////////////////////
-        else if (gold >= 20000000 && army >= 10000 && counterDragon==4)
+        else if (sila >= 300 && inteligencja >= 200 && counterM==4)
         {
-            if(los > 70) {
 
-                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
-                        TextView showCountTextView =
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                      /*  TextView showCountTextView =
                                 (TextView) findViewById(R.id.textViewGold);
                         String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 10000000 + 2000 * miastoa;
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                        Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 7000000;
+                        /*goldd = gold;
+                        showCountTextView.setText(goldd.toString());*/
 
-                        alertDialogBuilder2.setTitle("Koniec gry");
-                        alertDialogBuilder2.setMessage("Pokonales ostatniego Bialego smoka. " +
-                                "Wszyscy mieszkancy zaznaja teraz spokoju. Chcesz kontynuowac " +
-                                "przygode" +
-                                "czy  zakonczyc ?");
-                        alertDialogBuilder2.setNeutralButton("Nie Koncz", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
+                    alertDialogBuilder2.setTitle("Zadanie wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Gryfa");
 
-                            }
-                        });
-                        alertDialogBuilder2.setNegativeButton("Zakoncz", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
-                                System.exit(0);
-                                czyPause=false;
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
 
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
-                    }
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
 
-                });
-                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
-              //  alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                //    @Override
-                  //  public void onClick(DialogInterface dialog, int i) {
-                 //   }
-             //   });
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+            //  alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            //    @Override
+            //  public void onClick(DialogInterface dialog, int i) {
+            //   }
+            //   });
 
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
 
-                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
-                textView.setTextSize(17);
-                textView1.setTextSize(25);
-                textView.setTypeface(face);
-                textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 4000);
-            }
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 4000);
+        }
+        else if (wytrzymalosc >= 350 && sila >= 350 && inteligencja >= 250 && counterM==5)
+        {
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    /*TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 10000000;
+                  /*  goldd = gold;
+                    showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Zywiolaka!");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
 
         }
-        else if(counterDragon >4)
+        else if (wytrzymalosc >= 400 && sila >= 400 && counterM==6)
         {
-            Toast.makeText(activity_afterMenu.this, "Pokonales juz wszystkie smoki !!!", Toast.LENGTH_LONG).show();
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                   /* TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 7000000;
+                  /*  goldd = gold;
+                    showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Biesa!");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
+        }
+        else if (inteligencja >= 300 && wytrzymalosc >= 450 && sila >= 450 && counterM==7)
+        {
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                   /* TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 10000000;
+                   /* goldd = gold;
+                    showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Widlogona");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
+        }
+        else if (wytrzymalosc >= 500 && counterM==8)
+        {
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                   /* TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 3000000;
+                    /*goldd = gold;
+                    showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Gargulca!");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
+        }
+        else if (counterM==9)
+        {
+
+            alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    /*TextView showCountTextView =
+                            (TextView) findViewById(R.id.textViewGold);
+                    String countString = showCountTextView.getText().toString();
+                    Integer goldd = Integer.parseInt(countString);*/
+                    gold = gold + 7777777;
+                   /* goldd = gold;
+                    showCountTextView.setText(goldd.toString());*/
+
+                    alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                    alertDialogBuilder2.setMessage("Pokonales Harpie!");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+
+                        }
+                    });
+                    AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                    alertDialog2.show();
+
+                    alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                    TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                    TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                    Typeface face = ResourcesCompat.getFont(activity_asasyn.this, R.font.magic);
+                    textView.setTextSize(17);
+                    textView1.setTextSize(25);
+                    textView.setTypeface(face);
+                    textView1.setTypeface(face);
+                    alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
+                }
+
+            });
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+            Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+            textView.setTextSize(17);
+            textView1.setTextSize(25);
+            textView.setTypeface(face);
+            textView1.setTypeface(face);
+            alertDialog.getWindow().setLayout(600, 350);
+
+        }
+
+        else if(counterM >9)
+        {
+            Toast.makeText(activity_asasyn.this, "Brak nowych zlecen !!!", Toast.LENGTH_LONG).show();
         }
         else
         {
 
             alertDialogBuilder2.setTitle("Uwaga");
-            alertDialogBuilder2.setMessage("Nie spelniasz wymagan do walki ze smokiem");
+            alertDialogBuilder2.setMessage("Nie spelniasz wymagan zlecenia");
 
             alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -650,16 +989,16 @@ public class activity_asasyn extends AppCompatActivity {
             alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
             TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
             TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-            Typeface face= ResourcesCompat.getFont(activity_afterMenu.this,R.font.magic);
+            Typeface face= ResourcesCompat.getFont(activity_asasyn.this,R.font.magic);
             textView.setTextSize(17);
             textView1.setTextSize(25);
             textView.setTypeface(face);
             textView1.setTypeface(face);
-            alertDialog2.getWindow().setLayout(600,300);
+            alertDialog2.getWindow().setLayout(600,470);
         }
 
 
-    }*/
+    }
 
 
 

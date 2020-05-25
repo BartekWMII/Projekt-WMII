@@ -55,7 +55,7 @@ public class activity_afterMenu extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private Button button;
     int counterDragon=0;
-    public static int bezpiecznik,licznik,kontrolka,counterQ,goldCity,armyCity,zabojca,kills,goldB,goldK;
+    public static int bezpiecznik,licznik,kontrolka,counterQ,goldCity,armyCity,zabojca,kills,goldB,goldK,pepega;
 
 
    @Override
@@ -79,7 +79,7 @@ public class activity_afterMenu extends AppCompatActivity {
         super.onResume();
        // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
 
-       if(kwiat>0)
+       if(kwiat>1)
         {
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -383,8 +383,11 @@ public class activity_afterMenu extends AppCompatActivity {
 
     public void moveToKiller(View view)
     {
+        pepega=0;
+        pepega++;
         Intent intent = new Intent(this,activity_asasyn.class);
-        //intent.putExtra("Gold7",goldCity);
+        intent.putExtra("Gold7",gold);
+        intent.putExtra("pepega", pepega);
         startActivity(intent);
     }
 
