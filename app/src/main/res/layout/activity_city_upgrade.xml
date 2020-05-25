@@ -229,6 +229,7 @@
                 android:layout_height="44dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
+                android:onClick="moveToKiller"
                 android:text="ZABOJCA"
                 android:textColor="#EAE6E6"
                 android:textColorHighlight="#FFFFFF"

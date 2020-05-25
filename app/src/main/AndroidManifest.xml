@@ -15,17 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AlertDialogTheme.Center">
-        <activity android:name="com.example.swords.secret"></activity>
-        <activity android:name="com.example.swords.activity_city_upgrade" />
+        <activity android:name=".activity_asasyn"></activity>
+        <activity android:name=".secret" />
+        <activity android:name=".activity_city_upgrade" />
 
         <service
-            android:name="com.example.swords.MusicService"
+            android:name=".MusicService"
             android:enabled="true" />
 
-        <activity android:name="com.example.swords.activity_afterMenu" />
-        <activity android:name="com.example.swords.activity_settings" />
-        <activity android:name="com.example.swords.activity_menu" />
-        <activity android:name="com.example.swords.MainActivity">
+        <activity android:name=".activity_afterMenu" />
+        <activity android:name=".activity_settings" />
+        <activity android:name=".activity_menu" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

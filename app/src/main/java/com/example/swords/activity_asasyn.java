@@ -1,496 +1,212 @@
 package com.example.swords;
 
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class activity_afterMenu extends AppCompatActivity {
+public class activity_asasyn extends AppCompatActivity {
 
-    final int DELAYED_TIME = 140;
+
     Context context = this;
-    public static int gold =2000000 ;
-    public static int army = 5000;
-    public static int goldSekret=0;
-    public static int armySekret=0;
-    public static int stal =50;
-    public static int stalimp=0;
-    public static int miastoa=0;
-    public static int miastoimpa=0;
-    public static int miastob=0;
-    public static int miastoimpb=0;
-    public static int miastoc=0;
-    public static int miastoimpc=0;
-    public static int miastod=0;
-    public static int miastoimpd=0;
-    public static  Boolean czyPause=false;
-    public static int kwiat=0;
-    public static int drzewo=0;
-    public static String txt,gld;
-    boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
-    boolean SprStal=false, SprStalImp=false;
-    ///Spr -> stała zmienna dla AfterMenu, która ma się zmieniać TYLKO WTEDY GDY Spr*-*Imp ma inną wartość. W zamyśle. Spr!=SprImp dodajemy importowane wartości do obecnie istniejących
-    ///a następnie zmieniamy wartości dla Spr na SprImp. SprImp zostaje w swoim stanie, zmienia się w momencie zmiany któregoś z intów.
-    ///Każdy int ma 2 dedykowane wartości Boolowskie
 
-    public static int licznikPodatki=1;
+    private int sila=100;
+    private int inteligencja=100;
+    private int wytrzymalosc=100;
+    public static int kwiatRab;
+    private int drzewoRab;
+    public static int kills=0;
+    public static int goldB=0;
+    public static String wytrz, sil, intel;
+    public static int gold=0;
+    private TextView textViewStrong;
+    private TextView textViewIQ;
+    private TextView textViewHP;
 
-    public TextView textViewGold;
-    public TextView textViewArmy;
-    private AlertDialog.Builder dialogBuilder;
-    private Button button;
-    int counterDragon=0;
-    public static int bezpiecznik,licznik,kontrolka,counterQ,goldCity,armyCity,zabojca,kills,goldB,goldK;
-
-
-   @Override
+    @Override
     protected void onPause() {
         super.onPause();
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("daneG", textViewGold.getText().toString());
-        editor.putString("dane", textViewArmy.getText().toString());
-        editor.putInt("kwiat2", kwiat);
-        kwiat++;
-     //  Toast.makeText(activity_afterMenu.this, "DzialaP " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
+        editor.putString("daneS", textViewStrong.getText().toString());
+        editor.putString("daneI", textViewIQ.getText().toString());
+        editor.putString("daneW", textViewHP.getText().toString());
+        editor.putInt("kwiatRab", kwiatRab);
+        kwiatRab++;
+        //Toast.makeText(this, "Chyba dziala", Toast.LENGTH_LONG).show();
+
         editor.commit();
     }
-
 
     @Override
     protected void onResume () {
         super.onResume();
-       // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
-
-       if(kwiat>1)
+        // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
+       // kills=0;
+        //gold=0;
+        if(kwiatRab>1)
         {
+         //   Toast.makeText(this, "Chyba dzialaRRR", Toast.LENGTH_LONG).show();
+
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            drzewo=sharedPref.getInt("kwiat2",1 );
-        txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-        gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-             kwiat=drzewo;
-      //  Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
-        TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
-        TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-        showCountTextView.setText(gld);
-        showCountTextView2.setText(txt);
-        try{
-            army = Integer.parseInt(txt);
-            gold = Integer.parseInt(gld);
-        } catch (Exception e) {
-           // e.printStackTrace();
+            drzewoRab=sharedPref.getInt("kwiatRab",1 );
+            sil = sharedPref.getString("daneS", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
+            intel = sharedPref.getString("daneI", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
+            wytrz = sharedPref.getString("daneW", "");
+            kwiatRab=drzewoRab;
+            TextView showCountTextView = (TextView) findViewById(R.id.textViewStrong);
+            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewIQ);
+            TextView showCountTextView3 = (TextView) findViewById(R.id.textViewHP);
+            showCountTextView.setText(sil);
+            showCountTextView2.setText(intel);
+            showCountTextView3.setText(wytrz);
+            try{
+                sila = Integer.parseInt(sil);
+                inteligencja = Integer.parseInt(intel);
+                wytrzymalosc = Integer.parseInt(wytrz);
+            } catch (Exception e) {
+                // e.printStackTrace();
+            }
+
+            kwiatRab++;
+
+            //bezpiecznik = getIntent().getIntExtra("Kod", licznik);
+           // kontrolka = getIntent().getIntExtra("kontrola", counterQ);
+
+
         }
-
-        kwiat++;
-
-            bezpiecznik = getIntent().getIntExtra("Kod", licznik);
-            kontrolka = getIntent().getIntExtra("kontrola", counterQ);
-           // zabojca= getIntent().getIntExtra("zabojca",kills);
-
-
-            if(bezpiecznik==1)
-            {
-
-                goldSekret=getIntent().getIntExtra("Gold666",gold);
-                armySekret=getIntent().getIntExtra("Armia666",army);
-
-                miastoimpa=getIntent().getIntExtra("skarb",miastoa);
-                miastoimpb=getIntent().getIntExtra("kosz",miastob);
-                miastoimpc=getIntent().getIntExtra("kop",miastoc);
-                miastoimpd=getIntent().getIntExtra("awan",miastod);
-
-                TextView showCountTextViewGol = (TextView) findViewById(R.id.textViewGold);
-                TextView showCountTextViewArm = (TextView) findViewById(R.id.textViewArmy);
-                //TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString = showCountTextView.getText().toString();
-                String countString2 = showCountTextView2.getText().toString();
-                Integer goldd = Integer.parseInt(countString);
-                Integer armyy = Integer.parseInt(countString2);
-
-                gold=gold+goldSekret;
-                army=army+armySekret;
-
-                miastoa=miastoimpa;
-                miastob=miastoimpb;
-                miastoc=miastoimpc;
-                miastod=miastoimpd;
-                goldd = gold;
-                armyy = army;
-                showCountTextViewGol.setText(goldd.toString());
-                showCountTextViewArm.setText(armyy.toString());
-                //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
-                bezpiecznik=0;
-            }
-            Toast.makeText(this, "zabojca przed wejsciem: "+zabojca, Toast.LENGTH_LONG).show();
-
-            if(zabojca>0)
-            {
-
-                goldK=getIntent().getIntExtra("goldKill",gold);
-
-                TextView showCountTextView3 = (TextView) findViewById(R.id.textViewGold);
-                String countString = showCountTextView3.getText().toString();
-                Integer goldd = Integer.parseInt(countString);
-                Toast.makeText(this, "kills: "+zabojca + "Zloto: "+goldK, Toast.LENGTH_LONG).show();
-
-                gold=gold+goldK;
-
-                goldd = gold;
-                showCountTextView3.setText(goldd.toString());
-               // Toast.makeText(this, "kills: "+zabojca + "Ile zlota: "+goldd, Toast.LENGTH_LONG).show();
-
-                zabojca=0;
-               // kills=0;
-               // goldK=0;
-            }
-           // zabojca=0;
-           // kills=0;
-           // goldK=0;
-
-    }
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        kwiat++;
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_after_menu);
-        textViewGold = findViewById(R.id.textViewGold);
-        textViewArmy = findViewById(R.id.textViewArmy);
-
-
-       // Toast.makeText(activity_afterMenu.this, "Createee", Toast.LENGTH_LONG).show();
-
-        button = findViewById(R.id.buttonCityUP);
-      /*  button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                moveToCityUpgrade();
-            }
-        });*/
-
-
-        bezpiecznik = getIntent().getIntExtra("Kod", licznik);
-        kontrolka = getIntent().getIntExtra("kontrola", counterQ);
-        zabojca=getIntent().getIntExtra("zabojca", kills);
-        Toast.makeText(this,"Przynosze kilsy: "+zabojca, Toast.LENGTH_SHORT).show();
-
-
-        /*if(bezpiecznik==1)
-        {
-
-            goldSekret=getIntent().getIntExtra("Gold666",gold);
-            armySekret=getIntent().getIntExtra("Armia666",army);
-
-            miastoimpa=getIntent().getIntExtra("skarb",miastoa);
-            miastoimpb=getIntent().getIntExtra("kosz",miastob);
-            miastoimpc=getIntent().getIntExtra("kop",miastoc);
-
-            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
-            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-            //TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-            String countString = showCountTextView.getText().toString();
-            String countString2 = showCountTextView2.getText().toString();
-            Integer goldd = Integer.parseInt(countString);
-            Integer armyy = Integer.parseInt(countString2);
-
-            gold=gold+goldSekret;
-            army=army+armySekret;
-
-            miastoa=miastoa+miastoimpa;
-            miastob=miastob+miastoimpb;
-            miastoc=miastoc+miastoimpc;
-            goldd = gold;
-            armyy = army;
-            showCountTextView.setText(goldd.toString());
-            showCountTextView2.setText(armyy.toString());
-            //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
-            bezpiecznik=0;
-        }*/
-
-
-        SprArmyImp = getIntent().getBooleanExtra("ArmiaZ", SprArmy);
-        SprGoldImp = getIntent().getBooleanExtra("GoldZ", SprGold);
-        SprCityAImp = getIntent().getBooleanExtra("CityAZ", SprCityA);
-        SprCityBImp = getIntent().getBooleanExtra("CityBZ", SprCityB);
-        SprCityCImp = getIntent().getBooleanExtra("CityCZ", SprCityC);
-        SprStalImp = getIntent().getBooleanExtra("StalZ", SprStal);
-        miastoimpd=getIntent().getIntExtra("awan",miastod);
-        miastod=miastoimpd;
-
-        if (SprGold == SprGoldImp) {
-            goldSekret = getIntent().getIntExtra("gold666", army);
-            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewGold);
-            String countString2 = showCountTextView2.getText().toString();
-            Integer armyy = Integer.parseInt(countString2);
-        }
-
-        if (SprArmy == SprArmyImp) {
-            armySekret = getIntent().getIntExtra("Armia666", army);
-            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-            String countString2 = showCountTextView2.getText().toString();
-            Integer goldd = Integer.parseInt(countString2);
-
-        }
-
-        if (SprCityA != SprCityAImp) {
-            miastoimpa = getIntent().getIntExtra("skarb", miastoa);
-            miastoa = miastoimpa;
-        }
-
-        if (SprCityB != SprCityBImp) {
-            miastoimpb = getIntent().getIntExtra("kosz", miastob);
-            miastob = miastoimpb;
-        }
-
-        if (SprCityC != SprCityCImp) {
-            miastoimpc = getIntent().getIntExtra("kop", miastoc);
-            miastoc = miastoimpc;
-        }
-
-        if (SprStal != SprStalImp) {
-            stalimp = getIntent().getIntExtra("Stal", stal);
-            TextView ShowStal=(TextView) findViewById(R.id.textViewIleStal);
-            String StalWys= ShowStal.getText().toString();
-            Integer stall=Integer.parseInt(StalWys);
-            stal = stalimp;
-            stall=stal;
-            ShowStal.setText(stall.toString());
-        }
-
-        if(kontrolka==2)
-        {
-            gold=getIntent().getIntExtra("goldSekret",goldCity);
-            army=getIntent().getIntExtra("Armia2",armyCity);
-
-            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
-            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-            String countString2 = showCountTextView2.getText().toString();
-            String countString = showCountTextView.getText().toString();
-            Integer goldd = Integer.parseInt(countString);
-            Integer armyy = Integer.parseInt(countString2);
-            goldd = gold;
-            armyy = army;
-            showCountTextView.setText(goldd.toString());
-            showCountTextView2.setText(armyy.toString());
-            //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
-            kontrolka=1;
-        }
-        Toast.makeText(this, "kills: "+zabojca , Toast.LENGTH_LONG).show();
-
-
-
-        // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
-
+        setContentView(R.layout.acivity_asasyn);
+        kwiatRab++;
+        textViewStrong = findViewById(R.id.textViewStrong);
+        textViewIQ = findViewById(R.id.textViewIQ);
+        textViewHP=findViewById(R.id.textViewHP);
+        kills=0;
+        gold=0;
     }
 
-    public void onBackPressed()
-    {
-        //Intent intent = new Intent(getApplicationContext(),activity_menu.class);
-       // startActivity(intent);
-        //activity_afterMenu.super.onBackPressed();
-        //super.onBackPressed();
+    public void onBackPressed() {
+        if (kills > 0) {
+            // new AlertDialog.Builder(this)
+
+            Intent intent = new Intent(getApplicationContext(), activity_afterMenu.class);
+            intent.putExtra("goldKill", gold);
+            intent.putExtra("zabojca", kills);
+            startActivity(intent);
+            activity_asasyn.super.onBackPressed();
+             Toast.makeText(this, "Wynosze- kile: "+kills + "Zloto: "+gold, Toast.LENGTH_LONG).show();
+           //  kills=0;
+
+        }
+        else
+           {
+            activity_asasyn.super.onBackPressed();
+               Toast.makeText(this, "Normalne wyjscie "+gold, Toast.LENGTH_LONG).show();
+
+           }
     }
 
 
-
-    public void moveToCityUpgrade(View view)
-    {
-        Intent intent = new Intent(this,activity_city_upgrade.class);
-        intent.putExtra("Gold",gold);
-        intent.putExtra("Armia",army);
-        intent.putExtra("Stal",stal);
-        intent.putExtra("skarb",miastoa);
-        intent.putExtra("kosz",miastob);
-        intent.putExtra("kop",miastoc);
-        startActivity(intent);
-    }
-
-    public void onClick(View view) {
+    public void onClickStrong(View view) {
         TextView showCountTextView =
-                (TextView) findViewById(R.id.textViewArmy);
-        TextView showCountTextView2 =
-                (TextView) findViewById(R.id.textViewGold);
+                (TextView) findViewById(R.id.textViewStrong);
+
 
         //get the value of the text view
         String countString = showCountTextView.getText().toString();
-        String countString2 = showCountTextView2.getText().toString();
+
         //convert value to a number and ++
-        Integer armyy = Integer.parseInt(countString);
-        Integer goldd=Integer.parseInt(countString2);
-        if (armyy>0) {
-            army = army + 100;
+        Integer stronger = Integer.parseInt(countString);
+      //  Integer goldd=Integer.parseInt(countString);
+        if (stronger>0) {
+            sila=sila+10;
             gold = gold - 100000;
-            armyy=army;
-            goldd = gold;
+            stronger=sila;
+            kills++;
             //display the new value int the text view
-            showCountTextView.setText(armyy.toString());
-            showCountTextView2.setText(goldd.toString());
+            showCountTextView.setText(stronger.toString());
         }
         else
         {
-            Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClickWork(View view) {
+    public void onClickIQ(View view) {
         TextView showCountTextView =
-                (TextView) findViewById(R.id.textViewGold);
+                (TextView) findViewById(R.id.textViewIQ);
+
         //get the value of the text view
         String countString = showCountTextView.getText().toString();
+
         //convert value to a number and ++
-        Integer goldd = Integer.parseInt(countString);
-        goldd = goldd +5000 + 50*miastod;
-        gold=goldd;
-        //display the new value int the text view
-        showCountTextView.setText(goldd.toString());
-    }
-
-    public void moveToKiller(View view)
-    {
-        Intent intent = new Intent(this,activity_asasyn.class);
-        //intent.putExtra("Gold7",goldCity);
-        startActivity(intent);
-    }
-
-
-    public void NextQuest(View view) {
-        final Random random = new Random();
-        String q = "Nowe Zadanie!";
-        String qq = "WALKA ZE SMOKIEM";
-        final ArrayList<String> aListQuest = new ArrayList<String>();
-
-        aListQuest.add("Znaleziono slady nieznanej postaci, podazać za nimi i sprawdzic co to ?");
-        aListQuest.add("W pobliskiej jaskni udomowila się pantera, zagraza naszym ludziom." +
-                " Zabic jz ?");
-        aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potezna burza, zabezpieczyz nasze plony ?");
-        aListQuest.add("Z pobliskiej wioski zniknela ludnosc, rozpoczac poszukiwania ?");
-        aListQuest.add("W pobliżu pewna grupa rozbojników rabuje mieszkancow, zaatakowac ich ?");
-        aListQuest.add("W jednej z naszej wiosek panuje wirus, znalezc jego źrddlo ?");
-        aListQuest.add("Nasza dostawa zywnosci oraz uzbrojenia nie dotarla do punktu"+
-                "docelowego. Wyslac zwiad ?");
-        aListQuest.add("Zwiad donosi że w okolicy grasuje ogromny niedzwiedz."+
-                "Wyslać zwiad na polowanie ?");
-        aListQuest.add("Na krolewski rynek wdarlo się stado dzikow! Zabic je?");
-        aListQuest.add("Kryzys w krolestwie! Rabusie okradaja miejscowych!"+ "Wyslac patrol na rynek?");
-
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        final String a = aListQuest.get(random.nextInt(aListQuest.size()));
-        alertDialogBuilder.setMessage(a);
-        alertDialogBuilder.setTitle(q);
-
-        //alertDialogBuilder.setIcon(R.drawable.question);
-        // alertDialogBuilder.setMessage("Na pewno ?");
-        //alertDialogBuilder.setCancelable(false);
-
-        alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-
-            int b = random.nextInt(100);
-
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                licznikPodatki++;
-                if (b >40) {
-                    TextView showCountTextView =
-                            (TextView) findViewById(R.id.textViewGold);
-                    String countString = showCountTextView.getText().toString();
-                    Integer goldd = Integer.parseInt(countString);
-                    gold = gold + 250000 + (20)*miastoa;
-
-                    if (b%5==0)
-                    {
-                        Integer stall = stal;
-                        stal=stal+2+(10*miastoc);
-                        stall=stal;
-                        Toast.makeText(activity_afterMenu.this, "Znaleziono trochę stali!!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    goldd=gold;
-                    showCountTextView.setText(goldd.toString());
-                    Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_SHORT).show();
-
-
-                } else {
-                    TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
-                    TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                    String countString2 = showCountTextView2.getText().toString();
-                    String countString = showCountTextView.getText().toString();
-                    Integer goldd = Integer.parseInt(countString);
-                    Integer armyy = Integer.parseInt(countString2);
-                    gold = gold - 50000 + (5)*miastoa;
-                    army = army - 100 +(1)*miastob;
-                    goldd=gold;
-                    armyy=army;
-                    showCountTextView.setText(goldd.toString());
-                    showCountTextView2.setText(armyy.toString());
-                    Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                //Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-        if(licznikPodatki >7)
-        {
-            TextView showCountTextView =
-                    (TextView) findViewById(R.id.textViewGold);
-            //get the value of the text view
-            String countString = showCountTextView.getText().toString();
-            //convert value to a number and ++
-            Integer goldd = Integer.parseInt(countString);
-            goldd = goldd - 100000 +(1000*miastoa);
-            gold=goldd;
+        Integer inteligencja2 = Integer.parseInt(countString);
+       // Integer goldd=Integer.parseInt(countString2);
+        if (inteligencja2>0) {
+            inteligencja = inteligencja + 10;
+            gold = gold - 100000;
+            inteligencja2=inteligencja;
+            kills++;
+           // goldd = gold;
             //display the new value int the text view
-            showCountTextView.setText(goldd.toString());
-             Toast.makeText(activity_afterMenu.this, "Zaplacono podatki !!!", Toast.LENGTH_SHORT).show();
-             licznikPodatki=0;
+            showCountTextView.setText(inteligencja2.toString());
 
         }
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-        alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-        Typeface face= ResourcesCompat.getFont(this,R.font.magic);
-        textView.setTextSize(17);
-        textView1.setTextSize(25);
-
-        // TextView textView1 = (TextView) alertDialogBuilder.findViewById(android.R.id.title);
-        //  Typeface face1= ResourcesCompat.getFont(this,R.font.magic);
-        textView.setTypeface(face);
-        textView1.setTypeface(face);
-
-
-        alertDialog.getWindow().setLayout(600,350);///przed dodaniem na telefon zmienic na 600/400
-
+        else
+        {
+           // Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    //////
-    public void BossQuest(View view) {
+    public void onClickHP(View view) {
+        TextView showCountTextView =
+                (TextView) findViewById(R.id.textViewHP);
+
+
+        //get the value of the text view
+        String countString = showCountTextView.getText().toString();
+
+        //convert value to a number and ++
+        Integer HP2 = Integer.parseInt(countString);
+       // Integer goldd=Integer.parseInt(countString2);
+        if (HP2>0) {
+            wytrzymalosc = wytrzymalosc + 10;
+            gold = gold - 100000;
+            HP2 = wytrzymalosc;
+            kills++;
+            //display the new value int the text view
+            showCountTextView.setText(HP2.toString());
+          //  showCountTextView2.setText(goldd.toString());
+        }
+        else
+        {
+           // Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+   /* public void BossQuest(View view) {
         final Random random = new Random();
         String qq = "WALKA ZE SMOKIEM";
         final ArrayList<String> BossQuest = new ArrayList<String>();
@@ -865,9 +581,9 @@ public class activity_afterMenu extends AppCompatActivity {
                         alertDialogBuilder2.setNegativeButton("Zakoncz", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                    finish();
-                                    System.exit(0);
-                                    czyPause=false;
+                                finish();
+                                System.exit(0);
+                                czyPause=false;
                             }
                         });
                         AlertDialog alertDialog2 = alertDialogBuilder2.create();
@@ -891,11 +607,11 @@ public class activity_afterMenu extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int i) {
                     }
                 });
-                /*alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });*/
+              //  alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                //    @Override
+                  //  public void onClick(DialogInterface dialog, int i) {
+                 //   }
+             //   });
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
@@ -943,5 +659,8 @@ public class activity_afterMenu extends AppCompatActivity {
         }
 
 
-    }
+    }*/
+
+
+
 }
