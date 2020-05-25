@@ -66,6 +66,7 @@ public class activity_afterMenu extends AppCompatActivity {
         editor.putString("daneG", textViewGold.getText().toString());
         editor.putString("dane", textViewArmy.getText().toString());
         editor.putInt("kwiat2", kwiat);
+        editor.putInt("daneS", stal);
         kwiat++;
      //  Toast.makeText(activity_afterMenu.this, "DzialaP " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         editor.commit();
@@ -77,7 +78,7 @@ public class activity_afterMenu extends AppCompatActivity {
         super.onResume();
        // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
 
-       if(kwiat>1)
+       if(kwiat>0)
         {
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -85,7 +86,7 @@ public class activity_afterMenu extends AppCompatActivity {
         txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
         gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
              kwiat=drzewo;
-      //  Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+        Toast.makeText(activity_afterMenu.this, "Dziala zapis " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
         showCountTextView.setText(gld);
@@ -101,6 +102,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
             bezpiecznik = getIntent().getIntExtra("Kod", licznik);
             kontrolka = getIntent().getIntExtra("kontrola", counterQ);
+            stalimp=getIntent().getIntExtra("Stal",stal);
            // zabojca= getIntent().getIntExtra("zabojca",kills);
 
 
@@ -110,10 +112,8 @@ public class activity_afterMenu extends AppCompatActivity {
                 goldSekret=getIntent().getIntExtra("Gold666",gold);
                 armySekret=getIntent().getIntExtra("Armia666",army);
 
-                miastoimpa=getIntent().getIntExtra("skarb",miastoa);
-                miastoimpb=getIntent().getIntExtra("kosz",miastob);
-                miastoimpc=getIntent().getIntExtra("kop",miastoc);
-                miastoimpd=getIntent().getIntExtra("awan",miastod);
+
+                //stalimp=getIntent().getIntExtra("Stal",stal);
 
                 TextView showCountTextViewGol = (TextView) findViewById(R.id.textViewGold);
                 TextView showCountTextViewArm = (TextView) findViewById(R.id.textViewArmy);
@@ -126,10 +126,8 @@ public class activity_afterMenu extends AppCompatActivity {
                 gold=gold+goldSekret;
                 army=army+armySekret;
 
-                miastoa=miastoimpa;
-                miastob=miastoimpb;
-                miastoc=miastoimpc;
-                miastod=miastoimpd;
+
+                stal=stalimp;
                 goldd = gold;
                 armyy = army;
                 showCountTextViewGol.setText(goldd.toString());
@@ -138,6 +136,17 @@ public class activity_afterMenu extends AppCompatActivity {
                 bezpiecznik=0;
             }
             Toast.makeText(this, "zabojca przed wejsciem: "+zabojca, Toast.LENGTH_LONG).show();
+            stal=stalimp;
+
+            miastoimpa=getIntent().getIntExtra("skarb",miastoa);
+            miastoimpb=getIntent().getIntExtra("kosz",miastob);
+            miastoimpc=getIntent().getIntExtra("kop",miastoc);
+            miastoimpd=getIntent().getIntExtra("awan",miastod);
+
+            miastoa=miastoimpa;
+            miastob=miastoimpb;
+            miastoc=miastoimpc;
+            miastod=miastoimpd;
 
             if(zabojca>0)
             {
@@ -416,7 +425,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     Integer goldd = Integer.parseInt(countString);
                     gold = gold + 250000 + (20)*miastoa;
 
-                    if (b%5==0)
+                    if (b%2==0)
                     {
                         Integer stall = stal;
                         stal=stal+2+(10*miastoc);
