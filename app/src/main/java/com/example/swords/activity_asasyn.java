@@ -60,7 +60,7 @@ public class activity_asasyn extends AppCompatActivity {
         // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
         // kills=0;
         //gold=0;
-        if(kwiatRab>1)
+        if(kwiatRab>0)
         {
             //   Toast.makeText(this, "Chyba dzialaRRR", Toast.LENGTH_LONG).show();
 
@@ -114,14 +114,14 @@ public class activity_asasyn extends AppCompatActivity {
             intent.putExtra("zabojca", kills);
             startActivity(intent);
             activity_asasyn.super.onBackPressed();
-            Toast.makeText(this, "Wynosze- kile: "+kills + "Zloto: "+gold, Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "Wynosze- kile: "+kills + "Zloto: "+gold, Toast.LENGTH_LONG).show();
             //  kills=0;
 
         }
         else
         {
             activity_asasyn.super.onBackPressed();
-            Toast.makeText(this, "Normalne wyjscie "+gold, Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "Normalne wyjscie "+gold, Toast.LENGTH_LONG).show();
 
         }
     }

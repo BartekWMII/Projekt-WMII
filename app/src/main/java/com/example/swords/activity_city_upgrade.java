@@ -61,7 +61,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         editor.putString("daneS",textViewIleStal.getText().toString());
         editor.putInt("kwiat3", KwiatMiasta);
         KwiatMiasta++;
-        Toast.makeText(activity_city_upgrade.this, "DzialaPauza " + UpCityA + " " + UpCityB+" "+" "+ UpCityC+" "+" st: "+UpCityStal+ " " +KwiatMiasta, Toast.LENGTH_LONG).show();
+       // Toast.makeText(activity_city_upgrade.this, "DzialaPauza " + UpCityA + " " + UpCityB+" "+" "+ UpCityC+" "+" st: "+UpCityStal+ " " +KwiatMiasta, Toast.LENGTH_LONG).show();
         editor.commit();
 
     }
@@ -85,7 +85,7 @@ public class activity_city_upgrade extends AppCompatActivity {
 
             KwiatMiasta = DrzewoMiasta;
 
-            Toast.makeText(activity_city_upgrade.this, "Dziala wznowienie: " + UpCityA + " Kasztany: " + UpCityB + " kopalnie: "+ UpCityC + " Awanse: " + UpCityD + " staL: " +UpCityStal, Toast.LENGTH_LONG).show();
+           // Toast.makeText(activity_city_upgrade.this, "Dziala wznowienie: " + UpCityA + " Kasztany: " + UpCityB + " kopalnie: "+ UpCityC + " Awanse: " + UpCityD + " staL: " +UpCityStal, Toast.LENGTH_LONG).show();
 
             TextView showCountTextView = (TextView) findViewById(R.id.textViewSkarb);
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewKoszar);
@@ -107,13 +107,13 @@ public class activity_city_upgrade extends AppCompatActivity {
                 // e.printStackTrace();
             }
 
-            Toast.makeText(context, "Jeszcze nie wpisałem", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context, "Jeszcze nie wpisałem", Toast.LENGTH_SHORT).show();
             showCountTextView.setText(String.valueOf(miastoa));
             showCountTextView2.setText(String.valueOf(miastob));
             showCountTextView3.setText(String.valueOf(miastoc));
             showCountTextView4.setText(String.valueOf(miastod));
             showCountTextView5.setText(String.valueOf(stal));
-            Toast.makeText(context, "Juz wpisałem",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context, "Juz wpisałem",Toast.LENGTH_SHORT).show();
 
 
 

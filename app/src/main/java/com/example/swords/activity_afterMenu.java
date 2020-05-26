@@ -36,16 +36,12 @@ public class activity_afterMenu extends AppCompatActivity {
     public static int miastoimpc=0;
     public static int miastod=0;
     public static int miastoimpd=0;
-    public static  Boolean czyPause=false;
-    public static String stl;
     public static int kwiat=0;
     public static int drzewo=0;
     public static String txt,gld;
     boolean SprCityA=false, SprCityAImp=false, SprCityBImp=false, SprCityB=false, SprCityCImp=false, SprCityC=false, SprArmyImp=false, SprArmy=false, SprGold=false, SprGoldImp=false;
     boolean SprStal=false, SprStalImp=false;
-    ///Spr -> stała zmienna dla AfterMenu, która ma się zmieniać TYLKO WTEDY GDY Spr*-*Imp ma inną wartość. W zamyśle. Spr!=SprImp dodajemy importowane wartości do obecnie istniejących
-    ///a następnie zmieniamy wartości dla Spr na SprImp. SprImp zostaje w swoim stanie, zmienia się w momencie zmiany któregoś z intów.
-    ///Każdy int ma 2 dedykowane wartości Boolowskie
+
 
     public static int licznikPodatki=1;
 
@@ -66,18 +62,14 @@ public class activity_afterMenu extends AppCompatActivity {
         editor.putString("daneG", textViewGold.getText().toString());
         editor.putString("dane", textViewArmy.getText().toString());
         editor.putInt("kwiat2", kwiat);
-        //editor.putInt("daneStal", stal);
         kwiat++;
-     //  Toast.makeText(activity_afterMenu.this, "DzialaP " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         editor.commit();
-        bezpiecznik=0;
     }
 
 
     @Override
     protected void onResume () {
         super.onResume();
-       // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
 
        if(kwiat>1)
         {
@@ -102,7 +94,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
         kwiat++;
 
-        
+
 
 
             if(bezpiecznik>0)
@@ -110,7 +102,6 @@ public class activity_afterMenu extends AppCompatActivity {
 
                 goldSekret=getIntent().getIntExtra("Gold666",gold);
                 armySekret=getIntent().getIntExtra("Armia666",army);
-
 
                 TextView showCountTextViewGol = (TextView) findViewById(R.id.textViewGold);
                 TextView showCountTextViewArm = (TextView) findViewById(R.id.textViewArmy);
@@ -132,7 +123,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
                 bezpiecznik=0;
             }
-            Toast.makeText(this, "zabojca przed wejsciem: "+zabojca, Toast.LENGTH_LONG).show();
+          //  Toast.makeText(this, "zabojca przed wejsciem: "+zabojca, Toast.LENGTH_LONG).show();
 
 
             miastoimpa=getIntent().getIntExtra("skarb",miastoa);
@@ -153,7 +144,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 TextView showCountTextView3 = (TextView) findViewById(R.id.textViewGold);
                 String countString = showCountTextView3.getText().toString();
                 Integer goldd = Integer.parseInt(countString);
-                Toast.makeText(this, "kills: "+zabojca + "Zloto: "+goldK, Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, "kills: "+zabojca + "Zloto: "+goldK, Toast.LENGTH_LONG).show();
 
                 gold=gold+goldK;
 
@@ -178,22 +169,11 @@ public class activity_afterMenu extends AppCompatActivity {
         setContentView(R.layout.activity_after_menu);
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
-        bezpiecznik=0;
-
-       // Toast.makeText(activity_afterMenu.this, "Createee", Toast.LENGTH_LONG).show();
-
         button = findViewById(R.id.buttonCityUP);
-
-
 
         bezpiecznik = getIntent().getIntExtra("Kod", licznik);
         kontrolka = getIntent().getIntExtra("kontrola", counterQ);
         zabojca=getIntent().getIntExtra("zabojca", kills);
-        Toast.makeText(this,"Przynosze kilsy: "+zabojca, Toast.LENGTH_SHORT).show();
-
-
-
-
 
         SprArmyImp = getIntent().getBooleanExtra("ArmiaZ", SprArmy);
         SprGoldImp = getIntent().getBooleanExtra("GoldZ", SprGold);
@@ -202,6 +182,7 @@ public class activity_afterMenu extends AppCompatActivity {
         SprCityCImp = getIntent().getBooleanExtra("CityCZ", SprCityC);
         SprStalImp = getIntent().getBooleanExtra("StalZ", SprStal);
         miastoimpd=getIntent().getIntExtra("awan",miastod);
+
         miastod=miastoimpd;
 
         if (SprGold == SprGoldImp) {
@@ -216,7 +197,6 @@ public class activity_afterMenu extends AppCompatActivity {
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
             String countString2 = showCountTextView2.getText().toString();
             Integer goldd = Integer.parseInt(countString2);
-
         }
 
         if (SprCityA != SprCityAImp) {
@@ -235,8 +215,7 @@ public class activity_afterMenu extends AppCompatActivity {
         }
 
 
-
-        if(kontrolka==2)
+        if(kontrolka==1)
         {
             gold=getIntent().getIntExtra("goldSekret",goldCity);
             army=getIntent().getIntExtra("Armia2",armyCity);
@@ -251,32 +230,21 @@ public class activity_afterMenu extends AppCompatActivity {
             armyy = army;
             showCountTextView.setText(goldd.toString());
             showCountTextView2.setText(armyy.toString());
-            //Toast.makeText(activity_afterMenu.this,"Dziala"+goldd+armyy , Toast.LENGTH_LONG).show();
-            kontrolka=1;
+            kontrolka=0;
         }
-        Toast.makeText(this, "kills: "+zabojca , Toast.LENGTH_LONG).show();
-
-
-
-        // Toast.makeText(activity_afterMenu.this,"Dziala"+gold+army , Toast.LENGTH_LONG).show();
 
     }
 
     public void onBackPressed()
     {
-        //Intent intent = new Intent(getApplicationContext(),activity_menu.class);
-       // startActivity(intent);
-        //activity_afterMenu.super.onBackPressed();
-        //super.onBackPressed();
+        //zablokowane
     }
-
 
 
     public void moveToCityUpgrade(View view)
     {
         Intent intent = new Intent(this,activity_city_upgrade.class);
         intent.putExtra("Stal",stal);
-        //Toast.makeText(context, "wykonuje", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 
@@ -286,10 +254,8 @@ public class activity_afterMenu extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewGold);
 
-        //get the value of the text view
         String countString = showCountTextView.getText().toString();
         String countString2 = showCountTextView2.getText().toString();
-        //convert value to a number and ++
         Integer armyy = Integer.parseInt(countString);
         Integer goldd=Integer.parseInt(countString2);
         if (armyy>0) {
@@ -297,7 +263,7 @@ public class activity_afterMenu extends AppCompatActivity {
             gold = gold - 100000;
             armyy=army;
             goldd = gold;
-            //display the new value int the text view
+
             showCountTextView.setText(armyy.toString());
             showCountTextView2.setText(goldd.toString());
         }
@@ -310,13 +276,10 @@ public class activity_afterMenu extends AppCompatActivity {
     public void onClickWork(View view) {
         TextView showCountTextView =
                 (TextView) findViewById(R.id.textViewGold);
-        //get the value of the text view
         String countString = showCountTextView.getText().toString();
-        //convert value to a number and ++
         Integer goldd = Integer.parseInt(countString);
         goldd = goldd +5000 + 50*miastod;
         gold=goldd;
-        //display the new value int the text view
         showCountTextView.setText(goldd.toString());
     }
 
@@ -329,7 +292,6 @@ public class activity_afterMenu extends AppCompatActivity {
         intent.putExtra("pepega", pepega);
         startActivity(intent);
     }
-
 
     public void NextQuest(View view) {
         final Random random = new Random();
@@ -375,7 +337,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     Integer goldd = Integer.parseInt(countString);
                     gold = gold + 250000 + (20)*miastoa;
 
-                    if (b%5==0)
+                    if (b%2==0)
                     {
                         Integer stall = stal;
                         stal=stal+2+(10*miastoc);
@@ -517,7 +479,6 @@ public class activity_afterMenu extends AppCompatActivity {
                         alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
                             }
                         });
                         AlertDialog alertDialog2 = alertDialogBuilder2.create();
@@ -533,7 +494,6 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTypeface(face);
                         alertDialog2.getWindow().setLayout(600, 350);
 
-                        // Toast.makeText(activity_afterMenu.this, "Pokonałeś Czerwonego Smoka !!!", Toast.LENGTH_LONG).show();
                         counterDragon++;
                     }
 
@@ -594,7 +554,6 @@ public class activity_afterMenu extends AppCompatActivity {
                         alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                // Toast.makeText(activity_afterMenu.this, "You clicked over no", Toast.LENGTH_LONG).show();
                             }
                         });
                         AlertDialog alertDialog2 = alertDialogBuilder2.create();
@@ -610,7 +569,6 @@ public class activity_afterMenu extends AppCompatActivity {
                         textView1.setTypeface(face);
                         alertDialog2.getWindow().setLayout(600, 350);
                         counterDragon++;
-                        //Toast.makeText(activity_afterMenu.this, "Pokonałeś Zielonego Smoka !!!", Toast.LENGTH_LONG).show();
                     }
 
                 });
@@ -719,7 +677,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 showCountTextView2.setText(armyy.toString());
                 Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
             }
-        }/////////////////////////////////////////////////////////////////////////////////////////////////////////
+        }
         else if (gold >= 12000000 && army >= 8500 && counterDragon==3)
         {
             if(los > 55) {
@@ -846,11 +804,7 @@ public class activity_afterMenu extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int i) {
                     }
                 });
-                /*alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });*/
+
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
