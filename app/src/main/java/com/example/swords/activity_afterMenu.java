@@ -1,6 +1,7 @@
 package com.example.swords;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -753,7 +754,7 @@ public class activity_afterMenu extends AppCompatActivity {
         }///////////////////////////////////////////////////////////////
         else if (gold >= 20000000 && army >= 10000 && counterDragon==4)
         {
-            if(los > 70) {
+            if(los > 66) {
 
                 alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
@@ -770,9 +771,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
                         alertDialogBuilder2.setTitle("Koniec gry");
                         alertDialogBuilder2.setMessage("Pokonales ostatniego Bialego smoka. " +
-                                "Wszyscy mieszkancy zaznaja teraz spokoju. Chcesz kontynuowac " +
-                                "przygode" +
-                                "czy  zakonczyc ?");
+                                "Wszyscy mieszkancy zaznaja teraz spokoju.");
                         alertDialogBuilder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
@@ -799,11 +798,6 @@ public class activity_afterMenu extends AppCompatActivity {
                     }
 
                 });
-                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
 
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
@@ -817,7 +811,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTextSize(25);
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 4000);
+                alertDialog.getWindow().setLayout(600, 350);
             }
             else
             {
@@ -831,7 +825,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 showCountTextView.setText(goldd.toString());
                 showCountTextView2.setText(armyy.toString());
                 Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
-            }
+            }+
 
         }
         else if(counterDragon >4)

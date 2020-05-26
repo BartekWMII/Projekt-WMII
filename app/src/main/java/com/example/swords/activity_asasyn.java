@@ -625,7 +625,12 @@ public class activity_asasyn extends AppCompatActivity {
 
                     alertDialogBuilder2.setTitle("Zadanie wykonane");
                     alertDialogBuilder2.setMessage("Pokonales Gryfa");
+                    alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
 
+                        }
+                    });
                     AlertDialog alertDialog2 = alertDialogBuilder2.create();
                     alertDialog2.show();
 
@@ -664,7 +669,7 @@ public class activity_asasyn extends AppCompatActivity {
             textView1.setTextSize(25);
             textView.setTypeface(face);
             textView1.setTypeface(face);
-            alertDialog.getWindow().setLayout(600, 4000);
+            alertDialog.getWindow().setLayout(600, 350);
         }
         else if (wytrzymalosc >= 350 && sila >= 350 && inteligencja >= 250 && counterM==5)
         {
@@ -942,6 +947,7 @@ public class activity_asasyn extends AppCompatActivity {
                     textView.setTypeface(face);
                     textView1.setTypeface(face);
                     alertDialog2.getWindow().setLayout(600, 350);
+                    counterM++;
                     counterM++;
                 }
 
