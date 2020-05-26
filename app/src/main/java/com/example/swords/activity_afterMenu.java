@@ -825,7 +825,7 @@ public class activity_afterMenu extends AppCompatActivity {
                 showCountTextView.setText(goldd.toString());
                 showCountTextView2.setText(armyy.toString());
                 Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
-            }+
+            }
 
         }
         else if(counterDragon >4)
