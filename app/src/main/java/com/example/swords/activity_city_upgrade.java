@@ -63,6 +63,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         KwiatMiasta++;
         Toast.makeText(activity_city_upgrade.this, "DzialaPauza " + UpCityA + " " + UpCityB+" "+" "+ UpCityC+" "+" st: "+UpCityStal+ " " +KwiatMiasta, Toast.LENGTH_LONG).show();
         editor.commit();
+
     }
 
 
@@ -81,7 +82,6 @@ public class activity_city_upgrade extends AppCompatActivity {
             UpCityC = sharedPref.getString("daneC", "");
             UpCityD= sharedPref.getString("daneD", "");
             UpCityStal = sharedPref.getString("daneS", "");
-            //stalimp=getIntent().getIntExtra("Stal",stal);
 
             KwiatMiasta = DrzewoMiasta;
 
@@ -94,22 +94,14 @@ public class activity_city_upgrade extends AppCompatActivity {
             TextView showCountTextView5 = (TextView) findViewById(R.id.textViewIleStal);
             stalimp=getIntent().getIntExtra("Stal",stal);
 
-            /*miastoa=UpCityA;
-            miastob=UpCityB;
-            miastoc=UpCityC;
-            miastod=UpCityD;*/
 
             try {
                 miastoa = Integer.parseInt(UpCityA);
                 miastob = Integer.parseInt(UpCityB);
                 miastoc = Integer.parseInt(UpCityC);
                 miastod = Integer.parseInt(UpCityD);
-                if (stalimp == Integer.parseInt(UpCityStal)){
-                    stal = Integer.parseInt(UpCityStal);
-            }
-                else {
-                    stal = stalimp;
-                }
+                stal = Integer.parseInt(UpCityStal)+stalimp;
+
 
             } catch (NumberFormatException e) {
                 // e.printStackTrace();
@@ -120,36 +112,10 @@ public class activity_city_upgrade extends AppCompatActivity {
             showCountTextView2.setText(String.valueOf(miastob));
             showCountTextView3.setText(String.valueOf(miastoc));
             showCountTextView4.setText(String.valueOf(miastod));
-            //stal=stalimp;
             showCountTextView5.setText(String.valueOf(stal));
-            Integer stalinium= Integer.parseInt(UpCityStal);
             Toast.makeText(context, "Juz wpisałem",Toast.LENGTH_SHORT).show();
 
-            /*if(stalimp-stalinium!=0)
-            {
-                stal=stalimp;
-                showCountTextView5.setText(stalimp);
-                Toast.makeText(context, "nowaStal!", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                showCountTextView5.setText(String.valueOf(UpCityStal));
-                stal=Integer.parseInt(UpCityStal);
-                Toast.makeText(context, "StaraStal!", Toast.LENGTH_SHORT);
-            }*/
 
-
-
-            /*try{
-                if (stalimp==stalinium) {
-                    stal = Integer.parseInt(UpCityStal);
-                }
-                else {
-                    stal = stalimp;
-                }
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }*/
 
             Toast.makeText(context, "Tyle stali: "+stal, Toast.LENGTH_SHORT).show();
 
@@ -163,8 +129,7 @@ public class activity_city_upgrade extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_city_upgrade);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //setContentView(R.layout.activity_city_upgrade);
 
         KwiatMiasta++;
 
@@ -196,13 +161,6 @@ public class activity_city_upgrade extends AppCompatActivity {
         });
 
 
-       /* button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                moveToSettings();
-            }
-        });*/
-
         TextView showCountTextView = (TextView) findViewById(R.id.textViewSkarb);
         TextView showCountTextViewKosz=(TextView) findViewById(R.id.textViewKoszar);
         TextView showCountTextViewKop=(TextView) findViewById(R.id.textViewKop);
@@ -222,17 +180,11 @@ public class activity_city_upgrade extends AppCompatActivity {
         Integer stalinium = Integer.parseInt(countStal);
 
         stalimp=getIntent().getIntExtra("Stal",stal);
-        miastoimpa=getIntent().getIntExtra("skarb",miastoa);
-        miastoimpb=getIntent().getIntExtra("kosz",miastob);
-        miastoimpc=getIntent().getIntExtra("kop",miastoc);
-        miastoimpd=getIntent().getIntExtra("awan", miastod);
-        goldCity=getIntent().getIntExtra("Gold",goldKing);///gold przeniesiony z aftermenu activity
-        armyCity=getIntent().getIntExtra("Armia",armyKing);///armia przeniesiona z aftermenu activity
         miastoSa=miastoa;
         miastoSb=miastob;
         miastoSc=miastoc;
         miastoSd=miastod;
-        stalinium=stal;
+        stalinium=stal+stalimp;
 
         showCountTextView.setText(miastoSa.toString());
         showCountTextViewKosz.setText(miastoSb.toString());
@@ -247,21 +199,18 @@ public class activity_city_upgrade extends AppCompatActivity {
         textViewIleStal=findViewById(R.id.textViewIleStal);
 
         KwiatMiasta++;
-
-        if(stalimp-stal!=0) {
+        stal=stalimp+stal;
             TextView showCountTextView2 = (TextView) findViewById(R.id.textViewIleStal);
-            stal = stal+ (stalimp-stal);
             String Bim = Integer.toString(stal);
             showCountTextView2.setText(Bim);
-        }
+
     }
+
 
 
     private void moveToSecret()
     {
         Intent intent = new Intent(this,secret.class);
-      //  intent.putExtra("Gold2",goldCity);
-       // intent.putExtra("Armia2",armyCity);
         startActivity(intent);
     }
 
@@ -307,15 +256,8 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        miastoa=miastoa;
-        if (SprStalImp!=SprStal)
-        {
-            stal = stal + (stalimp-stal);
-            String Bim=Integer.toString(stal);
-            showCountTextView2.setText(Bim);
-        }
         int sprM=miastoa;
-        if ((sprM+1)*10+5>=stal)
+        if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
@@ -337,15 +279,8 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        miastob=miastob; //XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD ????????????
-        if (SprStalImp!=SprStal)
-        {
-            stal = stal + (stalimp-stal);
-            String Bim=Integer.toString(stal);
-            showCountTextView2.setText(Bim);
-        }
         int sprM=miastob;
-        if ((sprM+1)*10+5>=stal)
+        if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
@@ -368,15 +303,9 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        miastoc=miastoc;
-        if (SprStalImp!=SprStal)
-        {
-            stal = stal + (stalimp-stal);
-            String Bim=Integer.toString(stal);
-            showCountTextView2.setText(Bim);
-        }
+
         int sprM=miastoc;
-        if ((sprM+1)*10+5>=stal)
+        if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
@@ -431,15 +360,8 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        miastod=miastod;
-        if (SprStalImp!=SprStal)
-        {
-            stal = stal + (stalimp-stal);
-            String Bim=Integer.toString(stal);
-            showCountTextView2.setText(Bim);
-        }
         int sprM=miastod;
-        if ((sprM+1)*10+5>=stal)
+        if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
