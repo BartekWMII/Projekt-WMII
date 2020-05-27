@@ -164,6 +164,7 @@ public class activity_asasyn extends AppCompatActivity {
                 "oraz wytrzymaly, to znak dla nas ze musimy ulepszyc wytrzymalosc oraz sile\n\n"+
                 "Za jedno ulepszenie statystyki zabojcy przyjmujemy piec wcisniec ulepszenia, czyli "+
                 "Jedno ulepszenie sily to tak naprawde 5 ulepszen\n\n"+
+                "Aby wejsc do zabojcy musisz miec minimum 10 mln zlota"+
                 "Wydawaj zloto uwaznie, zabojca dziala tylko w nocy, dlatego nie widzisz liczby zlota." +
                 "U zabojcy mozesz placic nawet gdy nie masz pieniedzy, lecz pamietaj ze to moze " +
                 "pograzyc krolestwo w biedzie i nedzy.\n\n\n"+

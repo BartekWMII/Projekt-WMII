@@ -329,12 +329,19 @@ public class activity_afterMenu extends AppCompatActivity {
 
     public void moveToKiller(View view)
     {
-        pepega=0;
-        pepega++;
-        Intent intent = new Intent(this,activity_asasyn.class);
-        intent.putExtra("Gold7",gold);
-        intent.putExtra("pepega", pepega);
-        startActivity(intent);
+        if(gold>=10000000) {
+            pepega = 0;
+            pepega++;
+            Intent intent = new Intent(this, activity_asasyn.class);
+            intent.putExtra("Gold7", gold);
+            intent.putExtra("pepega", pepega);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(context, "Aby wejsc do zabojcy musisz miec minimum 10 mln zlota", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     public void NextQuest(View view) {
