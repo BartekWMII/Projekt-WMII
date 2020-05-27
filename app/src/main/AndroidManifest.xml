@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AlertDialogTheme.Center">
-        <activity android:name=".activity_asasyn"></activity>
+        <activity android:name=".activity_end"></activity>
+        <activity android:name=".activity_asasyn" />
         <activity android:name=".secret" />
         <activity android:name=".activity_city_upgrade" />
 

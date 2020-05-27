@@ -9,12 +9,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class activity_city_upgrade extends AppCompatActivity {
 
@@ -126,7 +123,7 @@ public class activity_city_upgrade extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_city_upgrade);
+        setContentView(R.layout.activity_city_upgrade);
 
         KwiatMiasta++;
 
@@ -207,7 +204,7 @@ public class activity_city_upgrade extends AppCompatActivity {
 
     private void moveToSecret()
     {
-        Intent intent = new Intent(this,secret.class);
+        Intent intent = new Intent(this, secret.class);
         startActivity(intent);
     }
 
@@ -323,16 +320,25 @@ public class activity_city_upgrade extends AppCompatActivity {
         // new AlertDialog.Builder(this)
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Pomoc");
-        alertDialogBuilder.setMessage("Na start otrzymujemy 2 000 000 zlota oraz 5000 zolnierzy\n\n" +
-                "Za zakonczenie zadania sukcesem otrzymujemy 250 000 zlota\n\n" +
-                "Za przegraną tracimy 150 000 zlota oraz 150 zolnierzy\n\n" +
-                "Zolnierzy mozemy werbowac po 100 osób za 100 000 zlota\n\n" +
+        alertDialogBuilder.setMessage("Za zakonczenie zadania sukcesem otrzymujemy 250 000 zlota\n\n" +
+                "Za przegrane zadanie tracimy 150 000 zlota oraz 150 zolnierzy\n\n" +
+                "Zolnierzy mozemy werbowac po 100 osób za 100 000 zlota\n\n\n" +
                 "Smoki:\n\n" +
                 "Aby walczyc z Czerwonym Smokiem potrzebujemy 3 000 000 zlota oraz 5500 zolnierzy, za wygrana otrzymujemy 500 000 zlota, a za przegrana tracimy 1000 zolnierzy\n\n" +
                 "Aby walczyc z Zielonym Smokiem potrzebujemy 5 000 000 zlota oraz 6500 zolnierzy, za wygrana otrzymujemy 1 000 000 zlota, a za przegrana tracimy 1500 zolnierzy\n\n" +
                 "Aby walczyz z Rubinowym Smokiem potrzebujemy 8 000 000 zlota oraz 7500 zolnierzy, za wygrana otrzymujemy 2 000 000 zlota, a za przegrana tracimy 2000 zolnierzy\n\n" +
                 "Aby walczyc z Platynowym Smokiem potrzebujemy 12 500 000 zlota oraz 8500 zolnierzy, za wygrana otrzymujemy 2 500 000 zlota, a za przegrana tracimy 2500 zolnierzy\n\n" +
-                "Aby walczyc z Bialym Smokiem potrzebujmemy 20 000 000 zlota oraz 10 000 zolnierzy, za wygrana otrzymujemy 10 000 000 zlota, oraz kod do tajemniczej komnaty, a za przegraną tracimy 5000 zolnierzy");
+                "Aby walczyc z Bialym Smokiem potrzebujmemy 20 000 000 zlota oraz 10 000 zolnierzy, za wygrana otrzymujemy 10 000 000 zlota, oraz kod do tajemniczej komnaty, a za przegraną tracimy 5000 zolnierzy\n\n\n"+
+                "Ulepszenia w miescie: \n\n"+
+                "Ulepszenie skarbca = Każde ulepszenie skarbca zwiększa naszą nagrodę za wygraną misję oraz zmniejsza karę za przegraną misje które odnoszą się do złota\n\n" +
+                "Ulepszenie Koszar = Zmniejsza kare za przegrane misje które odnoszą się do wojska/armii\n\n" +
+                "Ulepszenie Kopalni = Zwiększa ilość stali otrzymywanej za mniej prawdopodobne wygranie misji\n\n" +
+                "Zdobycie Awansu = Zwiększa ilość złota zarabianego poprzez przycisk pracuj\n\n" +
+                "Koszty ulepszen: \n\n" +
+                "Koszt Stali=(Poziom Ulepszenia*10)+5\n\n" +
+                "Koszt werbunku zolnierzy= -100+1*Poziom Ulepszenia Koszar\n\n" +
+                "Koszt awansu = +5000+50*Poziom Ulepszenia Awansu"
+        );
         // alertDialogBuilder.setPositiveButton("OK", null);
 
         AlertDialog alertDialog = alertDialogBuilder.create();

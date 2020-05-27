@@ -164,7 +164,9 @@ public class activity_asasyn extends AppCompatActivity {
                 "oraz wytrzymaly, to znak dla nas ze musimy ulepszyc wytrzymalosc oraz sile\n\n"+
                 "Za jedno ulepszenie statystyki zabojcy przyjmujemy piec wcisniec ulepszenia, czyli "+
                 "Jedno ulepszenie sily to tak naprawde 5 ulepszen\n\n"+
-                "Wydawaj zloto uwaznie, zabojca dziala tylko w nocy, dlatego nie widzisz liczby zlota\n\n\n"+
+                "Wydawaj zloto uwaznie, zabojca dziala tylko w nocy, dlatego nie widzisz liczby zlota." +
+                "U zabojcy mozesz placic nawet gdy nie masz pieniedzy, lecz pamietaj ze to moze " +
+                "pograzyc krolestwo w biedzie i nedzy.\n\n\n"+
                 "1 Twoim zleceniem jest zabicie Kejrana. " +
                 "Jest to pradawne drzewo, ktore pod wplywem zlych urokow zostalo zmienione " +
                 "w drzewiasta osmiornice. Jest niebywale silny i wytrzymaly\n\n" +
@@ -294,45 +296,16 @@ public class activity_asasyn extends AppCompatActivity {
     public void Quest(View view) {
         String qq = "ZLECENIE";
         final ArrayList<String> BossQuest = new ArrayList<String>();
-        BossQuest.add("Twoim zleceniem jest zabicie Kejrana." +
-                "Jest to pradawne drzewo, ktore pod wplywem zlych urokow zostalo zmienione" +
-                "w drzewiasta osmiornice. Jest niebywale silny i wytrzymaly" +
-                "Chcesz sie podjac walki z Kejranem?");
-        BossQuest.add("Twoim zleceniem jest zabicie Wielkiego Lodowego Giganta" +
-                "Pochodzi on z krainy Freljordu gdzie panuje wieczna zima" +
-                "Jest bardzo wytrzymalym przeciwnikiem, uciekanie przed nim to zaden wstyd" +
-                "Chcesz sie podjac walki z Lodowym Gigantem ?");
-        BossQuest.add("Twoim zleceniem jest zabicie Baby Cmentarnej" +
-                "Niebywale grozny stwor, jest to niespokojna dusza ktora nie moze wrocic w zaswiaty" +
-                "Jest inteligentna wytrzymala i jak na swoj wiek silna" +
-                "Chcesz sie podjac walki z Baba cmentarna?");
-        BossQuest.add("Twoim zleceniem jest zabicie Mglaka" +
-                "Szybki wytrzymaly i rowniez silny stwor z bagien w poblizu lasu" +
-                "Chcesz sie podjac walki z Mglakiem?");
-        BossQuest.add("Twoim zleceniem jest zabicie Gryfa" +
-                "Jest on inteligentny oraz niebywale silny. Posiada wielkie szpony" +
-                "i ogromne szkydla, ktorych podmuch jest w stanie zdmuchnac przeciwnika z pola walki" +
-                "CHcesz sie podjac walki z Gryfem ?");
-        BossQuest.add("Twoim zleceniem jest zabicie Zywiolaka Ognia" +
-                "Pochodzi on z pradawnej krainy Darkharr gdzie wladze sprawuje Brand." +
-                "Zywiolak jest inteligentny i bardzo wytrzymaly czasami bywa tez silny" +
-                "Chcesz sie podjac walki z Zwyiolakiem OGnia ?");
-        BossQuest.add("Twoim zleceniem jest zabicie Biesa" +
-                "Jest to pies z wygladem jelenia niebywale silny i wytrzymaly" +
-                "Jest stworem rozumnym, potrafi porozumiewac sie mowa ludzka" +
-                "Chcesz sie podjac walki z Biesem ?");
-        BossQuest.add("Twoim zleceniem jest zabicie Widlogona" +
-                "Nazwano go tak setki lat temu mimo tego ze jego ogon przypomina bardziej miecz " +
-                "niz widly... dziwne" +
-                "Jest inteligentny i wytrzymaly a jego ogon silny" +
-                "Chcesz sie podjac walki z Mieczo.. znaczy Widlogonem ?");
-        BossQuest.add("Twoim zleceniem jest zabicie Gagulca" +
-                "To nie ten z Katdery Notre-Dame" +
-                "Niezwykle wytrzymaly i twardy" +
-                "Chcesz sie podjac walki z Gargulcem ?");
-        BossQuest.add("Twoim zleceniem jest zabicie Harpii" +
-                "Ani to silne, wytrzymale... a napewno nie jest inteligentne" +
-                "Chcesz sie podjac walki z Harpia ?");
+        BossQuest.add("Chcesz sie podjac walki z Kejranem?");
+        BossQuest.add("Chcesz sie podjac walki z Lodowym Gigantem ?");
+        BossQuest.add("Chcesz sie podjac walki z Baba cmentarna?");
+        BossQuest.add("Chcesz sie podjac walki z Mglakiem?");
+        BossQuest.add("Chcesz sie podjac walki z Gryfem ?");
+        BossQuest.add("Chcesz sie podjac walki z Zwyiolakiem OGnia ?");
+        BossQuest.add("Chcesz sie podjac walki z Biesem ?");
+        BossQuest.add("Chcesz sie podjac walki z Mieczo.. znaczy Widlogonem ?");
+        BossQuest.add("Chcesz sie podjac walki z Gargulcem ?");
+        BossQuest.add("Chcesz sie podjac walki z Harpia ?");
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(qq);
@@ -1025,7 +998,7 @@ public class activity_asasyn extends AppCompatActivity {
             textView1.setTextSize(25);
             textView.setTypeface(face);
             textView1.setTypeface(face);
-            alertDialog2.getWindow().setLayout(600,470);
+            alertDialog2.getWindow().setLayout(600,350);
         }
 
 

@@ -38,8 +38,8 @@ public class secret extends AppCompatActivity {
 
                 if(pattern.equals(mEdit.getText().toString()))
                 {
-                    gold=1000000;
-                    army=1000;
+                    gold=10000000;
+                    army=5000;
                     licznik++;
                     Toast.makeText(secret.this,"Wezwano Boga...." , Toast.LENGTH_LONG).show();
                     Toast.makeText(secret.this,"Bóg obdarzył cię złotem oraz armią" , Toast.LENGTH_LONG).show();

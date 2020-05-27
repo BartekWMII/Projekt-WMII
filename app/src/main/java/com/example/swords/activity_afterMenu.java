@@ -1,7 +1,6 @@
 package com.example.swords;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -347,7 +345,7 @@ public class activity_afterMenu extends AppCompatActivity {
 
         aListQuest.add("Znaleziono slady nieznanej postaci, podazać za nimi i sprawdzic co to ?");
         aListQuest.add("W pobliskiej jaskni udomowila się pantera, zagraza naszym ludziom." +
-                " Zabic jz ?");
+                " Zabic ja ?");
         aListQuest.add("Nasz jasnowidz uważa, że nadchodzi potezna burza, zabezpieczyz nasze plony ?");
         aListQuest.add("Z pobliskiej wioski zniknela ludnosc, rozpoczac poszukiwania ?");
         aListQuest.add("W pobliżu pewna grupa rozbojników rabuje mieszkancow, zaatakowac ich ?");
@@ -815,13 +813,13 @@ public class activity_afterMenu extends AppCompatActivity {
                         showCountTextView.setText(goldd.toString());
 
                         alertDialogBuilder2.setTitle("Koniec gry");
-                        alertDialogBuilder2.setMessage("Pokonales ostatniego Bialego smoka. " +
+                        alertDialogBuilder2.setMessage("Pokonales ostatniego smoka. " +
                                 "Wszyscy mieszkancy zaznaja teraz spokoju.");
                         alertDialogBuilder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                finish();
-                                System.exit(0);
+                                Intent intent = new Intent(getApplicationContext(), activity_end.class);
+                                startActivity(intent);
 
                             }
                         });
