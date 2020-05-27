@@ -24,9 +24,9 @@ public class activity_asasyn extends AppCompatActivity {
 
     Context context = this;
 
-    private int sila=100;
-    private int inteligencja=100;
-    private int wytrzymalosc=100;
+    private int sila;
+    private int inteligencja;
+    private int wytrzymalosc;
     public static int kwiatRab;
     private int drzewoRab;
     public static int kills=0;
@@ -60,7 +60,7 @@ public class activity_asasyn extends AppCompatActivity {
         // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
         // kills=0;
         //gold=0;
-        if(kwiatRab>1)
+        if(kwiatRab>0)
         {
             //   Toast.makeText(this, "Chyba dzialaRRR", Toast.LENGTH_LONG).show();
 
@@ -101,6 +101,27 @@ public class activity_asasyn extends AppCompatActivity {
         textViewStrong = findViewById(R.id.textViewStrong);
         textViewIQ = findViewById(R.id.textViewIQ);
         textViewHP=findViewById(R.id.textViewHP);
+
+        TextView showCountTextView1 = (TextView) findViewById(R.id.textViewStrong);
+        TextView showCountTextView2 = (TextView) findViewById(R.id.textViewIQ);
+        TextView showCountTextView3 = (TextView) findViewById(R.id.textViewHP);
+
+        String countStringSila = showCountTextView1.getText().toString();
+        String countStringIQ = showCountTextView2.getText().toString();
+        String countStringHP = showCountTextView3.getText().toString();
+
+        Integer countSila = Integer.parseInt(countStringSila);
+        Integer countIQ = Integer.parseInt(countStringIQ);
+        Integer countHP = Integer.parseInt(countStringHP);
+
+        wytrzymalosc=countHP;
+        inteligencja=countIQ;
+        sila=countSila;
+
+        showCountTextView1.setText(countSila.toString());
+        showCountTextView2.setText(countIQ.toString());
+        showCountTextView3.setText(countHP.toString());
+
         kills=0;
         gold=0;
     }
@@ -199,18 +220,18 @@ public class activity_asasyn extends AppCompatActivity {
         //convert value to a number and ++
         Integer stronger = Integer.parseInt(countString);
         //  Integer goldd=Integer.parseInt(countString);
-        if (stronger>0) {
-            sila=sila+10;
+       // if (stronger>0) {
+            stronger=stronger+10;
             gold = gold - 500000;
-            stronger=sila;
+            sila=stronger;
             kills++;
             //display the new value int the text view
             showCountTextView.setText(stronger.toString());
-        }
-        else
-        {
+       // }
+      //  else
+       // {
             //Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
-        }
+       // }
     }
 
     public void onClickIQ(View view) {
@@ -223,20 +244,20 @@ public class activity_asasyn extends AppCompatActivity {
         //convert value to a number and ++
         Integer inteligencja2 = Integer.parseInt(countString);
         // Integer goldd=Integer.parseInt(countString2);
-        if (inteligencja2>0) {
-            inteligencja = inteligencja + 10;
+      //  if (inteligencja2>0) {
+            inteligencja2 = inteligencja2 + 10;
             gold = gold - 500000;
-            inteligencja2=inteligencja;
+            inteligencja=inteligencja2;
             kills++;
             // goldd = gold;
             //display the new value int the text view
             showCountTextView.setText(inteligencja2.toString());
 
-        }
-        else
-        {
+       // }
+      //  else
+      //  {
             // Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
-        }
+        //}
     }
 
     public void onClickHP(View view) {
@@ -250,19 +271,19 @@ public class activity_asasyn extends AppCompatActivity {
         //convert value to a number and ++
         Integer HP2 = Integer.parseInt(countString);
         // Integer goldd=Integer.parseInt(countString2);
-        if (HP2>0) {
-            wytrzymalosc = wytrzymalosc + 10;
+       // if (HP2>0) {
+            HP2 = HP2 + 10;
             gold = gold - 500000;
-            HP2 = wytrzymalosc;
+            wytrzymalosc = HP2;
             kills++;
             //display the new value int the text view
             showCountTextView.setText(HP2.toString());
             //  showCountTextView2.setText(goldd.toString());
-        }
-        else
-        {
+       // }
+      //  else
+      //  {
             // Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
-        }
+    //    }
     }
 
 

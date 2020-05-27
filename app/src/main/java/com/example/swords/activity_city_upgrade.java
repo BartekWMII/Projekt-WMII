@@ -34,9 +34,6 @@ public class activity_city_upgrade extends AppCompatActivity {
     public static int stal=50;
     public static int stalimp;
     private Button button,button2,button3;
-    public static int goldKing,goldCity;
-    public static int awansLVL;
-    public static int armyCity,armyKing;
     public static int KwiatMiasta=0;
     public static int DrzewoMiasta=0;
     public static int kontrol=0;

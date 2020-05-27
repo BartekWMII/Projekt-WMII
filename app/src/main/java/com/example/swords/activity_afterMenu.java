@@ -22,10 +22,9 @@ import java.util.Random;
 
 public class activity_afterMenu extends AppCompatActivity {
 
-    final int DELAYED_TIME = 140;
     Context context = this;
-    public static int gold =2000000 ;
-    public static int army = 5000;
+    public static int gold;
+    public static int army;
     public static int goldSekret=0;
     public static int armySekret=0;
     public static int stal =0;
@@ -72,7 +71,7 @@ public class activity_afterMenu extends AppCompatActivity {
     protected void onResume () {
         super.onResume();
 
-       if(kwiat>1)
+       if(kwiat>2)
         {
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -80,11 +79,10 @@ public class activity_afterMenu extends AppCompatActivity {
         txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
         gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             kwiat=drzewo;
-      //  Toast.makeText(activity_afterMenu.this, "Dziala " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+        Toast.makeText(activity_afterMenu.this, "Dziala dzis " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-        showCountTextView.setText(gld);
-        showCountTextView2.setText(txt);
+
         try{
 
             army = Integer.parseInt(txt);
@@ -92,7 +90,9 @@ public class activity_afterMenu extends AppCompatActivity {
         } catch (Exception e) {
            // e.printStackTrace();
         }
-
+            showCountTextView.setText(gld);
+            showCountTextView2.setText(txt);
+        drzewo++;
         kwiat++;
 
 
@@ -156,8 +156,6 @@ public class activity_afterMenu extends AppCompatActivity {
 
             }
             stal=0;
-
-
     }
     }
 
@@ -173,7 +171,7 @@ public class activity_afterMenu extends AppCompatActivity {
         button = findViewById(R.id.buttonCityUP);
 
         bezpiecznik = getIntent().getIntExtra("Kod", licznik);
-        kontrolka = getIntent().getIntExtra("kontrola", counterQ);
+      //  kontrolka = getIntent().getIntExtra("kontrola", counterQ);
         zabojca=getIntent().getIntExtra("zabojca", kills);
 
         SprArmyImp = getIntent().getBooleanExtra("ArmiaZ", SprArmy);
@@ -185,6 +183,18 @@ public class activity_afterMenu extends AppCompatActivity {
         miastoimpd=getIntent().getIntExtra("awan",miastod);
 
         miastod=miastoimpd;
+
+        TextView showCountTextViewGold = (TextView) findViewById(R.id.textViewGold);
+        TextView showCountTextViewArmy=(TextView) findViewById(R.id.textViewArmy);
+
+        String countStringGold = showCountTextViewGold.getText().toString();
+        String countStringArmy = showCountTextViewArmy.getText().toString();
+        Integer countGold = Integer.parseInt(countStringGold);
+        Integer countArmy = Integer.parseInt(countStringArmy);
+        countArmy=army;
+        countGold=gold;
+        showCountTextViewGold.setText(countGold.toString());
+        showCountTextViewArmy.setText(countArmy.toString());
 
         if (SprGold == SprGoldImp) {
             goldSekret = getIntent().getIntExtra("gold666", army);
@@ -216,7 +226,7 @@ public class activity_afterMenu extends AppCompatActivity {
         }
 
 
-        if(kontrolka==1)
+       /* if(kontrolka==1)
         {
             gold=getIntent().getIntExtra("goldSekret",goldCity);
             army=getIntent().getIntExtra("Armia2",armyCity);
@@ -232,7 +242,7 @@ public class activity_afterMenu extends AppCompatActivity {
             showCountTextView.setText(goldd.toString());
             showCountTextView2.setText(armyy.toString());
             kontrolka=0;
-        }
+        }*/
 
     }
 
