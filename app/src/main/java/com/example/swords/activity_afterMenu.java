@@ -61,8 +61,9 @@ public class activity_afterMenu extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("daneG", textViewGold.getText().toString());
         editor.putString("dane", textViewArmy.getText().toString());
+         kwiat++;
         editor.putInt("kwiat2", kwiat);
-        kwiat++;
+
         editor.commit();
        Toast.makeText(activity_afterMenu.this, "pauza dzis " +kwiat, Toast.LENGTH_LONG).show();
 
@@ -72,18 +73,42 @@ public class activity_afterMenu extends AppCompatActivity {
     @Override
     protected void onResume () {
         super.onResume();
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+       /* TextView showCountTextViewGold = (TextView) findViewById(R.id.textViewGold);
+        TextView showCountTextViewArmy=(TextView) findViewById(R.id.textViewArmy);
 
-       if(kwiat>1)
+        String countStringGold = showCountTextViewGold.getText().toString();
+        String countStringArmy = showCountTextViewArmy.getText().toString();
+        Integer countGold = Integer.parseInt(countStringGold);
+        Integer countArmy = Integer.parseInt(countStringArmy);
+        army=countArmy;
+        gold=countGold;
+        kwiat++;
+        showCountTextViewGold.setText(countGold.toString());
+        showCountTextViewArmy.setText(countArmy.toString());
+
+
+        textViewGold = findViewById(R.id.textViewGold);
+        textViewArmy = findViewById(R.id.textViewArmy);
+        Toast.makeText(activity_afterMenu.this, "Przed kwiatem " +countArmy+countGold, Toast.LENGTH_LONG).show();*/
+        Toast.makeText(activity_afterMenu.this, "Kwiat przed + drzewo " +kwiat+" "+drzewo, Toast.LENGTH_LONG).show();
+        //drzewo=sharedPref.getInt("kwiat2", kwiat);
+
+        drzewo=sharedPref.getInt("kwiat2", kwiat);
+        Toast.makeText(activity_afterMenu.this, "Kwiat po + drzewo " +kwiat+" "+drzewo, Toast.LENGTH_LONG).show();//2
+
+
+        if(drzewo>0)
         {
             super.onResume();
-            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            drzewo=sharedPref.getInt("kwiat2", 5);
+           // SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
              txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             kwiat=drzewo;
-            Toast.makeText(activity_afterMenu.this, "Drzewo " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity_afterMenu.this, "Drzewo " +drzewo, Toast.LENGTH_LONG).show();
 
-            Toast.makeText(activity_afterMenu.this, "Dziala dzis " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity_afterMenu.this, "Dziala kwiat " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
 
@@ -96,10 +121,8 @@ public class activity_afterMenu extends AppCompatActivity {
         }
             showCountTextView.setText(gld);
             showCountTextView2.setText(txt);
-        drzewo++;
+       // drzewo++;
         kwiat++;
-
-
 
 
             if(bezpiecznik>0)
@@ -143,7 +166,6 @@ public class activity_afterMenu extends AppCompatActivity {
 
             if(zabojca>0)
             {
-
                 goldK=getIntent().getIntExtra("goldKill",gold);
 
                 TextView showCountTextView3 = (TextView) findViewById(R.id.textViewGold);
@@ -167,7 +189,8 @@ public class activity_afterMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+       // drzewo=sharedPref.getInt("kwiat2", kwiat);
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
         button = findViewById(R.id.buttonCityUP);
@@ -195,13 +218,15 @@ public class activity_afterMenu extends AppCompatActivity {
         Integer countArmy = Integer.parseInt(countStringArmy);
         army=countArmy;
         gold=countGold;
-        Toast.makeText(this, "Tworze se: "+ kwiat, Toast.LENGTH_LONG).show();
-        kwiat++;
+       // drzewo++;
         showCountTextViewGold.setText(countGold.toString());
         showCountTextViewArmy.setText(countArmy.toString());
 
+
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
+
+        Toast.makeText(this, "Tworze se: "+ countArmy+countGold, Toast.LENGTH_LONG).show();
 
         if (SprGold == SprGoldImp) {
             goldSekret = getIntent().getIntExtra("gold666", army);
@@ -231,6 +256,9 @@ public class activity_afterMenu extends AppCompatActivity {
             miastoimpc = getIntent().getIntExtra("kop", miastoc);
             miastoc = miastoimpc;
         }
+        //drzewo++;
+       // Toast.makeText(this, "Tworze se: "+ kwiat, Toast.LENGTH_LONG).show();//0
+
 
 
        /* if(kontrolka==1)

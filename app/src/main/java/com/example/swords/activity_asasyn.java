@@ -47,8 +47,9 @@ public class activity_asasyn extends AppCompatActivity {
         editor.putString("daneS", textViewStrong.getText().toString());
         editor.putString("daneI", textViewIQ.getText().toString());
         editor.putString("daneW", textViewHP.getText().toString());
-        editor.putInt("kwiatRab", kwiatRab);
         kwiatRab++;
+        editor.putInt("kwiatRab", kwiatRab);
+
         //Toast.makeText(this, "Chyba dziala", Toast.LENGTH_LONG).show();
 
         editor.commit();
@@ -57,16 +58,19 @@ public class activity_asasyn extends AppCompatActivity {
     @Override
     protected void onResume () {
         super.onResume();
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
         // Toast.makeText(activity_afterMenu.this, kwiat, Toast.LENGTH_LONG).show();
         // kills=0;
         //gold=0;
-        if(kwiatRab>0)
+        drzewoRab=sharedPref.getInt("kwiatRab",kwiatRab );
+
+        if(drzewoRab>0)
         {
             //   Toast.makeText(this, "Chyba dzialaRRR", Toast.LENGTH_LONG).show();
 
             super.onResume();
-            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            drzewoRab=sharedPref.getInt("kwiatRab",1 );
+           // SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
             sil = sharedPref.getString("daneS", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             intel = sharedPref.getString("daneI", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             wytrz = sharedPref.getString("daneW", "");
@@ -97,7 +101,7 @@ public class activity_asasyn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acivity_asasyn);
-        kwiatRab++;
+
         textViewStrong = findViewById(R.id.textViewStrong);
         textViewIQ = findViewById(R.id.textViewIQ);
         textViewHP=findViewById(R.id.textViewHP);
