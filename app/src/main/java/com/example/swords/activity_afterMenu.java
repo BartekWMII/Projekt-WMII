@@ -64,22 +64,26 @@ public class activity_afterMenu extends AppCompatActivity {
         editor.putInt("kwiat2", kwiat);
         kwiat++;
         editor.commit();
-    }
+       Toast.makeText(activity_afterMenu.this, "pauza dzis " +kwiat, Toast.LENGTH_LONG).show();
+
+   }
 
 
     @Override
     protected void onResume () {
         super.onResume();
 
-       if(kwiat>2)
+       if(kwiat>1)
         {
             super.onResume();
             SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            drzewo=sharedPref.getInt("kwiat2",1 );
-        txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
-        gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
+            drzewo=sharedPref.getInt("kwiat2", 5);
+             txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
+            gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             kwiat=drzewo;
-        Toast.makeText(activity_afterMenu.this, "Dziala dzis " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity_afterMenu.this, "Drzewo " + gld + " " + txt+" "+drzewo, Toast.LENGTH_LONG).show();
+
+            Toast.makeText(activity_afterMenu.this, "Dziala dzis " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
 
@@ -163,15 +167,13 @@ public class activity_afterMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        kwiat++;
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_after_menu);
+
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
         button = findViewById(R.id.buttonCityUP);
-
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_after_menu);
         bezpiecznik = getIntent().getIntExtra("Kod", licznik);
-      //  kontrolka = getIntent().getIntExtra("kontrola", counterQ);
         zabojca=getIntent().getIntExtra("zabojca", kills);
 
         SprArmyImp = getIntent().getBooleanExtra("ArmiaZ", SprArmy);
@@ -191,10 +193,15 @@ public class activity_afterMenu extends AppCompatActivity {
         String countStringArmy = showCountTextViewArmy.getText().toString();
         Integer countGold = Integer.parseInt(countStringGold);
         Integer countArmy = Integer.parseInt(countStringArmy);
-        countArmy=army;
-        countGold=gold;
+        army=countArmy;
+        gold=countGold;
+        Toast.makeText(this, "Tworze se: "+ kwiat, Toast.LENGTH_LONG).show();
+        kwiat++;
         showCountTextViewGold.setText(countGold.toString());
         showCountTextViewArmy.setText(countArmy.toString());
+
+        textViewGold = findViewById(R.id.textViewGold);
+        textViewArmy = findViewById(R.id.textViewArmy);
 
         if (SprGold == SprGoldImp) {
             goldSekret = getIntent().getIntExtra("gold666", army);
