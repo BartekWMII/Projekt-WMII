@@ -322,7 +322,9 @@ public class activity_city_upgrade extends AppCompatActivity {
         alertDialogBuilder.setTitle("Pomoc");
         alertDialogBuilder.setMessage("Za zakonczenie zadania sukcesem otrzymujemy 250 000 zlota\n\n" +
                 "Za przegrane zadanie tracimy 150 000 zlota oraz 150 zolnierzy\n\n" +
-                "Zolnierzy mozemy werbowac po 100 osób za 100 000 zlota\n\n\n" +
+                "Co 7 zadan jest pobierany podatek 100 000\n\n"+
+                "Zolnierzy mozemy werbowac po 100 osób za 100 000 zlota\n\n" +
+                "Pamietaj o tym że smoki rodzą się na nowo jeśli wyjdziesz z gry, natomiast wszystkie inne postępy zostają zachowane\n\n\n" +
                 "Smoki:\n\n" +
                 "Aby walczyc z Czerwonym Smokiem potrzebujemy 3 000 000 zlota oraz 5500 zolnierzy, za wygrana otrzymujemy 500 000 zlota, a za przegrana tracimy 1000 zolnierzy\n\n" +
                 "Aby walczyc z Zielonym Smokiem potrzebujemy 5 000 000 zlota oraz 6500 zolnierzy, za wygrana otrzymujemy 1 000 000 zlota, a za przegrana tracimy 1500 zolnierzy\n\n" +
@@ -330,7 +332,7 @@ public class activity_city_upgrade extends AppCompatActivity {
                 "Aby walczyc z Platynowym Smokiem potrzebujemy 12 500 000 zlota oraz 8500 zolnierzy, za wygrana otrzymujemy 2 500 000 zlota, a za przegrana tracimy 2500 zolnierzy\n\n" +
                 "Aby walczyc z Bialym Smokiem potrzebujmemy 20 000 000 zlota oraz 10 000 zolnierzy, za wygrana otrzymujemy 10 000 000 zlota, oraz kod do tajemniczej komnaty, a za przegraną tracimy 5000 zolnierzy\n\n\n"+
                 "Ulepszenia w miescie: \n\n"+
-                "Ulepszenie skarbca = Każde ulepszenie skarbca zwiększa naszą nagrodę za wygraną misję oraz zmniejsza karę za przegraną misje które odnoszą się do złota\n\n" +
+                "Ulepszenie skarbca = Każde ulepszenie skarbca zwiększa naszą nagrodę za wygraną misję oraz zmniejsza karę za przegraną misje które odnoszą się do złota ora zmniejsza podatki\n\n" +
                 "Ulepszenie Koszar = Zmniejsza kare za przegrane misje które odnoszą się do wojska/armii\n\n" +
                 "Ulepszenie Kopalni = Zwiększa ilość stali otrzymywanej za mniej prawdopodobne wygranie misji\n\n" +
                 "Zdobycie Awansu = Zwiększa ilość złota zarabianego poprzez przycisk pracuj\n\n" +

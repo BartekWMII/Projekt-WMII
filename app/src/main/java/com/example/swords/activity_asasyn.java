@@ -157,7 +157,7 @@ public class activity_asasyn extends AppCompatActivity {
         // new AlertDialog.Builder(this)
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Lista Zlecen");
-        alertDialogBuilder.setMessage("Kazde ulepszenie zabojcy ksoztuje \n500 000 zlota\n\n"+
+        alertDialogBuilder.setMessage("Kazde ulepszenie zabojcy ksoztuje 500 000 zlota\n\n"+
                 "Zlecenia wykonuja w kolejnosci ponizej \n\n"+
                 "Za kazde wykonanie zlecenia otrzymasz nagrode w postaci duzej liczby zlota\n\n"+
                 "Statystyki dopasowujemy do opisu postaci np Gargulec jest niebywale inteligentny "+

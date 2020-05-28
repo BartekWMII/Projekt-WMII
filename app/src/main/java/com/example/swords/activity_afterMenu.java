@@ -398,14 +398,14 @@ public class activity_afterMenu extends AppCompatActivity {
                     if (b%5==0)
                     {
                         Integer stall = stal;
-                        stal=stal+5+(5*miastoc);
+                        stal=stal+10+(5*miastoc);
                         stall=stal;
-                       // Toast.makeText(activity_afterMenu.this, "Znaleziono trochę stali!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity_afterMenu.this, "Znaleziono trochę stali!!", Toast.LENGTH_SHORT).show();
                     }
 
                     goldd=gold;
                     showCountTextView.setText(goldd.toString());
-                    Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(activity_afterMenu.this, "Misja zakonczona powodzeniem !!!", Toast.LENGTH_SHORT).show();
 
 
                 } else {
@@ -449,6 +449,7 @@ public class activity_afterMenu extends AppCompatActivity {
              licznikPodatki=0;
 
         }
+
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
         alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);

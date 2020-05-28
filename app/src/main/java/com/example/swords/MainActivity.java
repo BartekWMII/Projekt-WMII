@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if (i < 100) {
                     progressBar.setProgress(i);
-                    i+=10;
+                    i+=2;
                 } else {
                     timer.cancel();
                     Intent intent = new Intent(MainActivity.this, activity_menu.class);
