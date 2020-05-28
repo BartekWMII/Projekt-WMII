@@ -353,7 +353,7 @@ public class activity_city_upgrade extends AppCompatActivity {
         textView.setTypeface(face);
         textView1.setTypeface(face);
 
-        alertDialog.getWindow().setLayout(600,850);///przed dodaniem na telefon zmienic na 600/400
+        alertDialog.getWindow().setLayout(600,850);
 
     }
 

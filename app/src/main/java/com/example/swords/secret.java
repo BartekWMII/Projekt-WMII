@@ -41,8 +41,8 @@ public class secret extends AppCompatActivity {
                     gold=10000000;
                     army=5000;
                     licznik++;
-                    Toast.makeText(secret.this,"Wezwano Boga...." , Toast.LENGTH_LONG).show();
-                    Toast.makeText(secret.this,"Bóg obdarzył cię złotem oraz armią" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(secret.this,"Wezwano Boga...." , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(secret.this,"Bog obdarzyl cie zlotem oraz armią" , Toast.LENGTH_SHORT).show();
                 }
 
             }

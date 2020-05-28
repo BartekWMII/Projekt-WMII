@@ -63,7 +63,7 @@ public class activity_afterMenu extends AppCompatActivity {
         editor.putInt("kwiat2", kwiat);
 
         editor.commit();
-       Toast.makeText(activity_afterMenu.this, "pauza dzis " +kwiat, Toast.LENGTH_LONG).show();
+     //  Toast.makeText(activity_afterMenu.this, "pauza dzis " +kwiat, Toast.LENGTH_LONG).show();
 
    }
 
@@ -89,11 +89,11 @@ public class activity_afterMenu extends AppCompatActivity {
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
         Toast.makeText(activity_afterMenu.this, "Przed kwiatem " +countArmy+countGold, Toast.LENGTH_LONG).show();*/
-        Toast.makeText(activity_afterMenu.this, "Kwiat przed + drzewo " +kwiat+" "+drzewo, Toast.LENGTH_LONG).show();
+      //  Toast.makeText(activity_afterMenu.this, "Kwiat przed + drzewo " +kwiat+" "+drzewo, Toast.LENGTH_LONG).show();
         //drzewo=sharedPref.getInt("kwiat2", kwiat);
 
         drzewo=sharedPref.getInt("kwiat2", kwiat);
-        Toast.makeText(activity_afterMenu.this, "Kwiat po + drzewo " +kwiat+" "+drzewo, Toast.LENGTH_LONG).show();//2
+       // Toast.makeText(activity_afterMenu.this, "Kwiat po + drzewo " +kwiat+" "+drzewo, Toast.LENGTH_LONG).show();//2
 
 
         if(drzewo>0)
@@ -104,9 +104,9 @@ public class activity_afterMenu extends AppCompatActivity {
              txt = sharedPref.getString("dane", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             gld = sharedPref.getString("daneG", ""); // Tekst zapisujemy do zmiennej globalnej i w metodzie OnCreate() przypisujemy do odpowiedniej kontrolki EditText: editText.setText(txt);
             kwiat=drzewo;
-            Toast.makeText(activity_afterMenu.this, "Drzewo " +drzewo, Toast.LENGTH_LONG).show();
+          //  Toast.makeText(activity_afterMenu.this, "Drzewo " +drzewo, Toast.LENGTH_LONG).show();
 
-            Toast.makeText(activity_afterMenu.this, "Dziala kwiat " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
+          //  Toast.makeText(activity_afterMenu.this, "Dziala kwiat " + gld + " " + txt+" "+kwiat, Toast.LENGTH_LONG).show();
         TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
         TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
 
@@ -224,7 +224,7 @@ public class activity_afterMenu extends AppCompatActivity {
         textViewGold = findViewById(R.id.textViewGold);
         textViewArmy = findViewById(R.id.textViewArmy);
 
-        Toast.makeText(this, "Tworze se: "+ countArmy+countGold, Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "Tworze se: "+ countArmy+countGold, Toast.LENGTH_LONG).show();
 
         if (SprGold == SprGoldImp) {
             goldSekret = getIntent().getIntExtra("gold666", army);
@@ -302,7 +302,7 @@ public class activity_afterMenu extends AppCompatActivity {
         String countString2 = showCountTextView2.getText().toString();
         Integer armyy = Integer.parseInt(countString);
         Integer goldd=Integer.parseInt(countString2);
-        if (armyy>0) {
+        if (goldd>0) {
             army = army + 100;
             gold = gold - 100000;
             armyy=army;
@@ -313,7 +313,7 @@ public class activity_afterMenu extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(context, "Nie masz wojownikow!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Nie masz zlota!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -395,12 +395,12 @@ public class activity_afterMenu extends AppCompatActivity {
                     Integer goldd = Integer.parseInt(countString);
                     gold = gold + 250000 + (20)*miastoa;
 
-                    if (b%2==0)
+                    if (b%5==0)
                     {
                         Integer stall = stal;
-                        stal=stal+2+(10*miastoc);
+                        stal=stal+5+(5*miastoc);
                         stall=stal;
-                        Toast.makeText(activity_afterMenu.this, "Znaleziono trochę stali!!", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(activity_afterMenu.this, "Znaleziono trochę stali!!", Toast.LENGTH_SHORT).show();
                     }
 
                     goldd=gold;
@@ -464,7 +464,7 @@ public class activity_afterMenu extends AppCompatActivity {
         textView1.setTypeface(face);
 
 
-        alertDialog.getWindow().setLayout(600,350);///przed dodaniem na telefon zmienic na 600/400
+        alertDialog.getWindow().setLayout(600,350);
 
     }
 
@@ -481,7 +481,7 @@ public class activity_afterMenu extends AppCompatActivity {
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle(qq);
-        int los= random.nextInt(100);
+        final int los= random.nextInt(100);
 
 
 
@@ -517,45 +517,62 @@ public class activity_afterMenu extends AppCompatActivity {
 
         if (gold >= 3000000 && army >= 5500 && counterDragon==0)
         {
-            if(los >25) {
 
                 alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if (los > 25) {
 
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 500000 + (2000 * miastoa);
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                            TextView showCountTextView =
+                                    (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            goldd = goldd + 500000 + (2000 * miastoa);
+                            gold = goldd;
+                            showCountTextView.setText(goldd.toString());
 
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Czerwonego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
+                            alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                            alertDialogBuilder2.setMessage("Pokonales Czerwonego Smoka !");
+                            alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
+                                }
+                            });
+                            AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                            alertDialog2.show();
 
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
+                            alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                            TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                            TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                            Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
+                            textView.setTextSize(17);
+                            textView1.setTextSize(25);
+                            textView.setTypeface(face);
+                            textView1.setTypeface(face);
+                            alertDialog2.getWindow().setLayout(600, 350);
 
-                        counterDragon++;
+                            counterDragon++;
+                        }
+                        else {
+                            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                            String countString2 = showCountTextView2.getText().toString();
+                            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            Integer armyy = Integer.parseInt(countString2);
+
+                            gold = gold - 100000;
+                            army = army - 1000;
+                            goldd = gold;
+                            armyy = army;
+                            showCountTextView.setText(goldd.toString());
+                            showCountTextView2.setText(armyy.toString());
+                            Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
+                        }
+
                     }
-
-                });
+                        });
                 alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -576,130 +593,61 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTypeface(face);
                 textView2.setTypeface(face);
                 alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
 
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 100000;
-                army = army - 1000;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
         }
-        else if (gold >= 5000000 && army >= 6500 && counterDragon==1) {
-            if (los > 35) {
-                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 1000000 + (2000 * miastoa);
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
-
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Zielonego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
-
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
-                    }
-
-                });
-                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                    }
-                });
-
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-
-                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
-                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
-                textView.setTextSize(17);
-                textView1.setTextSize(25);
-                textView.setTypeface(face);
-                textView1.setTypeface(face);
-                alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 200000;
-                army = army - 1500;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (gold >= 8000000 && army >= 7500 && counterDragon==2)
+        else if (gold >= 5000000 && army >= 6500 && counterDragon==1)
         {
-            if(los > 45) {
+
                 alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 2000000 + 2000 * miastoa;
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                        if (los > 35) {
+                            TextView showCountTextView =
+                                    (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            goldd = goldd + 1000000 + (2000 * miastoa);
+                            gold = goldd;
+                            showCountTextView.setText(goldd.toString());
 
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Rubinowego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
+                            alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                            alertDialogBuilder2.setMessage("Pokonales Zielonego Smoka !");
+                            alertDialogBuilder2.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
+                                }
+                            });
+                            AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                            alertDialog2.show();
 
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
-
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
+                            alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                            TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                            TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                            Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
+                            textView.setTextSize(17);
+                            textView1.setTextSize(25);
+                            textView.setTypeface(face);
+                            textView1.setTypeface(face);
+                            alertDialog2.getWindow().setLayout(600, 350);
+                            counterDragon++;
+                        } else {
+                            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                            String countString2 = showCountTextView2.getText().toString();
+                            Integer armyy = Integer.parseInt(countString2);
+                            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            gold = gold - 200000;
+                            army = army - 1500;
+                            goldd = gold;
+                            armyy = army;
+                            showCountTextView.setText(goldd.toString());
+                            showCountTextView2.setText(armyy.toString());
+                            Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 });
@@ -722,57 +670,137 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView1.setTypeface(face);
                 alertDialog.getWindow().setLayout(600, 350);
             }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 300000;
-                army = army - 2000;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porażka !!!", Toast.LENGTH_LONG).show();
-            }
+
+        else if(gold >= 8000000 && army >= 7500 && counterDragon==2)
+        {
+
+                alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        if (los > 45) {
+                            TextView showCountTextView =
+                                    (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            goldd = goldd + 2000000 + 2000 * miastoa;
+                            gold = goldd;
+                            showCountTextView.setText(goldd.toString());
+
+                            alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                            alertDialogBuilder2.setMessage("Pokonales Rubinowego Smoka !");
+                            alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
+
+                                }
+                            });
+                            AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                            alertDialog2.show();
+
+                            alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                            TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                            TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                            Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
+                            textView.setTextSize(17);
+                            textView1.setTextSize(25);
+                            textView.setTypeface(face);
+                            textView1.setTypeface(face);
+                            alertDialog2.getWindow().setLayout(600, 350);
+                            counterDragon++;
+                        }
+                        else {
+                            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                            String countString2 = showCountTextView2.getText().toString();
+                            Integer armyy = Integer.parseInt(countString2);
+                            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            gold = gold - 300000;
+                            army = army - 2000;
+                            goldd = gold;
+                            armyy = army;
+                            showCountTextView.setText(goldd.toString());
+                            showCountTextView2.setText(armyy.toString());
+                            Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                });
+                alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+                TextView textView1 = (TextView) alertDialog.findViewById((R.id.alertTitle));
+                Typeface face = ResourcesCompat.getFont(this, R.font.magic);
+                textView.setTextSize(17);
+                textView1.setTextSize(25);
+                textView.setTypeface(face);
+                textView1.setTypeface(face);
+                alertDialog.getWindow().setLayout(600, 350);
+
         }
         else if (gold >= 12000000 && army >= 8500 && counterDragon==3)
         {
-            if(los > 55) {
+
                 alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 2500000 + 2000 * miastoa;
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                        if (los > 55) {
+                            TextView showCountTextView =
+                                    (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            goldd = goldd + 2500000 + 2000 * miastoa;
+                            gold = goldd;
+                            showCountTextView.setText(goldd.toString());
 
-                        alertDialogBuilder2.setTitle("Zadanie Wykonane");
-                        alertDialogBuilder2.setMessage("Pokonałeś Platynowego Smoka !");
-                        alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
+                            alertDialogBuilder2.setTitle("Zadanie Wykonane");
+                            alertDialogBuilder2.setMessage("Pokonales Platynowego Smoka !");
+                            alertDialogBuilder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
 
-                            }
-                        });
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
+                                }
+                            });
+                            AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                            alertDialog2.show();
 
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
+                            alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                            TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                            TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                            Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
+                            textView.setTextSize(17);
+                            textView1.setTextSize(25);
+                            textView.setTypeface(face);
+                            textView1.setTypeface(face);
+                            alertDialog2.getWindow().setLayout(600, 350);
+                            counterDragon++;
+                        } else {
+                            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                            String countString2 = showCountTextView2.getText().toString();
+                            Integer armyy = Integer.parseInt(countString2);
+                            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            gold = gold - 400000;
+                            army = army - 2500;
+                            goldd = gold;
+                            armyy = army;
+                            showCountTextView.setText(goldd.toString());
+                            showCountTextView2.setText(armyy.toString());
+                            Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 });
@@ -794,68 +822,76 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
                 alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 400000;
-                army = army - 2500;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
-            }
-        }///////////////////////////////////////////////////////////////
-        else if (gold >= 20000000 && army >= 10000 && counterDragon==4)
+
+
+        }
+         else if (gold >= 20000000 && army >= 10000 && counterDragon==4)
         {
-            if(los > 66) {
+
 
                 alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        TextView showCountTextView =
-                                (TextView) findViewById(R.id.textViewGold);
-                        String countString = showCountTextView.getText().toString();
-                        Integer goldd = Integer.parseInt(countString);
-                        goldd = goldd + 10000000 + 2000 * miastoa;
-                        gold = goldd;
-                        showCountTextView.setText(goldd.toString());
+                        if (los > 66) {
+                            TextView showCountTextView =
+                                    (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            goldd = goldd + 10000000 + 2000 * miastoa;
+                            gold = goldd;
+                            showCountTextView.setText(goldd.toString());
 
-                        alertDialogBuilder2.setTitle("Koniec gry");
-                        alertDialogBuilder2.setMessage("Pokonales ostatniego smoka. " +
-                                "Wszyscy mieszkancy zaznaja teraz spokoju.");
-                        alertDialogBuilder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-                                Intent intent = new Intent(getApplicationContext(), activity_end.class);
-                                startActivity(intent);
+                            alertDialogBuilder2.setTitle("Koniec gry");
+                            alertDialogBuilder2.setMessage("Pokonales ostatniego smoka. " +
+                                    "Wszyscy mieszkancy zaznaja teraz spokoju.");
+                            alertDialogBuilder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
+                                    Intent intent = new Intent(getApplicationContext(), activity_end.class);
+                                    startActivity(intent);
 
-                            }
-                        });
+                                }
+                            });
 
-                        AlertDialog alertDialog2 = alertDialogBuilder2.create();
-                        alertDialog2.show();
+                            AlertDialog alertDialog2 = alertDialogBuilder2.create();
+                            alertDialog2.show();
 
-                        alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
-                        TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
-                        TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
-                        Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
-                        textView.setTextSize(17);
-                        textView1.setTextSize(25);
-                        textView.setTypeface(face);
-                        textView1.setTypeface(face);
-                        alertDialog2.getWindow().setLayout(600, 350);
-                        counterDragon++;
-                        counterDragon++;
+                            alertDialog2.getWindow().setBackgroundDrawableResource(R.drawable.frame);
+                            TextView textView = (TextView) alertDialog2.findViewById(android.R.id.message);
+                            TextView textView1 = (TextView) alertDialog2.findViewById((R.id.alertTitle));
+                            Typeface face = ResourcesCompat.getFont(activity_afterMenu.this, R.font.magic);
+                            textView.setTextSize(17);
+                            textView1.setTextSize(25);
+                            textView.setTypeface(face);
+                            textView1.setTypeface(face);
+                            alertDialog2.getWindow().setLayout(600, 350);
+                            counterDragon++;
+                            counterDragon++;
+                        } else {
+                            TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
+                            String countString2 = showCountTextView2.getText().toString();
+                            Integer armyy = Integer.parseInt(countString2);
+                            TextView showCountTextView = (TextView) findViewById(R.id.textViewGold);
+                            String countString = showCountTextView.getText().toString();
+                            Integer goldd = Integer.parseInt(countString);
+                            gold = gold - 500000;
+                            army = army - 5000;
+                            goldd = gold;
+                            armyy = army;
+                            showCountTextView.setText(goldd.toString());
+                            showCountTextView2.setText(armyy.toString());
+                            Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 });
-
+            alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                }
+            });
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
@@ -869,23 +905,8 @@ public class activity_afterMenu extends AppCompatActivity {
                 textView.setTypeface(face);
                 textView1.setTypeface(face);
                 alertDialog.getWindow().setLayout(600, 350);
-            }
-            else
-            {
-                TextView showCountTextView2 = (TextView) findViewById(R.id.textViewArmy);
-                String countString2 = showCountTextView2.getText().toString();
-                Integer armyy = Integer.parseInt(countString2);
-                gold = gold - 500000;
-                army = army - 5000;
-                goldd=gold;
-                armyy=army;
-                showCountTextView.setText(goldd.toString());
-                showCountTextView2.setText(armyy.toString());
-                Toast.makeText(activity_afterMenu.this, "Porazka !!!", Toast.LENGTH_LONG).show();
-            }
-
         }
-        else if(counterDragon >4)
+         else if(counterDragon >4)
         {
             Toast.makeText(activity_afterMenu.this, "Pokonales juz wszystkie smoki !!!", Toast.LENGTH_LONG).show();
         }
@@ -914,7 +935,6 @@ public class activity_afterMenu extends AppCompatActivity {
             textView1.setTypeface(face);
             alertDialog2.getWindow().setLayout(600,300);
         }
-
 
     }
 }
