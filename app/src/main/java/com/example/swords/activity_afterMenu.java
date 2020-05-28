@@ -363,6 +363,13 @@ public class activity_afterMenu extends AppCompatActivity {
                 "Wyslać zwiad na polowanie ?");
         aListQuest.add("Na krolewski rynek wdarlo się stado dzikow! Zabic je?");
         aListQuest.add("Kryzys w krolestwie! Rabusie okradaja miejscowych!"+ "Wyslac patrol na rynek?");
+        aListQuest.add("W okolicy grasuja gobliny. Postawić kres ich wybrykom?");
+        aListQuest.add("Podobno straznicy przy bramie sa przekupni i w naszy miescie pojawila sie kontrabanda. Wymienic straznikow?");
+        aListQuest.add("Smok zaczal porywac nasze owce, postawic ogrodzenie i straznikow przy pastwiskach?");
+        aListQuest.add("W okolicy grasuje podpalacz dachow. Wypuscic wiecej patroli?");
+        aListQuest.add("Znany Bard chce dac koncert w naszym Krolestwie. Wpuszczamy go?");
+        aListQuest.add("Ludzie zaczynaja sie buntowac, chca mniejszej kontroli dobr wkraczajacych do krolestwa, zmniejszyc obostrzenia?");
+        aListQuest.add("Zaczely wysychac okoliczne rzeki, choc caly czas pada. Wyslac negocjatorow do obozu Bobro-ludzi?");
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final String a = aListQuest.get(random.nextInt(aListQuest.size()));

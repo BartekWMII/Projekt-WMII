@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#9F6A14</item>
+        <item name="colorAccent">#5E3CC3</item>
         <item name="fontFamily">@font/magic</item>
         <item name="android:textStyle">bold</item>
 

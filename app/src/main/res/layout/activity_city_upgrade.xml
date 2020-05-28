@@ -18,8 +18,8 @@
 
             <Button
                 android:id="@+id/KingBack"
-                android:layout_width="149dp"
-                android:layout_height="44dp"
+                android:layout_width="161dp"
+                android:layout_height="54dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:text="Wroc do krola!"
@@ -36,8 +36,8 @@
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="87dp"
-                android:layout_height="59dp"
+                android:layout_width="88dp"
+                android:layout_height="60dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:onClick="miastoClick"
@@ -49,10 +49,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.056"
+                app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.852" />
+                app:layout_constraintVertical_bias="0.855" />
 
             <Button
                 android:id="@+id/SecretButton"
@@ -89,7 +89,7 @@
             <Button
                 android:id="@+id/button3"
                 android:layout_width="88dp"
-                android:layout_height="61dp"
+                android:layout_height="60dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:onClick="GarnUp"
@@ -99,17 +99,17 @@
                 android:textColorHint="#FF0000"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/KingBack"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.059"
-                app:layout_constraintStart_toEndOf="@+id/button2"
+                app:layout_constraintHorizontal_bias="0.352"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.939" />
+                app:layout_constraintVertical_bias="0.855" />
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="89dp"
-                android:layout_height="61dp"
+                android:layout_width="88dp"
+                android:layout_height="60dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
                 android:onClick="KopUp"
@@ -121,10 +121,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.067"
-                app:layout_constraintStart_toEndOf="@+id/button3"
+                app:layout_constraintHorizontal_bias="0.659"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.854" />
+                app:layout_constraintVertical_bias="0.855" />
 
             <TextView
                 android:id="@+id/textViewSkarb"
@@ -195,7 +195,7 @@
             <Button
                 android:id="@+id/button6"
                 android:layout_width="88dp"
-                android:layout_height="64dp"
+                android:layout_height="60dp"
                 android:background="@drawable/pattern1"
                 android:onClick="OnCliAwan"
                 android:text="Zdobądź Awans!"
@@ -206,10 +206,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.981"
+                app:layout_constraintHorizontal_bias="0.95"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.859" />
+                app:layout_constraintVertical_bias="0.855" />
 
             <TextView
                 android:id="@+id/textViewAwans"
