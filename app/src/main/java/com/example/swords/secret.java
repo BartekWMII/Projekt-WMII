@@ -19,7 +19,7 @@ public class secret extends AppCompatActivity {
     Button button;
     EditText mEdit;
     TextView mText;
-    String pattern = "DR WOJCZYK";
+    String pattern = "DRAGON6";
     public static int gold;
     public static int army;
     public static int licznik=0;
@@ -53,7 +53,6 @@ public class secret extends AppCompatActivity {
     public void onBackPressed()
     {
         if(licznik==1) {
-           // new AlertDialog.Builder(this)
             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Czy to twoja definitywna odpowiedź");
             alertDialogBuilder.setTitle("Czy na pewno chcesz wyjść");
@@ -62,7 +61,7 @@ public class secret extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent(getApplicationContext(), activity_afterMenu.class);
+                            Intent intent = new Intent(getApplicationContext(), afterMenu.class);
                             intent.putExtra("Gold666", gold);
                             intent.putExtra("Armia666", army);
                             intent.putExtra("Kod", licznik);
@@ -83,16 +82,12 @@ public class secret extends AppCompatActivity {
             textView.setTypeface(face);
             textView1.setTypeface(face);
 
-            alertDialog.getWindow().setLayout(600,350);///przed dodaniem na telefon zmienic na 600/400
-
+            alertDialog.getWindow().setLayout(600,350);
         }
         else
         {
             secret.super.onBackPressed();
         }
-
     }
-
-
 }
 

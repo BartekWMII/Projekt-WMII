@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/salatronowa"
-    tools:context=".activity_afterMenu">
+    tools:context=".afterMenu">
 
 
 
@@ -112,7 +112,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/pattern1"
                 android:fontFamily="@font/magic"
-                android:onClick="onClick"
+                android:onClick="WerbunekClick"
                 android:text="REKRUTUJ ZBROJNYCH"
                 android:textColor="#EAE6E6"
                 android:textColorHighlight="#FFFFFF"

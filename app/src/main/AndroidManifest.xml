@@ -15,19 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AlertDialogTheme.Center">
-        <activity android:name=".activity_end"></activity>
-        <activity android:name=".activity_asasyn" />
+        <activity android:name=".end"></activity>
+        <activity android:name=".asasyn" />
         <activity android:name=".secret" />
-        <activity android:name=".activity_city_upgrade" />
+        <activity android:name=".upgrade" />
 
         <service
             android:name=".MusicService"
             android:enabled="true" />
 
-        <activity android:name=".activity_afterMenu" />
-        <activity android:name=".activity_settings" />
-        <activity android:name=".activity_menu" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".afterMenu" />
+        <activity android:name=".settings" />
+        <activity android:name=".menu" />
+        <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
