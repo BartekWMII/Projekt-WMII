@@ -20,13 +20,13 @@ public class activity_city_upgrade extends AppCompatActivity {
     private TextView textViewKop;
     private TextView textViewIleStal;
     private TextView textViewAwans;
-    public static int miastoa;
+    public static int miastoSkarb;
     public static int miastoimpa;
-    public static int miastob;
+    public static int miastoKoszary;
     public static int miastoimpb;
-    public static int miastoc;
+    public static int miastoKopalnia;
     public static int miastoimpc;
-    public static int miastod;
+    public static int miastoAwans;
     public static int miastoimpd;
     public static int stal=50;
     public static int stalimp;
@@ -90,10 +90,10 @@ public class activity_city_upgrade extends AppCompatActivity {
 
 
             try {
-                miastoa = Integer.parseInt(UpCityA);
-                miastob = Integer.parseInt(UpCityB);
-                miastoc = Integer.parseInt(UpCityC);
-                miastod = Integer.parseInt(UpCityD);
+                miastoSkarb = Integer.parseInt(UpCityA);
+                miastoKoszary = Integer.parseInt(UpCityB);
+                miastoKopalnia = Integer.parseInt(UpCityC);
+                miastoAwans = Integer.parseInt(UpCityD);
                 stal = Integer.parseInt(UpCityStal)+stalimp;
 
 
@@ -102,10 +102,10 @@ public class activity_city_upgrade extends AppCompatActivity {
             }
 
           //  Toast.makeText(context, "Jeszcze nie wpisałem", Toast.LENGTH_SHORT).show();
-            showCountTextView.setText(String.valueOf(miastoa));
-            showCountTextView2.setText(String.valueOf(miastob));
-            showCountTextView3.setText(String.valueOf(miastoc));
-            showCountTextView4.setText(String.valueOf(miastod));
+            showCountTextView.setText(String.valueOf(miastoSkarb));
+            showCountTextView2.setText(String.valueOf(miastoKoszary));
+            showCountTextView3.setText(String.valueOf(miastoKopalnia));
+            showCountTextView4.setText(String.valueOf(miastoAwans));
             showCountTextView5.setText(String.valueOf(stal));
            // Toast.makeText(context, "Juz wpisałem",Toast.LENGTH_SHORT).show();
 
@@ -167,23 +167,23 @@ public class activity_city_upgrade extends AppCompatActivity {
         String countStringd = showCountTextViewAwans.getText().toString();
         String countStal =  showStal.getText().toString();
 
-        Integer miastoSa = Integer.parseInt(countString);
-        Integer miastoSb = Integer.parseInt(countStringb);
-        Integer miastoSc = Integer.parseInt(countStringc);
-        Integer miastoSd = Integer.parseInt(countStringd);
+        Integer miastoStringSkarb = Integer.parseInt(countString);
+        Integer miastoStringKoszary = Integer.parseInt(countStringb);
+        Integer miastoStringKopalnia = Integer.parseInt(countStringc);
+        Integer miastoStringAwans = Integer.parseInt(countStringd);
         Integer stalinium = Integer.parseInt(countStal);
 
         stalimp=getIntent().getIntExtra("Stal",stal);
-        miastoSa=miastoa;
-        miastoSb=miastob;
-        miastoSc=miastoc;
-        miastoSd=miastod;
+        miastoStringSkarb=miastoSkarb;
+        miastoStringKoszary=miastoKoszary;
+        miastoStringKopalnia=miastoKopalnia;
+        miastoStringAwans=miastoAwans;
         stalinium=stal+stalimp;
 
-        showCountTextView.setText(miastoSa.toString());
-        showCountTextViewKosz.setText(miastoSb.toString());
-        showCountTextViewKop.setText(miastoSc.toString());
-        showCountTextViewAwans.setText(miastoSd.toString());
+        showCountTextView.setText(miastoStringSkarb.toString());
+        showCountTextViewKosz.setText(miastoStringKoszary.toString());
+        showCountTextViewKop.setText(miastoStringKopalnia.toString());
+        showCountTextViewAwans.setText(miastoStringAwans.toString());
         showStal.setText(stalinium.toString());
 
         textViewSkarb=findViewById(R.id.textViewSkarb);
@@ -234,10 +234,10 @@ public class activity_city_upgrade extends AppCompatActivity {
     {
      //   licznikQ++;
         Intent intent = new Intent(this,activity_afterMenu.class);//po co tu jest tyle tego ?????
-        intent.putExtra("skarb",miastoa);
-        intent.putExtra("kosz",miastob);
-        intent.putExtra("kop",miastoc);
-        intent.putExtra("awan",miastod);
+        intent.putExtra("skarb",miastoSkarb);
+        intent.putExtra("kosz",miastoKoszary);
+        intent.putExtra("kop",miastoKopalnia);
+        intent.putExtra("awan",miastoAwans);
         intent.putExtra("StalZ",SprStal);
         intent.putExtra("Stal", stal);
         startActivity(intent);
@@ -250,16 +250,16 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        int sprM=miastoa;
+        int sprM=miastoSkarb;
         if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
         else{
-            stal=stal-(10*miastoa)-5;
-            miastoa++;
-            String miastostringa=Integer.toString(miastoa);
-            showCountTextView.setText(miastostringa);
+            stal=stal-(10*(sprM+1))-5;
+            miastoSkarb++;
+            String miastostringSkarb=Integer.toString(miastoSkarb);
+            showCountTextView.setText(miastostringSkarb);
             SprCityA=true;
             String Bim=Integer.toString(stal);
             showCountTextView2.setText(Bim);
@@ -273,17 +273,17 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        int sprM=miastob;
+        int sprM=miastoKoszary;
         if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
         else{
-            stal=stal-(10*miastob)-5;
-            miastob++;
+            stal=stal-(10*(sprM+1))-5;
+            miastoKoszary++;
             SprCityB=true;
-            String miastostringb=Integer.toString(miastob);
-            showCountTextView.setText(miastostringb);
+            String miastostringKoszary=Integer.toString(miastoKoszary);
+            showCountTextView.setText(miastostringKoszary);
             String Bim=Integer.toString(stal);
             showCountTextView2.setText(Bim);
 
@@ -298,17 +298,17 @@ public class activity_city_upgrade extends AppCompatActivity {
                 (TextView) findViewById(R.id.textViewIleStal);
 
 
-        int sprM=miastoc;
+        int sprM=miastoKopalnia;
         if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
         else{
-            stal=stal-(10*miastoc)-5;
-            miastoc++;
+            stal=stal-(10*(sprM+1))-5;
+            miastoKopalnia++;
             SprCityB=true;
-            String miastostringc=Integer.toString(miastoc);
-            showCountTextView.setText(miastostringc);
+            String miastostringKopalnia=Integer.toString(miastoKopalnia);
+            showCountTextView.setText(miastostringKopalnia);
             String Bim=Integer.toString(stal);
             showCountTextView2.setText(Bim);
         }
@@ -365,17 +365,17 @@ public class activity_city_upgrade extends AppCompatActivity {
         TextView showCountTextView2 =
                 (TextView) findViewById(R.id.textViewIleStal);
 
-        int sprM=miastod;
+        int sprM=miastoAwans;
         if ((((sprM+1)*10)+5)>=stal)
         {
             Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
         }
         else{
-            stal=stal-(10*miastod)-5;
-            miastod++;
+            stal=stal-(10*(sprM+1))-5;
+            miastoAwans++;
             SprCityB=true;
-            String miastostringc=Integer.toString(miastod);
-            showCountTextView.setText(miastostringc);
+            String miastostringAwans=Integer.toString(miastoAwans);
+            showCountTextView.setText(miastostringAwans);
             String Bim=Integer.toString(stal);
             showCountTextView2.setText(Bim);
         }
