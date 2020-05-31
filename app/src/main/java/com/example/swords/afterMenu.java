@@ -285,7 +285,7 @@ public class afterMenu extends AppCompatActivity {
                 "docelowego. Wyslac zwiad ?");
         aListQuest.add("Zwiad donosi że w okolicy grasuje ogromny niedzwiedz."+
                 "Wyslać zwiad na polowanie ?");
-        aListQuest.add("Na krolewski rynek wdarlo się stado dzikow! Zabic je?");
+        aListQuest.add("Na krolewski rynek wdarlo się stado dzikow! Przepedzic je?");
         aListQuest.add("Kryzys w krolestwie! Rabusie okradaja miejscowych!"+ "Wyslac patrol na rynek?");
         aListQuest.add("W okolicy grasuja gobliny. Postawić kres ich wybrykom?");
         aListQuest.add("Podobno straznicy przy bramie sa przekupni i w naszy miescie pojawila sie kontrabanda. Wymienic straznikow?");
@@ -298,7 +298,9 @@ public class afterMenu extends AppCompatActivity {
         aListQuest.add("Mala dziewczynka zgubila misia, pomozesz jej go znalezc ?");
         aListQuest.add("Lekarz potrzebuje ziol z lasu, potrzeba mu ochrona przed rabusiami " +
                 "Zgadzasz sie by mu pomoc ? ");
-
+        aListQuest.add("W dolinie na zachod od krolestwa znaleziono skamieniale ogry. Tluczemy je dopoki sa skamieniale?");
+        aListQuest.add("Do miasta przyjechal tragarz z egzotycznymi zwierzetami. Rozkazac mu aby oddal nam 2 sztuki kazdego ze zwierzat?");
+        aListQuest.add("Elfi straznicy drzew chca zebysmy im pomogli chronic ich lasu w trakcie ceremonii ich druidow, "+ "w zamian za zloto. Pomagamy im?");
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         final String a = aListQuest.get(random.nextInt(aListQuest.size()));

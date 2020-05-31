@@ -274,6 +274,28 @@ public class upgrade extends AppCompatActivity {
         }
     }
 
+    public void OnCliAwan(View view) {
+        TextView showCountTextView =
+                (TextView) findViewById(R.id.textViewAwans);
+        TextView showCountTextView2 =
+                (TextView) findViewById(R.id.textViewIleStal);
+
+        int sprM=miastoAwans;
+        if ((((sprM+1)*10)+5)>=stal)
+        {
+            Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            stal=stal-(10*(sprM+1))-5;
+            miastoAwans++;
+            SprCityB=true;
+            String miastostringAwans=Integer.toString(miastoAwans);
+            showCountTextView.setText(miastostringAwans);
+            String Bim=Integer.toString(stal);
+            showCountTextView2.setText(Bim);
+        }
+    }
+
     public void HelpDesk(View view)
     {
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -315,25 +337,5 @@ public class upgrade extends AppCompatActivity {
         alertDialog.getWindow().setLayout(600,850);
     }
 
-    public void OnCliAwan(View view) {
-        TextView showCountTextView =
-                (TextView) findViewById(R.id.textViewAwans);
-        TextView showCountTextView2 =
-                (TextView) findViewById(R.id.textViewIleStal);
 
-        int sprM=miastoAwans;
-        if ((((sprM+1)*10)+5)>=stal)
-        {
-            Toast.makeText(context, "Brakuje stali!", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            stal=stal-(10*(sprM+1))-5;
-            miastoAwans++;
-            SprCityB=true;
-            String miastostringAwans=Integer.toString(miastoAwans);
-            showCountTextView.setText(miastostringAwans);
-            String Bim=Integer.toString(stal);
-            showCountTextView2.setText(Bim);
-        }
-    }
 }
