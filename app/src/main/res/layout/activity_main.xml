@@ -31,23 +31,7 @@
 
                 android:src="@drawable/loading"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="209dp" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="237dp"
-                android:layout_height="51dp"
-                android:fontFamily="@font/magic"
-                android:text="LOADING"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@android:color/background_light"
-                android:textColorHighlight="@android:color/background_light"
-                android:textSize="50sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.181" />
+                tools:layout_editor_absoluteY="-52dp" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -56,16 +40,21 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@+id/gifImageView"
                 app:layout_constraintTop_toTopOf="@+id/gifImageView"
-                app:layout_constraintVertical_bias="0.718"
-                tools:layout_editor_absoluteX="1dp" />
+                app:layout_constraintVertical_bias="0.755"
+                tools:layout_editor_absoluteX="0dp" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                app:layout_constraintEnd_toEndOf="@+id/progressBar"
-                tools:layout_editor_absoluteY="488dp">
-
-            </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOADING"
+                android:textColor="#FFFFFF"
+                android:textSize="42sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.181" />
 
         </android.support.constraint.ConstraintLayout>
 
