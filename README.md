@@ -1,2 +1,2 @@
 # Projekt-WMII
-Projekt po sporej przebudowie 
+Mała gra, stworzona w ramach zajęć na Uniwersytecie Łódzkim
