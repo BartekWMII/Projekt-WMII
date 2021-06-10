@@ -13,3 +13,7 @@ Gra posiada częsciowy zapis automatyczny. Nie zapisuje się tylko postęp w zab
 ![alt text](https://github.com/BartekWMII/Projekt-WMII/blob/master/3.png)
 ![alt text](https://github.com/BartekWMII/Projekt-WMII/blob/master/4.png)
 
+
+# Dokładniejsze informacje o mechanice gry w zakładce wiki
+
+https://github.com/BartekWMII/Projekt-WMII/wiki
